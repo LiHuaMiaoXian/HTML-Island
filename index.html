@@ -259,13 +259,13 @@
   <div class="menu-buttons">
     <button id="menu-continue" class="secondary" style="display:none">继续游戏</button>
     <button id="menu-start">开始游戏</button>
-    <button id="menu-load" class="secondary">存档槽</button>
-    <button id="menu-media" class="secondary">媒体库</button>
-    <button id="menu-settings" class="secondary">设置</button>
+    <button id="menu-load" class="secondary">存档槽位</button>
+    <button id="menu-media" class="secondary">媒体文件</button>
+    <button id="menu-settings" class="secondary">设置修改</button>
     <button id="menu-edit" class="secondary">形象绘制</button>
-    <button id="menu-diagnostic" class="secondary">诊断</button>
+    <button id="menu-diagnostic" class="secondary">内容诊断</button>
   </div>
-  <div class="menu-footer">v22 · 插件化引擎</div>
+  <div class="menu-footer">使用插件化引擎格式</div>
 </div></div>
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -273,7 +273,7 @@
      ═══════════════════════════════════════════════════════════ -->
 
 <div id="media-panel"><div class="panel-inner">
-  <div class="title">媒 体 库</div>
+  <div class="title">媒 体 文 件</div>
   <div id="media-status">未选择文件夹</div>
   <div id="media-controls">
     <button id="media-pick">选择文件夹</button>
@@ -304,15 +304,15 @@
 </div></div>
 
 <div id="char-editor"><div class="editor-inner">
-  <div class="title">捏 人</div>
-  <div class="subtitle">画你自己的像素小人</div>
+  <div class="title">形 象 绘 制</div>
+  <div class="subtitle">画你自己的像素形象</div>
   <div class="canvas-wrap"><canvas id="char-canvas" width="384" height="384"></canvas></div>
   <div id="char-palette"></div>
   <div id="char-tools">
-    <button data-tool="brush" class="active">✏ 画笔</button>
-    <button data-tool="eraser">⌫ 橡皮</button>
-    <button data-tool="fill">🪣 填充</button>
-    <button data-tool="picker">💧 取色</button>
+    <button data-tool="brush" class="active">画笔</button>
+    <button data-tool="eraser">橡皮</button>
+    <button data-tool="fill">填充</button>
+    <button data-tool="picker">取色</button>
   </div>
   <div id="char-actions">
     <button id="char-clear" class="warn">清空</button>
@@ -327,9 +327,9 @@
 <canvas id="minimap" width="80" height="80"></canvas>
 <div id="hud">坐标 <span class="v" id="pos">0,0</span> · <span class="v" id="hgt">—</span> · 种子 <span class="v" id="seedTxt">—</span> · <span class="v" id="timeTxt">--:--</span> · <span class="v" id="weatherTxt">晴</span> · <span class="g" id="biomeTxt"></span></div>
 <div id="stats">
-  <div class="stat-row"><span class="stat-label">HP</span><div class="stat-bar"><div class="stat-fill stat-hp" id="hp-fill"></div></div><span class="stat-val" id="hp-val">100</span></div>
-  <div class="stat-row"><span class="stat-label">护</span><div class="stat-bar"><div class="stat-fill stat-armor" id="armor-fill"></div></div><span class="stat-val" id="armor-val">0</span></div>
-  <div class="stat-row"><span class="stat-label">食</span><div class="stat-bar"><div class="stat-fill stat-hunger" id="hunger-fill"></div></div><span class="stat-val" id="hunger-val">100</span></div>
+  <div class="stat-row"><span class="stat-label">血量</span><div class="stat-bar"><div class="stat-fill stat-hp" id="hp-fill"></div></div><span class="stat-val" id="hp-val">100</span></div>
+  <div class="stat-row"><span class="stat-label">防护</span><div class="stat-bar"><div class="stat-fill stat-armor" id="armor-fill"></div></div><span class="stat-val" id="armor-val">0</span></div>
+  <div class="stat-row"><span class="stat-label">饱食</span><div class="stat-bar"><div class="stat-fill stat-hunger" id="hunger-fill"></div></div><span class="stat-val" id="hunger-val">100</span></div>
   <div class="stat-row"><span class="stat-label" id="lvLabel">Lv1</span><div class="stat-bar"><div class="stat-fill stat-exp" id="exp-fill"></div></div><span class="stat-val" id="exp-val">0/20</span></div>
 </div>
 <div id="boss-bar"><div id="boss-name">首领</div><div id="boss-hp-wrap"><div id="boss-hp-fill"></div></div></div>
@@ -343,7 +343,7 @@
 </div>
 <div id="offhand-hint"></div>
 <div id="dmg-numbers"></div>
-<button id="eat-btn">吃</button>
+<button id="eat-btn">食用</button>
 <button id="action-btn"></button>
 <button id="creative-btn">物品</button>
 <button id="dismantle-btn">拆除</button>
@@ -364,7 +364,7 @@
     <div id="bag-left"><div class="bag-section-label">装 备</div><div class="equip-grid" id="equip-grid"></div></div>
     <div id="bag-right"><div class="bag-section-label">物 品</div><div id="bag-grid"></div></div>
   </div>
-  <div class="hint">点物品 → 拿到手上 · 手拿装备 → 点装备槽装上 · 副手可放武器/火把/工具（工具自动采集）</div>
+  <div class="hint">点击物品 → 拿到手上 · 手拿装备 → 点装备槽装上 · 副手可放武器/火把/工具（工具自动采集）</div>
   <button class="close-btn" id="bag-close">关闭</button>
 </div></div>
 
@@ -454,7 +454,7 @@
   <button class="close-btn" id="save-close">关闭</button>
 </div></div>
 
-<div id="death-screen"><div class="death-title">死 了</div><div class="death-sub" id="death-sub">饥饿与野兽都会要你的命</div><button class="respawn-btn" id="respawn-btn">复 活</button></div>
+<div id="death-screen"><div class="death-title">死 亡</div><div class="death-sub" id="death-sub">饥饿与野兽都会要你的命</div><button class="respawn-btn" id="respawn-btn">复 活</button></div>
 <div id="toast"></div>
 <div id="dialog-panel"><div class="dlg-name" id="dlg-name"></div><div class="dlg-text" id="dlg-text"></div><div class="dlg-options" id="dlg-options"></div></div>
 
@@ -587,7 +587,7 @@
       try {
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.errors));
       } catch (_) {
-        // localStorage 满了：丢掉最早的 1/3 再试一次
+        
         try {
           this.errors = this.errors.slice(Math.floor(this.errors.length / 3));
           localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.errors));
@@ -4853,11 +4853,23 @@ G.drawPlayerAt = function (cx, cy, size) {
     ctx.fillRect(bx - 1, by - 1, bw + 2, bh + 2);
     ctx.fillStyle = '#c82020';
     ctx.fillRect(bx, by, bw * Math.max(0, boss.hp / boss.maxHp), bh);
-    ctx.fillStyle = '#ff9090';
-    ctx.font = 'bold ' + Math.max(10, Math.round(cell * 0.9)) + 'px monospace';
-    ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
-    ctx.fillText(def.name, cx, by - Math.max(2, cell * 0.3));
-    ctx.textAlign = 'start'; ctx.textBaseline = 'alphabetic';
+    var fontSize = Math.max(10, Math.round(cell * 0.9));
+var nameY = by - Math.max(fontSize * 0.6, cell * 0.5);
+ctx.font = 'bold ' + fontSize + 'px monospace';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'alphabetic';
+
+/* 黑描边：亮场景 / 火光背景也能看清 */
+ctx.lineWidth = Math.max(2, fontSize * 0.22);
+ctx.strokeStyle = 'rgba(0,0,0,0.9)';
+ctx.strokeText(def.name, cx, nameY);
+
+/* 名字填充 */
+ctx.fillStyle = '#ff9090';
+ctx.fillText(def.name, cx, nameY);
+
+ctx.textAlign = 'start';
+ctx.textBaseline = 'alphabetic';
   };
 
   /* ============ 掉落 / 经验球绘制 ============ */
@@ -5112,7 +5124,7 @@ Core.loadExt('08-logic', function (ext) {
     }
   };
 
-  /* ============ 钓鱼（基础版，被 19-fishing 覆盖） ============ */
+  /* ============ 钓鱼 ============ */
   G.hasWaterNearby = function (r) {
     const rr = Math.ceil(r);
     const px = Math.floor(player.x), py = Math.floor(player.y);
@@ -5714,10 +5726,10 @@ Core.loadExt('08-logic', function (ext) {
         G.deathSubEl.textContent = '你失去了 ' + lost + ' 点经验。';
         G.flashMsg('失去 ' + lost + ' 点经验');
       } else {
-        G.deathSubEl.textContent = '饥饿与野兽都会要你的命';
+        G.deathSubEl.textContent = '一切危险都会要你的命';
       }
     } else {
-      G.deathSubEl.textContent = '饥饿与野兽都要你的命';
+      G.deathSubEl.textContent = '一切危险都要你的命';
     }
     G.updateStatsUI();
     Register.emit('playerDeath', {});
@@ -20071,13 +20083,23 @@ Core.loadExt('23-mine', function (ext) {
     ctx.fillRect(bx - 1, by - 1, bw + 2, bh + 2);
     ctx.fillStyle = '#c82020';
     ctx.fillRect(bx, by, bw * Math.max(0, b.hp / b.maxHp), bh);
-    ctx.fillStyle = '#ff9090';
-    ctx.font = 'bold ' + Math.max(10, Math.round(cell * 0.9)) + 'px monospace';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'bottom';
-    ctx.fillText(def.name, cx, by - Math.max(2, cell * 0.3));
-    ctx.textAlign = 'start';
-    ctx.textBaseline = 'alphabetic';
+    var fontSize = Math.max(10, Math.round(cell * 0.9));
+var nameY = by - Math.max(fontSize * 0.6, cell * 0.5);
+ctx.font = 'bold ' + fontSize + 'px monospace';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'alphabetic';
+
+/* 黑描边：矿洞 / 火光背景也能看清 */
+ctx.lineWidth = Math.max(2, fontSize * 0.22);
+ctx.strokeStyle = 'rgba(0,0,0,0.9)';
+ctx.strokeText(def.name, cx, nameY);
+
+/* 名字填充 */
+ctx.fillStyle = '#ff9090';
+ctx.fillText(def.name, cx, nameY);
+
+ctx.textAlign = 'start';
+ctx.textBaseline = 'alphabetic';
   };
 
   /* 渲染分派：mine 场景 */
@@ -40183,8 +40205,4724 @@ Core.loadExt('37-random-quests', function (ext) {
 });
 </script>
 
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- 扩展 38：背包物品名称 —— 每个格子里显示道具名 -->
+<!--   · 背包格子底部叠加一行小字条显示物品名
+<!--   · 木箱面板（箱子侧 + 背包侧）同步支持
+<!--   · 数量角标自动移到右上角避免重叠
+<!--   · 与 20-backpack 清理模式、装备格等完全兼容
+<!-- ══════════════════════════════════════════════════════ -->
+<script>
+Core.loadExt('38-bag-names', function (ext) {
+  var G = Core.game;
+  var R = G.Register;
+  if (!G || !R) return;
+
+  /* ============================================================
+     1. 注入样式
+     ============================================================ */
+  var styleEl = document.createElement('style');
+  styleEl.id = 'bag-names-style';
+  styleEl.textContent = [
+    /* ---- 名称条：贴在格子底部 ---- */
+    '.bag-slot .item-name-label,',
+    '.chest-slot .item-name-label{',
+      'position:absolute;',
+      'left:1px;',
+      'right:1px;',
+      'bottom:1px;',
+      'height:12px;',
+      'line-height:12px;',
+      'font-size:9px;',
+      'text-align:center;',
+      'color:#eaf2fa;',
+      'background:rgba(0,0,0,0.72);',
+      'border-radius:2px;',
+      'overflow:hidden;',
+      'text-overflow:ellipsis;',
+      'white-space:nowrap;',
+      'padding:0 2px;',
+      'box-sizing:border-box;',
+      'pointer-events:none;',
+      'font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;',
+      'letter-spacing:0;',
+      'text-shadow:0 1px 0 rgba(0,0,0,0.9);',
+      'z-index:3;',
+    '}',
+
+    /* ---- 数量角标挪到右上角，避免压住名称 ---- */
+    '.bag-slot.item-named .count,',
+    '.chest-slot.item-named .count{',
+      'bottom:auto;',
+      'top:2px;',
+      'right:2px;',
+    '}',
+
+    /* ---- 图标稍微上移，让出名称条空间 ---- */
+    '.bag-slot.item-named,',
+    '.chest-slot.item-named{',
+      'padding-bottom:12px;',
+    '}',
+
+    /* ---- 空槽位不做任何处理 ---- */
+    '.bag-slot:not(.filled) .item-name-label,',
+    '.chest-slot:not(.filled) .item-name-label{',
+      'display:none;',
+    '}',
+  ].join('');
+  document.head.appendChild(styleEl);
+
+  /* ============================================================
+     2. 工具：给容器里的所有 .filled 槽位追加名称
+     ============================================================ */
+  function attachNames(container, getSlotFn) {
+    if (!container) return;
+    var slots = container.querySelectorAll('.bag-slot.filled, .chest-slot.filled');
+    for (var i = 0; i < slots.length; i++) {
+      var el = slots[i];
+      /* 已追加过则跳过（避免重复） */
+      if (el.querySelector('.item-name-label')) continue;
+
+      var idx = parseInt(el.dataset.idx, 10);
+      if (isNaN(idx)) continue;
+
+      var slot = null;
+      try { slot = getSlotFn(idx); } catch (_) { slot = null; }
+      if (!slot || !slot.type) continue;
+
+      var def = R.items.get(slot.type);
+      var name = def ? (def.name || slot.type) : slot.type;
+      if (!name) continue;
+
+      var span = document.createElement('span');
+      span.className = 'item-name-label';
+      span.textContent = name;
+      span.title = name; /* 长按可看完整名（桌面端 hover 也有效）*/
+      el.appendChild(span);
+      el.classList.add('item-named');
+    }
+  }
+
+  /* ============================================================
+     3. 包装 G.renderBagPanel
+        在最外层包装 —— 10-inventory / 20-backpack 都渲染完之后
+        我们再补名称，无论哪个扩展渲染都生效
+     ============================================================ */
+  var _renderBagPanel = G.renderBagPanel;
+  G.renderBagPanel = function () {
+    _renderBagPanel.call(G);
+    try {
+      attachNames(G.bagGridEl, function (idx) {
+        return G.inventory.bag[idx];
+      });
+    } catch (err) {
+      /* 静默失败，不影响原 UI */
+    }
+  };
+
+  /* ============================================================
+     4. 包装 G.renderChestPanel（木箱面板）
+        箱子侧 + 背包侧都要显示名称
+     ============================================================ */
+  if (typeof G.renderChestPanel === 'function') {
+    var _renderChestPanel = G.renderChestPanel;
+    G.renderChestPanel = function () {
+      _renderChestPanel.call(G);
+      try {
+        /* 箱子侧 */
+        attachNames(G.chestGridEl, function (idx) {
+          return G.openChest ? G.openChest.bag[idx] : null;
+        });
+        /* 背包侧 */
+        attachNames(G.chestBagGridEl, function (idx) {
+          return G.inventory.bag[idx];
+        });
+      } catch (err) {
+        /* 静默失败 */
+      }
+    };
+  }
+
+  /* ============================================================
+     5. 立即补一次
+        如果包装前面板已经开着（热重载场景），立刻补上
+     ============================================================ */
+  try {
+    if (G.bagPanel && G.bagPanel.classList.contains('show')) {
+      G.renderBagPanel();
+    }
+    if (G.chestPanel && G.chestPanel.classList.contains('show')) {
+      if (typeof G.renderChestPanel === 'function') G.renderChestPanel();
+    }
+  } catch (_) {}
+
+  /* ============================================================
+     6. 公开 API（便于调试）
+     ============================================================ */
+  G.BagNames = {
+    refresh: function () {
+      try {
+        if (G.bagPanel && G.bagPanel.classList.contains('show')) {
+          G.renderBagPanel();
+        }
+        if (G.chestPanel && G.chestPanel.classList.contains('show')) {
+          if (typeof G.renderChestPanel === 'function') G.renderChestPanel();
+        }
+      } catch (_) {}
+    },
+  };
+
+  console.log('[38-bag-names] 加载完成 · 背包/木箱格子已显示物品名称');
+});
+</script>
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- 扩展 39：游戏机 · 修复版 v2 -->
+<!-- ══════════════════════════════════════════════════════ -->
+<script>
+Core.loadExt('39-game-console', function (ext) {
+  'use strict';
+  var G = Core.game, R = G.Register, API = G.API;
+  if (!G || !R || !API) return;
+
+  /* ================================================================
+     0. 卡带定义
+     ================================================================ */
+  var CARTRIDGES = {
+    snake:    { id: 'snake',    name: '贪吃蛇', icon: '蛇', color: '#60d040',
+                rarity: 'common', weight: 40, glitch: '经典 · 无尽' },
+    pong:     { id: 'pong',     name: '乒乓',   icon: '乒', color: '#ffd54f',
+                rarity: 'common', weight: 35, glitch: '对战 · AI' },
+    tetris:   { id: 'tetris',   name: '方块',   icon: '方', color: '#64c8ff',
+                rarity: 'rare',   weight: 20, glitch: '街机 · 消行' },
+    breakout: { id: 'breakout', name: '打砖块', icon: '砖', color: '#ff9050',
+                rarity: 'rare',   weight: 18, glitch: '街机 · 弹球' },
+    invaders: { id: 'invaders', name: '侵略者', icon: '空', color: '#c890ff',
+                rarity: 'epic',   weight: 6,  glitch: '稀有 · 射击' },
+  };
+  var CART_IDS = Object.keys(CARTRIDGES);
+
+  /* ================================================================
+     1. 像素图标
+     ================================================================ */
+  function renderIcon(parts) {
+    var cv = document.createElement('canvas');
+    cv.width = 16; cv.height = 16;
+    var c = cv.getContext('2d');
+    c.imageSmoothingEnabled = false;
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i];
+      if (p[0] === 'rect') { c.fillStyle = p[5]; c.fillRect(p[1], p[2], p[3], p[4]); }
+    }
+    return cv.toDataURL('image/png');
+  }
+
+  var CONSOLE_ICON_URL = renderIcon([
+    ['rect', 1, 3, 14, 10, '#3a3a4a'],
+    ['rect', 1, 3, 14, 1, '#6a6a7a'],
+    ['rect', 1, 12, 14, 1, '#1a1a2a'],
+    ['rect', 3, 5, 6, 6, '#0a1a0a'],
+    ['rect', 4, 6, 4, 4, '#60d040'],
+    ['rect', 11, 6, 1, 1, '#ff4040'],
+    ['rect', 13, 6, 1, 1, '#ffd54f'],
+    ['rect', 12, 8, 1, 1, '#64c8ff'],
+    ['rect', 11, 10, 1, 1, '#c0c0c0'],
+    ['rect', 13, 10, 1, 1, '#c0c0c0'],
+  ]);
+
+  function makeCartIcon(color) {
+    return renderIcon([
+      ['rect', 2, 2, 12, 12, '#4a4a5a'],
+      ['rect', 2, 2, 12, 1, '#7a7a8a'],
+      ['rect', 2, 13, 12, 1, '#1a1a2a'],
+      ['rect', 4, 4, 8, 5, color],
+      ['rect', 4, 4, 8, 1, '#ffffff'],
+      ['rect', 5, 5, 2, 2, '#1a1a2a'],
+      ['rect', 9, 5, 2, 2, '#1a1a2a'],
+      ['rect', 4, 10, 8, 1, '#2a2a3a'],
+      ['rect', 5, 11, 1, 2, '#2a2a3a'],
+      ['rect', 7, 11, 1, 2, '#2a2a3a'],
+      ['rect', 9, 11, 1, 2, '#2a2a3a'],
+      ['rect', 11, 11, 1, 2, '#2a2a3a'],
+    ]);
+  }
+  var CART_ICON_URLS = {};
+  for (var i = 0; i < CART_IDS.length; i++) {
+    CART_ICON_URLS[CART_IDS[i]] = makeCartIcon(CARTRIDGES[CART_IDS[i]].color);
+  }
+
+  /* ================================================================
+     2. 注册物品
+     ================================================================ */
+  R.item('game_console', {
+    icon: '机', color: '#3a3a4a', name: '游戏机', sell: 120,
+    place: {
+      size: [2, 1],
+      validIn: ['world', 'home'],
+      dontOverlapPlayer: true,
+    },
+    dismantle: [
+      { type: 'ingot_iron', count: 2 },
+      { type: 'ingot_copper', count: 2 },
+      { type: 'glass', count: 1 },
+    ],
+    /* 卡带随存档持久化 */
+    save: {
+      pack: function (o) {
+        return [o && o.cartridge ? o.cartridge : ''];
+      },
+      unpack: function (arr, o) {
+        o.cartridge = (arr && typeof arr[0] === 'string' && arr[0] &&
+                       CARTRIDGES[arr[0]]) ? arr[0] : null;
+      },
+    },
+    draw: function (c, px, py, cell, obj) {
+      if (!obj) return;
+      var W = (obj.w || 2) * cell;
+      var H = (obj.h || 1) * cell;
+      var u = Math.max(1, Math.round(H * 0.07));
+
+      /* 阴影 */
+      c.fillStyle = 'rgba(0,0,0,0.42)';
+      c.fillRect(px + W * 0.05, py + H * 0.82, W * 0.9, H * 0.14);
+
+      /* 机身 */
+      c.fillStyle = '#3a3a4a';
+      c.fillRect(px + W * 0.04, py + H * 0.18, W * 0.92, H * 0.68);
+      c.fillStyle = '#5a5a6a';
+      c.fillRect(px + W * 0.04, py + H * 0.18, W * 0.92, u);
+
+      /* 屏幕框 */
+      c.fillStyle = '#1a1a2a';
+      c.fillRect(px + W * 0.08, py + H * 0.26, W * 0.52, H * 0.52);
+
+      /* 屏幕内容 */
+      if (obj.cartridge && CARTRIDGES[obj.cartridge]) {
+        var cart = CARTRIDGES[obj.cartridge];
+        var t = performance.now() * 0.003;
+        c.fillStyle = cart.color;
+        c.globalAlpha = 0.55 * (0.7 + Math.sin(t) * 0.3);
+        c.fillRect(px + W * 0.10, py + H * 0.28, W * 0.48, H * 0.48);
+        c.globalAlpha = 1;
+        c.fillStyle = '#0a1a0a';
+        for (var i = 0; i < 12; i++) {
+          var dx = px + W * 0.12 + (i * 7 + Math.floor(t * 20) % 7) % (W * 0.44);
+          var dy = py + H * 0.30 + Math.floor(i * 3 + Math.floor(t * 12) % 12) % (H * 0.44);
+          c.fillRect(dx, dy, 2, 2);
+        }
+      } else {
+        c.fillStyle = '#0a0a12';
+        c.fillRect(px + W * 0.10, py + H * 0.28, W * 0.48, H * 0.48);
+        if (Math.sin(performance.now() * 0.002) > 0) {
+          c.fillStyle = '#3a5a3a';
+          c.fillRect(px + W * 0.30, py + H * 0.48, W * 0.06, H * 0.04);
+        }
+      }
+
+      /* 屏幕反光 */
+      c.fillStyle = 'rgba(255,255,255,0.10)';
+      c.beginPath();
+      c.moveTo(px + W * 0.10, py + H * 0.76);
+      c.lineTo(px + W * 0.22, py + H * 0.28);
+      c.lineTo(px + W * 0.32, py + H * 0.28);
+      c.lineTo(px + W * 0.20, py + H * 0.76);
+      c.closePath();
+      c.fill();
+
+      /* 按钮 */
+      var bx = px + W * 0.66;
+      var by = py + H * 0.34;
+      var bs = u * 1.8;
+      c.fillStyle = '#a03030'; c.fillRect(bx, by, bs, bs);
+      c.fillStyle = '#a08030'; c.fillRect(bx + bs * 1.4, by, bs, bs);
+      c.fillStyle = '#3060a0'; c.fillRect(bx, by + bs * 1.4, bs, bs);
+      c.fillStyle = '#30a050'; c.fillRect(bx + bs * 1.4, by + bs * 1.4, bs, bs);
+
+      /* 卡带插槽 */
+      c.fillStyle = '#1a1a2a';
+      c.fillRect(px + W * 0.62, py + H * 0.14, W * 0.3, u * 0.8);
+      if (obj.cartridge && CARTRIDGES[obj.cartridge]) {
+        c.fillStyle = CARTRIDGES[obj.cartridge].color;
+        c.fillRect(px + W * 0.64, py + H * 0.08, W * 0.26, H * 0.08);
+        c.fillStyle = 'rgba(255,255,255,0.3)';
+        c.fillRect(px + W * 0.64, py + H * 0.08, W * 0.26, 1);
+      }
+    },
+  });
+
+  /* 卡带物品 */
+  for (var ci = 0; ci < CART_IDS.length; ci++) {
+    (function (cart) {
+      R.item('cartridge_' + cart.id, {
+        icon: cart.icon,
+        color: cart.color,
+        name: cart.name + '卡带',
+        sell: cart.rarity === 'epic' ? 80 : (cart.rarity === 'rare' ? 30 : 15),
+        noDurability: true,
+      });
+    })(CARTRIDGES[CART_IDS[ci]]);
+  }
+
+  /* ================================================================
+     3. 图标三级兜底
+     ================================================================ */
+  function tryInjectIconCache() {
+    try {
+      if (G.MoreIcons && G.MoreIcons.cache &&
+          typeof G.MoreIcons.cache.set === 'function') {
+        G.MoreIcons.cache.set('game_console', CONSOLE_ICON_URL);
+        for (var k in CART_ICON_URLS) {
+          G.MoreIcons.cache.set('cartridge_' + k, CART_ICON_URLS[k]);
+        }
+        return true;
+      }
+    } catch (_) {}
+    return false;
+  }
+  tryInjectIconCache();
+
+  /* 无论 34 是否成功，都加一层兜底（只处理自己的类型） */
+  var _prevIconHTML = G.itemIconHTML;
+  G.itemIconHTML = function (type) {
+    if (type === 'game_console') {
+      return '<img class="pixel-icon-img" src="' + CONSOLE_ICON_URL +
+             '" alt="" draggable="false" oncontextmenu="return false">';
+    }
+    if (type.indexOf('cartridge_') === 0) {
+      var cid = type.slice(10);
+      if (CART_ICON_URLS[cid]) {
+        return '<img class="pixel-icon-img" src="' + CART_ICON_URLS[cid] +
+               '" alt="" draggable="false" oncontextmenu="return false">';
+      }
+    }
+    return _prevIconHTML.call(G, type);
+  };
+
+  /* 延迟再注入一次（34 可能还在异步加载） */
+  setTimeout(tryInjectIconCache, 500);
+  setTimeout(tryInjectIconCache, 2000);
+
+  /* ================================================================
+     4. 配方
+     ================================================================ */
+  R.recipe({
+    id: 'game_console',
+    group: 'building',
+    name: '游戏机',
+    need: { ingot_iron: 3, ingot_copper: 3, glass: 2, wood: 4 },
+    give: { type: 'game_console', count: 1 },
+    station: 'workbench',
+  });
+
+  /* ================================================================
+     5. 掉落系统
+     ================================================================ */
+  function safeSaveExt() {
+    try {
+      if (!G.saveExt) G.saveExt = {};
+      if (!G.saveExt.gcObtained || typeof G.saveExt.gcObtained !== 'object') {
+        G.saveExt.gcObtained = {};
+      }
+      return G.saveExt.gcObtained;
+    } catch (_) { return {}; }
+  }
+
+  function getDropPool() {
+    var obtained = safeSaveExt();
+    var pool = [];
+    for (var i = 0; i < CART_IDS.length; i++) {
+      if (!obtained[CART_IDS[i]]) pool.push(CARTRIDGES[CART_IDS[i]]);
+    }
+    if (pool.length === 0) {
+      for (var j = 0; j < CART_IDS.length; j++) {
+        pool.push(CARTRIDGES[CART_IDS[j]]);
+      }
+    }
+    return pool;
+  }
+
+  function pickCart(pool) {
+    var total = 0;
+    for (var i = 0; i < pool.length; i++) total += pool[i].weight;
+    var r = Math.random() * total;
+    for (var j = 0; j < pool.length; j++) {
+      r -= pool[j].weight;
+      if (r <= 0) return pool[j];
+    }
+    return pool[pool.length - 1];
+  }
+
+  function grantCartridge(cart, x, y) {
+    if (!cart) return false;
+    try {
+      var obtained = safeSaveExt();
+      obtained[cart.id] = 1;
+      var itemId = 'cartridge_' + cart.id;
+      if (typeof G.giveOrDrop === 'function') {
+        G.giveOrDrop(itemId, 1, x !== undefined ? x : G.player.x,
+                                 y !== undefined ? y : G.player.y);
+      } else if (typeof G.addToBag === 'function') {
+        if (!G.addToBag(itemId, 1)) return false;
+      }
+      if (G.flashMsg) G.flashMsg('🎮 获得卡带：' + cart.name + '！');
+      if (G.Sound && G.Sound.craft) G.Sound.craft();
+      return true;
+    } catch (_) { return false; }
+  }
+
+  function tryDropCartridge(c) {
+    if (!c || !c.type) return;
+    try {
+      var defs = (API.getAllCreatures ? API.getAllCreatures() : {}) || {};
+      var def = defs[c.type];
+      var hp = def ? (def.hp || 1) : 5;
+      var chance = 0.03 + Math.min(0.09, hp / 400);
+      if (Math.random() > chance) return;
+      var cart = pickCart(getDropPool());
+      grantCartridge(cart, c.x, c.y);
+    } catch (_) {}
+  }
+
+  var _origDropLoot = G.dropCreatureLoot;
+  G.dropCreatureLoot = function (c) {
+    var r;
+    try { r = _origDropLoot.call(G, c); } catch (_) {}
+    try { tryDropCartridge(c); } catch (_) {}
+    return r;
+  };
+
+  /* BOSS 必掉 */
+  R.event('bossDie', function () {
+    try {
+      if (!G.player) return;
+      var cart = pickCart(getDropPool());
+      grantCartridge(cart, G.player.x, G.player.y);
+      if (G.flashMsg) G.flashMsg('🎮 BOSS 掉落卡带：' + cart.name + '！');
+    } catch (_) {}
+  });
+
+  /* ================================================================
+     6. 查找附近游戏机
+     ================================================================ */
+  function findNearbyConsole() {
+    try {
+      if (!G.player || G.player.dead) return null;
+      if (G.sceneType !== 'world' && G.sceneType !== 'home') return null;
+      var arr = G.sceneType === 'home' ? G.homeState.objects : G.objects;
+      if (!arr) return null;
+      var px = G.player.x, py = G.player.y;
+      var bd = 2.2 * 2.2;
+      var best = null;
+      for (var i = 0; i < arr.length; i++) {
+        var o = arr[i];
+        if (!o || o.type !== 'game_console') continue;
+        var ox = o.x + (o.w || 1) / 2;
+        var oy = o.y + (o.h || 1) / 2;
+        var dx = ox - px, dy = oy - py;
+        var d2 = dx * dx + dy * dy;
+        if (d2 < bd) { bd = d2; best = o; }
+      }
+      return best;
+    } catch (_) { return null; }
+  }
+
+  if (G.ActionRegistry && typeof G.ActionRegistry.register === 'function') {
+    G.ActionRegistry.register(38, 'game_console', function (sceneType) {
+      if (sceneType !== 'world' && sceneType !== 'home') return null;
+      var target = findNearbyConsole();
+      if (!target) return null;
+      return {
+        kind: 'game_console',
+        label: target.cartridge ? '玩游戏' : '游戏机',
+        btnKind: 'enter',
+        mode: 'legacy',
+        target: target,
+        onPress: function () { openPanel(target); },
+      };
+    });
+  }
+
+  /* ================================================================
+     7. 面板 DOM
+     ================================================================ */
+  var panelEl = null;
+  var screenCanvas = null;
+  var screenCtx = null;
+
+  function injectStyles() {
+    if (document.getElementById('gc-styles')) return;
+    var st = document.createElement('style');
+    st.id = 'gc-styles';
+    st.textContent = [
+      '#gc-panel{position:fixed;inset:0;background:rgba(4,6,12,0.97);z-index:325;',
+        'display:none;flex-direction:column;align-items:center;',
+        'overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 10px;}',
+      '#gc-panel.show{display:flex;}',
+      '#gc-panel .gc-title{color:#60d040;font:14px/1.6 "Courier New",monospace;',
+        'letter-spacing:6px;margin:6px 0 12px;flex-shrink:0;',
+        'text-shadow:0 0 12px rgba(96,208,64,0.5);}',
+      '#gc-panel .gc-body{width:min(420px,96vw);',
+        'background:linear-gradient(180deg,#3a3a4a 0%,#2a2a3a 100%);',
+        'border:3px solid #1a1a2a;border-radius:14px;',
+        'box-shadow:0 0 0 2px rgba(255,255,255,0.06) inset,0 12px 40px rgba(0,0,0,0.7);',
+        'padding:14px;display:flex;flex-direction:column;gap:10px;flex-shrink:0;}',
+      '#gc-panel .gc-screen-frame{position:relative;',
+        'background:#0a0a14;border:2px solid #1a1a2a;border-radius:6px;',
+        'box-shadow:inset 0 0 20px rgba(0,0,0,0.9);padding:8px;}',
+      '#gc-screen{display:block;width:100%;height:auto;aspect-ratio:4/3;',
+        'background:#0a1a0a;border-radius:3px;image-rendering:pixelated;',
+        'touch-action:none;}',
+      '#gc-panel .gc-screen-glass{position:absolute;inset:8px;pointer-events:none;',
+        'border-radius:3px;background:linear-gradient(135deg,',
+        'rgba(255,255,255,0.10) 0%,rgba(255,255,255,0.02) 30%,transparent 50%);}',
+      '#gc-panel .gc-hud{display:flex;justify-content:space-between;align-items:center;',
+        'padding:0 4px;font:11px monospace;color:#9cd6ff;letter-spacing:1px;}',
+      '#gc-panel .gc-hud .gc-cart-name{color:#ffd54f;}',
+      '#gc-panel .gc-hud .gc-cart-name.empty{color:#666;}',
+      '#gc-panel .gc-cart-rack{display:flex;gap:8px;padding:8px;',
+        'background:rgba(0,0,0,0.35);border-radius:6px;overflow-x:auto;',
+        '-webkit-overflow-scrolling:touch;min-height:52px;align-items:center;}',
+      '.gc-cart-slot{flex:0 0 auto;width:44px;height:48px;background:#1a1a2a;',
+        'border:2px solid #3a3a4a;border-radius:3px;display:flex;',
+        'flex-direction:column;align-items:center;justify-content:center;',
+        'cursor:pointer;padding:2px;transition:all .15s;',
+        '-webkit-tap-highlight-color:transparent;}',
+      '.gc-cart-slot:hover{border-color:#64c8ff;}',
+      '.gc-cart-slot.active{border-color:#60d040;',
+        'box-shadow:0 0 12px rgba(96,208,64,0.6);}',
+      '.gc-cart-slot img{width:32px;height:32px;image-rendering:pixelated;',
+        'pointer-events:none;}',
+      '.gc-cart-slot .gc-slot-label{font:8px/1 monospace;color:#888;margin-top:2px;',
+        'white-space:nowrap;overflow:hidden;max-width:40px;text-overflow:ellipsis;}',
+      '#gc-panel .gc-controls{display:flex;justify-content:space-between;',
+        'align-items:center;padding:6px 4px 0;gap:10px;}',
+      '.gc-dpad{position:relative;width:110px;height:110px;flex-shrink:0;}',
+      '.gc-dpad button{position:absolute;background:#2a2a3a;border:2px solid #4a4a5a;',
+        'color:#c0c0c0;font-size:16px;cursor:pointer;display:flex;',
+        'align-items:center;justify-content:center;',
+        '-webkit-tap-highlight-color:transparent;touch-action:none;',
+        'user-select:none;-webkit-user-select:none;transition:background .06s;}',
+      '.gc-dpad button:active{background:#4a4a5a;color:#fff;}',
+      '.gc-dpad [data-dir="up"]   {left:36px;top:0;    width:38px;height:38px;}',
+      '.gc-dpad [data-dir="down"] {left:36px;bottom:0; width:38px;height:38px;}',
+      '.gc-dpad [data-dir="left"] {left:0;top:36px;    width:38px;height:38px;}',
+      '.gc-dpad [data-dir="right"]{right:0;top:36px;   width:38px;height:38px;}',
+      '.gc-dpad .gc-dpad-center{position:absolute;left:38px;top:38px;',
+        'width:34px;height:34px;background:#1a1a2a;border-radius:50%;}',
+      '.gc-ab{display:flex;gap:14px;align-items:center;flex-shrink:0;}',
+      '.gc-ab button{width:54px;height:54px;border-radius:50%;border:3px solid;',
+        'color:#fff;font:bold 16px monospace;cursor:pointer;',
+        '-webkit-tap-highlight-color:transparent;touch-action:none;',
+        'user-select:none;-webkit-user-select:none;',
+        'box-shadow:0 4px 0 rgba(0,0,0,0.4);',
+        'transition:transform .06s,box-shadow .06s;}',
+      '.gc-ab button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,0.4);}',
+      '.gc-ab [data-btn="a"]{background:#a03030;border-color:#5a1a1a;}',
+      '.gc-ab [data-btn="b"]{background:#3060a0;border-color:#1a3a5a;}',
+      '#gc-close{padding:10px 34px;background:transparent;border:2px solid #60d040;',
+        'color:#60d040;font:14px/1 inherit;letter-spacing:3px;cursor:pointer;',
+        'margin:14px 0 24px;font-family:inherit;flex-shrink:0;}',
+      '#gc-close:active{background:rgba(96,208,64,0.15);}',
+      '#gc-hint{color:#5a7a9a;font:10px monospace;letter-spacing:1px;',
+        'margin-top:8px;text-align:center;max-width:min(420px,92vw);}',
+    ].join('');
+    document.head.appendChild(st);
+  }
+
+  function buildPanel() {
+    if (panelEl && panelEl.parentNode) return panelEl;
+    injectStyles();
+
+    panelEl = document.createElement('div');
+    panelEl.id = 'gc-panel';
+    panelEl.innerHTML = [
+      '<div class="gc-title">游 戏 机</div>',
+      '<div class="gc-body">',
+        '<div class="gc-screen-frame">',
+          '<canvas id="gc-screen" width="320" height="240"></canvas>',
+          '<div class="gc-screen-glass"></div>',
+        '</div>',
+        '<div class="gc-hud">',
+          '<span class="gc-cart-name empty" id="gc-cart-name">未插入卡带</span>',
+          '<span class="gc-cart-glitch" id="gc-cart-glitch"></span>',
+        '</div>',
+        '<div class="gc-cart-rack" id="gc-cart-rack"></div>',
+        '<div class="gc-controls">',
+          '<div class="gc-dpad">',
+            '<button type="button" data-dir="up">▲</button>',
+            '<button type="button" data-dir="left">◀</button>',
+            '<div class="gc-dpad-center"></div>',
+            '<button type="button" data-dir="right">▶</button>',
+            '<button type="button" data-dir="down">▼</button>',
+          '</div>',
+          '<div class="gc-ab">',
+            '<button type="button" data-btn="a">A</button>',
+            '<button type="button" data-btn="b">B</button>',
+          '</div>',
+        '</div>',
+      '</div>',
+      '<div id="gc-hint">方向键 / WASD 控制 · 空格 = A · Esc = 关闭</div>',
+      '<button type="button" id="gc-close">关 闭</button>',
+    ].join('');
+
+    document.body.appendChild(panelEl);
+
+    screenCanvas = panelEl.querySelector('#gc-screen');
+    screenCtx = screenCanvas.getContext('2d');
+    screenCtx.imageSmoothingEnabled = false;
+
+    /* 关闭按钮 */
+    panelEl.querySelector('#gc-close').addEventListener('click', closePanel);
+
+    /* D-pad 长按支持 */
+    var dpadBtns = panelEl.querySelectorAll('.gc-dpad button');
+    for (var i = 0; i < dpadBtns.length; i++) {
+      bindHoldButton(dpadBtns[i], dpadBtns[i].getAttribute('data-dir'), 180);
+    }
+
+    /* A/B 单次触发 */
+    var abBtns = panelEl.querySelectorAll('.gc-ab button');
+    for (var j = 0; j < abBtns.length; j++) {
+      bindTapButton(abBtns[j], abBtns[j].getAttribute('data-btn'));
+    }
+
+    /* 卡带架 */
+    panelEl.querySelector('#gc-cart-rack').addEventListener('click', function (e) {
+      var slot = e.target.closest && e.target.closest('.gc-cart-slot');
+      if (!slot) return;
+      var cid = slot.getAttribute('data-cart');
+      if (cid) insertCartridge(cid);
+    });
+
+    return panelEl;
+  }
+
+  function bindTapButton(btn, key) {
+    var fired = false;
+    btn.addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      if (fired) return;
+      fired = true;
+      handleInput(key);
+      setTimeout(function () { fired = false; }, 60);
+    });
+    btn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  }
+
+  function bindHoldButton(btn, key, interval) {
+    var timer = null;
+    var holdTimer = null;
+    btn.addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      if (btn.setPointerCapture) {
+        try { btn.setPointerCapture(e.pointerId); } catch (_) {}
+      }
+      handleInput(key);
+      holdTimer = setTimeout(function () {
+        timer = setInterval(function () { handleInput(key); }, interval);
+      }, 260);
+    });
+    function stop(e) {
+      if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+    btn.addEventListener('pointerup', stop);
+    btn.addEventListener('pointercancel', stop);
+    btn.addEventListener('pointerleave', stop);
+    btn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  }
+
+  /* ================================================================
+     8. 面板开关 + 状态机
+     ================================================================ */
+  var currentConsole = null;
+  var currentGame = null;
+  var rafId = null;
+  var lastFrameTime = 0;
+  var _prevGameStarted = null;   /* null = 未暂停 */
+
+  function pauseWorld() {
+    if (_prevGameStarted !== null) return;
+    try {
+      _prevGameStarted = !!G.gameStarted;
+      G.gameStarted = false;
+    } catch (_) {}
+  }
+
+  function resumeWorld() {
+    if (_prevGameStarted === null) return;
+    try {
+      G.gameStarted = _prevGameStarted;
+      if (G.lastTime !== undefined) G.lastTime = performance.now();
+    } catch (_) {}
+    _prevGameStarted = null;
+  }
+
+  function openPanel(consoleObj) {
+    if (!consoleObj) return;
+    buildPanel();
+    currentConsole = consoleObj;
+
+    pauseWorld();
+    panelEl.classList.add('show');
+
+    renderCartRack();
+    updateHUD();
+
+    /* 有卡带 → 启动游戏 */
+    if (consoleObj.cartridge && CARTRIDGES[consoleObj.cartridge]) {
+      startGame(consoleObj.cartridge);
+    } else {
+      drawIdleScreen();
+    }
+
+    if (G.Sound && G.Sound.init) G.Sound.init();
+    if (G.Sound && G.Sound.click) G.Sound.click();
+  }
+
+  function closePanel() {
+    if (!panelEl) return;
+    panelEl.classList.remove('show');
+    stopGame();
+    resumeWorld();
+    currentConsole = null;
+    if (G.Sound && G.Sound.click) G.Sound.click();
+  }
+
+  /* ================================================================
+     9. 卡带插槽
+     ================================================================ */
+  function renderCartRack() {
+    if (!panelEl) return;
+    var rack = panelEl.querySelector('#gc-cart-rack');
+    if (!rack) return;
+
+    var html = '';
+    var owned = [];
+    for (var i = 0; i < CART_IDS.length; i++) {
+      var cid = CART_IDS[i];
+      var itemId = 'cartridge_' + cid;
+      var has = 0;
+      try { has = G.countInBag(itemId); } catch (_) { has = 0; }
+      if (has > 0) owned.push({ id: cid, count: has });
+    }
+
+    if (owned.length === 0) {
+      html += '<div style="color:#666;font:11px monospace;padding:12px;' +
+              'text-align:center;width:100%;">背包里没有卡带<br>' +
+              '<span style="color:#555;font-size:10px;">击杀怪物有概率掉落</span></div>';
+    } else {
+      for (var j = 0; j < owned.length; j++) {
+        var cart = CARTRIDGES[owned[j].id];
+        var active = currentConsole && currentConsole.cartridge === cart.id;
+        html += '<div class="gc-cart-slot ' + (active ? 'active' : '') + '"' +
+                ' data-cart="' + cart.id + '" title="' + cart.name + '">' +
+                '<img src="' + CART_ICON_URLS[cart.id] + '" alt="">' +
+                '<div class="gc-slot-label">' + cart.name + '</div>' +
+                '</div>';
+      }
+    }
+
+    /* 槽位状态提示 */
+    if (currentConsole && currentConsole.cartridge &&
+        CARTRIDGES[currentConsole.cartridge]) {
+      /* 已插卡带 → 不显示空槽 */
+    } else {
+      html += '<div class="gc-cart-slot" style="margin-left:auto;opacity:0.5;">' +
+              '<div style="color:#555;font:24px monospace;">+</div>' +
+              '<div class="gc-slot-label" style="color:#555;">空槽</div>' +
+              '</div>';
+    }
+
+    rack.innerHTML = html;
+  }
+
+  function insertCartridge(cid) {
+    if (!currentConsole) return;
+    if (!CARTRIDGES[cid]) return;
+
+    var itemId = 'cartridge_' + cid;
+
+    /* 检查背包 */
+    var have = 0;
+    try { have = G.countInBag(itemId); } catch (_) {}
+    if (have <= 0) {
+      if (G.flashMsg) G.flashMsg('你没有这张卡带');
+      return;
+    }
+
+    /* 如果游戏机里已有卡带，先还回去 */
+    if (currentConsole.cartridge && currentConsole.cartridge !== cid) {
+      var oldId = 'cartridge_' + currentConsole.cartridge;
+      var canFit = true;
+      try { canFit = G.canFitInBag(oldId, 1); } catch (_) {}
+      if (!canFit) {
+        if (G.flashMsg) G.flashMsg('背包满了，无法换卡');
+        if (G.Sound && G.Sound.deny) G.Sound.deny();
+        return;
+      }
+      try { G.addToBag(oldId, 1); } catch (_) {}
+    }
+
+    /* 从背包拿出新卡带 */
+    try { G.consumeFromBag(itemId, 1); } catch (_) {}
+    currentConsole.cartridge = cid;
+
+    try { G.updateInventoryUI(); } catch (_) {}
+    if (G.Sound && G.Sound.equip) G.Sound.equip();
+
+    renderCartRack();
+    updateHUD();
+    startGame(cid);
+
+    if (G.flashMsg) G.flashMsg('插入卡带：' + CARTRIDGES[cid].name);
+  }
+
+  function updateHUD() {
+    if (!panelEl) return;
+    var nameEl = panelEl.querySelector('#gc-cart-name');
+    var glitchEl = panelEl.querySelector('#gc-cart-glitch');
+    if (!nameEl || !glitchEl) return;
+
+    if (currentConsole && currentConsole.cartridge &&
+        CARTRIDGES[currentConsole.cartridge]) {
+      var cart = CARTRIDGES[currentConsole.cartridge];
+      nameEl.textContent = '▶ ' + cart.name;
+      nameEl.classList.remove('empty');
+      glitchEl.textContent = cart.glitch || '';
+    } else {
+      nameEl.textContent = '未插入卡带';
+      nameEl.classList.add('empty');
+      glitchEl.textContent = '';
+    }
+  }
+
+  function drawIdleScreen() {
+    if (!screenCtx || !screenCanvas) return;
+    var W = screenCanvas.width, H = screenCanvas.height;
+    screenCtx.fillStyle = '#0a1a0a';
+    screenCtx.fillRect(0, 0, W, H);
+
+    var t = performance.now() * 0.005;
+    screenCtx.fillStyle = 'rgba(60,120,60,0.15)';
+    for (var i = 0; i < 40; i++) {
+      var x = (i * 137 + Math.floor(t * 20)) % W;
+      var y = (i * 79 + Math.floor(t * 30)) % H;
+      screenCtx.fillRect(x, y, 2, 2);
+    }
+
+    screenCtx.fillStyle = '#60d040';
+    screenCtx.font = 'bold 20px "Courier New",monospace';
+    screenCtx.textAlign = 'center';
+    screenCtx.textBaseline = 'middle';
+    screenCtx.fillText('NO CARTRIDGE', W / 2, H / 2 - 12);
+
+    screenCtx.font = '12px "Courier New",monospace';
+    screenCtx.fillStyle = '#3a7a30';
+    screenCtx.fillText('选择下方卡带插入', W / 2, H / 2 + 20);
+
+    if (Math.sin(performance.now() * 0.003) > 0) {
+      screenCtx.fillStyle = '#60d040';
+      screenCtx.fillRect(W / 2 - 6, H / 2 + 44, 12, 3);
+    }
+  }
+
+  /* ================================================================
+     10. 像素工具
+     ================================================================ */
+  function px(ctx, x, y, w, h, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(Math.round(x), Math.round(y),
+                 Math.max(1, Math.round(w)), Math.max(1, Math.round(h)));
+  }
+
+  /* ================================================================
+     11. 贪吃蛇
+     ================================================================ */
+  function SnakeGame() { this.reset(); }
+  SnakeGame.prototype.reset = function () {
+    this.W = 20; this.H = 15;
+    this.snake = [{ x: 10, y: 7 }, { x: 9, y: 7 }, { x: 8, y: 7 }];
+    this.dir = { x: 1, y: 0 };
+    this.next = { x: 1, y: 0 };
+    this.food = this.genFood();
+    this.score = 0;
+    this.tick = 0;
+    this.interval = 0.14;
+    this.dead = false;
+    this.flash = 0;
+  };
+  SnakeGame.prototype.genFood = function () {
+    for (var t = 0; t < 200; t++) {
+      var f = { x: (Math.random() * this.W) | 0, y: (Math.random() * this.H) | 0 };
+      var ok = true;
+      for (var i = 0; i < this.snake.length; i++) {
+        if (this.snake[i].x === f.x && this.snake[i].y === f.y) { ok = false; break; }
+      }
+      if (ok) return f;
+    }
+    return { x: 0, y: 0 };
+  };
+  SnakeGame.prototype.input = function (k) {
+    if (this.dead) { if (k === 'a' || k === 'b') this.reset(); return; }
+    if (k === 'up' && this.dir.y !== 1) this.next = { x: 0, y: -1 };
+    else if (k === 'down' && this.dir.y !== -1) this.next = { x: 0, y: 1 };
+    else if (k === 'left' && this.dir.x !== 1) this.next = { x: -1, y: 0 };
+    else if (k === 'right' && this.dir.x !== -1) this.next = { x: 1, y: 0 };
+  };
+  SnakeGame.prototype.update = function (dt) {
+    if (this.flash > 0) this.flash -= dt;
+    if (this.dead) return;
+    this.tick += dt;
+    if (this.tick < this.interval) return;
+    this.tick = 0;
+    this.dir = this.next;
+    var h = this.snake[0];
+    var nx = h.x + this.dir.x;
+    var ny = h.y + this.dir.y;
+    if (nx < 0 || nx >= this.W || ny < 0 || ny >= this.H) {
+      this.dead = true; this.flash = 0.6; return;
+    }
+    for (var i = 0; i < this.snake.length - 1; i++) {
+      if (this.snake[i].x === nx && this.snake[i].y === ny) {
+        this.dead = true; this.flash = 0.6; return;
+      }
+    }
+    this.snake.unshift({ x: nx, y: ny });
+    if (nx === this.food.x && ny === this.food.y) {
+      this.score += 10;
+      this.food = this.genFood();
+      if (this.interval > 0.06) this.interval -= 0.002;
+      this.flash = 0.15;
+    } else this.snake.pop();
+  };
+  SnakeGame.prototype.render = function (ctx, W, H) {
+    ctx.fillStyle = '#0a1a0a';
+    ctx.fillRect(0, 0, W, H);
+    var cell = Math.min(W / this.W, H / this.H);
+    var ox = (W - this.W * cell) / 2, oy = (H - this.H * cell) / 2;
+
+    ctx.strokeStyle = 'rgba(96,208,64,0.08)';
+    ctx.lineWidth = 1;
+    for (var i = 0; i <= this.W; i++) {
+      ctx.beginPath(); ctx.moveTo(ox + i * cell, oy);
+      ctx.lineTo(ox + i * cell, oy + this.H * cell); ctx.stroke();
+    }
+    for (var j = 0; j <= this.H; j++) {
+      ctx.beginPath(); ctx.moveTo(ox, oy + j * cell);
+      ctx.lineTo(ox + this.W * cell, oy + j * cell); ctx.stroke();
+    }
+
+    var pulse = 0.7 + Math.sin(performance.now() * 0.008) * 0.3;
+    ctx.globalAlpha = pulse;
+    px(ctx, ox + this.food.x * cell + 1, oy + this.food.y * cell + 1,
+       cell - 2, cell - 2, '#ff4040');
+    ctx.globalAlpha = 1;
+
+    for (var k = 0; k < this.snake.length; k++) {
+      var s = this.snake[k];
+      var col = k === 0 ? '#a0ff80' : (k % 2 ? '#60d040' : '#50b030');
+      px(ctx, ox + s.x * cell + 1, oy + s.y * cell + 1, cell - 2, cell - 2, col);
+      if (k === 0) px(ctx, ox + s.x * cell + 3, oy + s.y * cell + 3, 2, 2, '#0a1a0a');
+    }
+
+    ctx.fillStyle = '#a0ff80';
+    ctx.font = 'bold 11px "Courier New",monospace';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText('SCORE ' + this.score, 4, 4);
+
+    if (this.dead) {
+      ctx.fillStyle = 'rgba(0,0,0,0.72)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = this.flash > 0 ? '#ff6060' : '#ff3030';
+      ctx.font = 'bold 28px "Courier New",monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('GAME OVER', W / 2, H / 2 - 16);
+      ctx.fillStyle = '#ffd54f';
+      ctx.font = 'bold 14px "Courier New",monospace';
+      ctx.fillText('得分 ' + this.score, W / 2, H / 2 + 14);
+      ctx.fillStyle = '#a0ff80';
+      ctx.font = '11px "Courier New",monospace';
+      ctx.fillText('按 A 重新开始', W / 2, H / 2 + 40);
+    }
+  };
+
+  /* ================================================================
+     12. 乒乓
+     ================================================================ */
+  function PongGame() { this.reset(); }
+  PongGame.prototype.reset = function () {
+    this.W = 40; this.H = 24;
+    this.px1 = 11; this.py1 = 11;
+    this.py2 = 11;
+    this.ballX = 20; this.ballY = 12;
+    this.vx = 14; this.vy = 6;
+    this.score1 = 0; this.score2 = 0;
+    this.target = 5;
+    this.paddleH = 4;
+    this.win = false; this.lose = false;
+    this.flash = 0;
+  };
+  PongGame.prototype.input = function (k) {
+    if (this.win || this.lose) { if (k === 'a' || k === 'b') this.reset(); return; }
+    if (k === 'up') this.py1 = Math.max(0, this.py1 - 1.5);
+    else if (k === 'down') this.py1 = Math.min(this.H - this.paddleH, this.py1 + 1.5);
+  };
+  PongGame.prototype.update = function (dt) {
+    if (this.win || this.lose) return;
+    if (this.flash > 0) this.flash -= dt;
+
+    this.ballX += this.vx * dt;
+    this.ballY += this.vy * dt;
+
+    if (this.ballY < 0) { this.ballY = 0; this.vy = Math.abs(this.vy); }
+    if (this.ballY > this.H - 1) { this.ballY = this.H - 1; this.vy = -Math.abs(this.vy); }
+
+    if (this.ballX > 0.5 && this.ballX < 2) {
+      if (this.ballY >= this.py1 - 0.5 && this.ballY <= this.py1 + this.paddleH + 0.5) {
+        this.ballX = 2;
+        this.vx = Math.abs(this.vx) * 1.03;
+        var rel = (this.ballY - this.py1 - this.paddleH / 2) / (this.paddleH / 2);
+        this.vy = rel * 12;
+      }
+    }
+    if (this.ballX > this.W - 2 && this.ballX < this.W - 0.5) {
+      if (this.ballY >= this.py2 - 0.5 && this.ballY <= this.py2 + this.paddleH + 0.5) {
+        this.ballX = this.W - 2;
+        this.vx = -Math.abs(this.vx) * 1.03;
+        var rel2 = (this.ballY - this.py2 - this.paddleH / 2) / (this.paddleH / 2);
+        this.vy = rel2 * 12;
+      }
+    }
+
+    if (this.ballX < 0) {
+      this.score2++;
+      this.ballX = 20; this.ballY = 12;
+      this.vx = 14; this.vy = (Math.random() - 0.5) * 12;
+      this.flash = 0.3;
+      if (this.score2 >= this.target) this.lose = true;
+    }
+    if (this.ballX > this.W) {
+      this.score1++;
+      this.ballX = 20; this.ballY = 12;
+      this.vx = -14; this.vy = (Math.random() - 0.5) * 12;
+      this.flash = 0.3;
+      if (this.score1 >= this.target) this.win = true;
+    }
+
+    var aiTarget = this.ballY - this.paddleH / 2 + 0.5;
+    var diff = aiTarget - this.py2;
+    if (Math.abs(diff) > 0.3) {
+      this.py2 += Math.sign(diff) * Math.min(Math.abs(diff), 10 * dt);
+    }
+    this.py2 = Math.max(0, Math.min(this.H - this.paddleH, this.py2));
+  };
+  PongGame.prototype.render = function (ctx, W, H) {
+    ctx.fillStyle = '#0a1a0a';
+    ctx.fillRect(0, 0, W, H);
+    var cell = Math.min(W / this.W, H / this.H);
+    var ox = (W - this.W * cell) / 2, oy = (H - this.H * cell) / 2;
+
+    ctx.strokeStyle = 'rgba(96,208,64,0.3)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(W / 2, 0); ctx.lineTo(W / 2, H); ctx.stroke();
+    ctx.setLineDash([]);
+
+    px(ctx, ox + cell, oy + this.py1 * cell, cell, this.paddleH * cell, '#a0ff80');
+    px(ctx, ox + (this.W - 2) * cell, oy + this.py2 * cell, cell, this.paddleH * cell, '#ff6060');
+    px(ctx, ox + this.ballX * cell, oy + this.ballY * cell, cell, cell, '#ffd54f');
+
+    ctx.fillStyle = '#a0ff80';
+    ctx.font = 'bold 20px "Courier New",monospace';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.fillText(this.score1, W / 2 - 30, 4);
+    ctx.fillStyle = '#ff6060';
+    ctx.fillText(this.score2, W / 2 + 30, 4);
+
+    if (this.win || this.lose) {
+      ctx.fillStyle = 'rgba(0,0,0,0.75)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = this.win ? '#60d040' : '#ff6060';
+      ctx.font = 'bold 26px "Courier New",monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(this.win ? 'YOU WIN' : 'YOU LOSE', W / 2, H / 2 - 10);
+      ctx.fillStyle = '#a0ff80';
+      ctx.font = '11px "Courier New",monospace';
+      ctx.fillText('按 A 再来一局', W / 2, H / 2 + 24);
+    }
+  };
+
+  /* ================================================================
+     13. 俄罗斯方块
+     ================================================================ */
+  var TETROMINOES = [
+    { shape: [[1,1,1,1]],       color: '#64c8ff' },
+    { shape: [[1,1],[1,1]],     color: '#ffd54f' },
+    { shape: [[0,1,0],[1,1,1]], color: '#c890ff' },
+    { shape: [[1,0,0],[1,1,1]], color: '#ff9050' },
+    { shape: [[0,0,1],[1,1,1]], color: '#64d0ff' },
+    { shape: [[0,1,1],[1,1,0]], color: '#60d040' },
+    { shape: [[1,1,0],[0,1,1]], color: '#ff6060' },
+  ];
+
+  function TetrisGame() { this.reset(); }
+  TetrisGame.prototype.reset = function () {
+    this.W = 10; this.H = 18;
+    this.grid = [];
+    for (var y = 0; y < this.H; y++) {
+      var row = [];
+      for (var x = 0; x < this.W; x++) row.push(null);
+      this.grid.push(row);
+    }
+    this.score = 0; this.lines = 0;
+    this.fallTimer = 0; this.fallInterval = 0.8;
+    this.piece = null; this.pieceX = 0; this.pieceY = 0; this.rot = 0;
+    this.dead = false;
+    this.spawn();
+  };
+  TetrisGame.prototype.spawn = function () {
+    var t = TETROMINOES[(Math.random() * TETROMINOES.length) | 0];
+    this.piece = t; this.rot = 0;
+    this.pieceX = Math.floor((this.W - t.shape[0].length) / 2);
+    this.pieceY = 0;
+    if (this.collide(this.pieceX, this.pieceY, this.getShape())) this.dead = true;
+  };
+  TetrisGame.prototype.getShape = function () {
+    var s = this.piece.shape, r = this.rot % 4, out = [];
+    if (r === 0) {
+      for (var i = 0; i < s.length; i++) out.push(s[i].slice());
+    } else if (r === 1) {
+      for (var j = 0; j < s[0].length; j++) {
+        var row = [];
+        for (var k = s.length - 1; k >= 0; k--) row.push(s[k][j]);
+        out.push(row);
+      }
+    } else if (r === 2) {
+      for (var m = s.length - 1; m >= 0; m--) out.push(s[m].slice().reverse());
+    } else {
+      for (var n = 0; n < s[0].length; n++) {
+        var row2 = [];
+        for (var o = s.length - 1; o >= 0; o--) row2.push(s[o][s[0].length - 1 - n]);
+        out.push(row2);
+      }
+    }
+    return out;
+  };
+  TetrisGame.prototype.collide = function (x, y, shape) {
+    for (var i = 0; i < shape.length; i++) {
+      for (var j = 0; j < shape[i].length; j++) {
+        if (!shape[i][j]) continue;
+        var nx = x + j, ny = y + i;
+        if (nx < 0 || nx >= this.W || ny >= this.H) return true;
+        if (ny >= 0 && this.grid[ny][nx]) return true;
+      }
+    }
+    return false;
+  };
+  TetrisGame.prototype.input = function (k) {
+    if (this.dead) { if (k === 'a' || k === 'b') this.reset(); return; }
+    if (!this.piece) return;
+    var shape = this.getShape();
+    if (k === 'left' && !this.collide(this.pieceX - 1, this.pieceY, shape)) this.pieceX--;
+    else if (k === 'right' && !this.collide(this.pieceX + 1, this.pieceY, shape)) this.pieceX++;
+    else if (k === 'down' && !this.collide(this.pieceX, this.pieceY + 1, shape)) {
+      this.pieceY++; this.score += 1;
+    } else if (k === 'up') {
+      var old = this.rot;
+      this.rot = (this.rot + 1) % 4;
+      if (this.collide(this.pieceX, this.pieceY, this.getShape())) this.rot = old;
+    } else if (k === 'a' || k === 'b') {
+      while (!this.collide(this.pieceX, this.pieceY + 1, shape)) {
+        this.pieceY++; this.score += 2;
+      }
+    }
+  };
+  TetrisGame.prototype.lock = function () {
+    var shape = this.getShape();
+    for (var i = 0; i < shape.length; i++) {
+      for (var j = 0; j < shape[i].length; j++) {
+        if (!shape[i][j]) continue;
+        var nx = this.pieceX + j, ny = this.pieceY + i;
+        if (ny >= 0 && ny < this.H && nx >= 0 && nx < this.W) {
+          this.grid[ny][nx] = this.piece.color;
+        }
+      }
+    }
+    var cleared = 0;
+    for (var y = this.H - 1; y >= 0; y--) {
+      var full = true;
+      for (var x = 0; x < this.W; x++) if (!this.grid[y][x]) { full = false; break; }
+      if (full) {
+        this.grid.splice(y, 1);
+        var row = [];
+        for (var k = 0; k < this.W; k++) row.push(null);
+        this.grid.unshift(row);
+        cleared++; y++;
+      }
+    }
+    if (cleared > 0) {
+      this.score += [0, 40, 100, 300, 1200][cleared] || 0;
+      this.lines += cleared;
+      if (this.fallInterval > 0.15) this.fallInterval -= 0.03;
+      if (G.Sound && G.Sound.craft) G.Sound.craft();
+    }
+    this.spawn();
+  };
+  TetrisGame.prototype.update = function (dt) {
+    if (this.dead || !this.piece) return;
+    this.fallTimer += dt;
+    if (this.fallTimer >= this.fallInterval) {
+      this.fallTimer = 0;
+      if (!this.collide(this.pieceX, this.pieceY + 1, this.getShape())) this.pieceY++;
+      else this.lock();
+    }
+  };
+  TetrisGame.prototype.render = function (ctx, W, H) {
+    ctx.fillStyle = '#0a1a0a';
+    ctx.fillRect(0, 0, W, H);
+    var playW = W * 0.7;
+    var cell = Math.min(playW / this.W, H / this.H);
+    var ox = (playW - this.W * cell) / 2;
+    var oy = (H - this.H * cell) / 2;
+
+    ctx.strokeStyle = 'rgba(96,208,64,0.1)';
+    ctx.lineWidth = 1;
+    for (var i = 0; i <= this.W; i++) {
+      ctx.beginPath(); ctx.moveTo(ox + i * cell, oy);
+      ctx.lineTo(ox + i * cell, oy + this.H * cell); ctx.stroke();
+    }
+    for (var j = 0; j <= this.H; j++) {
+      ctx.beginPath(); ctx.moveTo(ox, oy + j * cell);
+      ctx.lineTo(ox + this.W * cell, oy + j * cell); ctx.stroke();
+    }
+
+    for (var y = 0; y < this.H; y++) {
+      for (var x = 0; x < this.W; x++) {
+        if (!this.grid[y][x]) continue;
+        px(ctx, ox + x * cell + 1, oy + y * cell + 1, cell - 2, cell - 2, this.grid[y][x]);
+        px(ctx, ox + x * cell + 1, oy + y * cell + 1, cell - 2, Math.max(1, cell * 0.2),
+           'rgba(255,255,255,0.25)');
+      }
+    }
+
+    if (this.piece && !this.dead) {
+      var shape = this.getShape();
+      for (var i2 = 0; i2 < shape.length; i2++) {
+        for (var j2 = 0; j2 < shape[i2].length; j2++) {
+          if (!shape[i2][j2]) continue;
+          var nx = ox + (this.pieceX + j2) * cell;
+          var ny = oy + (this.pieceY + i2) * cell;
+          px(ctx, nx + 1, ny + 1, cell - 2, cell - 2, this.piece.color);
+          px(ctx, nx + 1, ny + 1, cell - 2, Math.max(1, cell * 0.2),
+             'rgba(255,255,255,0.3)');
+        }
+      }
+    }
+
+    ctx.fillStyle = '#a0ff80';
+    ctx.font = 'bold 10px "Courier New",monospace';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText('SCORE', W * 0.72, 8);
+    ctx.fillStyle = '#ffd54f';
+    ctx.font = 'bold 14px "Courier New",monospace';
+    ctx.fillText(this.score, W * 0.72, 20);
+    ctx.fillStyle = '#a0ff80';
+    ctx.font = 'bold 10px "Courier New",monospace';
+    ctx.fillText('LINES', W * 0.72, 42);
+    ctx.fillStyle = '#ffd54f';
+    ctx.font = 'bold 14px "Courier New",monospace';
+    ctx.fillText(this.lines, W * 0.72, 54);
+
+    ctx.fillStyle = '#64c8ff';
+    ctx.font = '9px "Courier New",monospace';
+    ctx.fillText('↑ 旋转', W * 0.72, 80);
+    ctx.fillText('↓ 下落', W * 0.72, 92);
+    ctx.fillText('A 快落', W * 0.72, 104);
+
+    if (this.dead) {
+      ctx.fillStyle = 'rgba(0,0,0,0.75)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#ff6060';
+      ctx.font = 'bold 24px "Courier New",monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('GAME OVER', W / 2, H / 2 - 14);
+      ctx.fillStyle = '#ffd54f';
+      ctx.font = 'bold 13px "Courier New",monospace';
+      ctx.fillText('得分 ' + this.score, W / 2, H / 2 + 14);
+      ctx.fillStyle = '#a0ff80';
+      ctx.font = '11px "Courier New",monospace';
+      ctx.fillText('按 A 重来', W / 2, H / 2 + 38);
+    }
+  };
+
+  /* ================================================================
+     14. 打砖块
+     ================================================================ */
+  function BreakoutGame() { this.reset(); }
+  BreakoutGame.prototype.reset = function () {
+    this.W = 32; this.H = 24;
+    this.paddleX = 13; this.paddleW = 6;
+    this.ballX = 16; this.ballY = 20;
+    this.vx = 8; this.vy = -10;
+    this.bricks = [];
+    var colors = ['#ff6060', '#ff9050', '#ffd54f', '#60d040', '#64c8ff'];
+    for (var y = 0; y < 5; y++) {
+      for (var x = 2; x < this.W - 2; x++) {
+        if ((x + y) % 2 === 0) continue;
+        this.bricks.push({ x: x, y: y + 2, hp: 1, color: colors[y] });
+      }
+    }
+    this.score = 0;
+    this.dead = false; this.win = false; this.flash = 0;
+  };
+  BreakoutGame.prototype.input = function (k) {
+    if (this.win || this.dead) { if (k === 'a' || k === 'b') this.reset(); return; }
+    if (k === 'left') this.paddleX = Math.max(0, this.paddleX - 2);
+    else if (k === 'right') this.paddleX = Math.min(this.W - this.paddleW, this.paddleX + 2);
+  };
+  BreakoutGame.prototype.update = function (dt) {
+    if (this.win || this.dead) return;
+    if (this.flash > 0) this.flash -= dt;
+
+    this.ballX += this.vx * dt;
+    this.ballY += this.vy * dt;
+
+    if (this.ballX < 0.3) { this.ballX = 0.3; this.vx = Math.abs(this.vx); }
+    if (this.ballX > this.W - 0.3) { this.ballX = this.W - 0.3; this.vx = -Math.abs(this.vx); }
+    if (this.ballY < 0.3) { this.ballY = 0.3; this.vy = Math.abs(this.vy); }
+    if (this.ballY > this.H + 2) { this.dead = true; this.flash = 0.5; return; }
+
+    if (this.ballY > this.H - 2 && this.ballY < this.H - 0.5 &&
+        this.ballX > this.paddleX && this.ballX < this.paddleX + this.paddleW) {
+      this.ballY = this.H - 2;
+      this.vy = -Math.abs(this.vy);
+      var rel = (this.ballX - this.paddleX - this.paddleW / 2) / (this.paddleW / 2);
+      this.vx = rel * 14;
+    }
+
+    for (var i = this.bricks.length - 1; i >= 0; i--) {
+      var b = this.bricks[i];
+      if (this.ballX > b.x - 0.5 && this.ballX < b.x + 1.5 &&
+          this.ballY > b.y - 0.5 && this.ballY < b.y + 1.5) {
+        b.hp--;
+        if (b.hp <= 0) { this.bricks.splice(i, 1); this.score += 20; }
+        var dx = this.ballX - (b.x + 0.5);
+        var dy = this.ballY - (b.y + 0.5);
+        if (Math.abs(dx) > Math.abs(dy)) this.vx = Math.sign(dx) * Math.abs(this.vx);
+        else this.vy = Math.sign(dy) * Math.abs(this.vy);
+        break;
+      }
+    }
+    if (this.bricks.length === 0) { this.win = true; this.score += 100; }
+  };
+  BreakoutGame.prototype.render = function (ctx, W, H) {
+    ctx.fillStyle = '#0a1a0a';
+    ctx.fillRect(0, 0, W, H);
+    var cell = Math.min(W / this.W, H / this.H);
+    var ox = (W - this.W * cell) / 2, oy = (H - this.H * cell) / 2;
+
+    for (var i = 0; i < this.bricks.length; i++) {
+      var b = this.bricks[i];
+      px(ctx, ox + b.x * cell, oy + b.y * cell, cell - 1, cell - 1, b.color);
+      px(ctx, ox + b.x * cell, oy + b.y * cell, cell - 1, Math.max(1, cell * 0.25),
+         'rgba(255,255,255,0.3)');
+    }
+
+    px(ctx, ox + this.paddleX * cell, oy + (this.H - 1.5) * cell,
+       this.paddleW * cell, cell, '#a0ff80');
+    px(ctx, ox + this.ballX * cell - cell * 0.3, oy + this.ballY * cell - cell * 0.3,
+       cell * 0.6, cell * 0.6, '#ffd54f');
+
+    ctx.fillStyle = '#a0ff80';
+    ctx.font = 'bold 11px "Courier New",monospace';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText('SCORE ' + this.score, 4, 4);
+
+    if (this.dead || this.win) {
+      ctx.fillStyle = 'rgba(0,0,0,0.72)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = this.win ? '#60d040' : '#ff6060';
+      ctx.font = 'bold 26px "Courier New",monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(this.win ? 'CLEAR!' : 'GAME OVER', W / 2, H / 2 - 14);
+      ctx.fillStyle = '#ffd54f';
+      ctx.font = 'bold 13px "Courier New",monospace';
+      ctx.fillText('得分 ' + this.score, W / 2, H / 2 + 14);
+      ctx.fillStyle = '#a0ff80';
+      ctx.font = '11px "Courier New",monospace';
+      ctx.fillText('按 A 再来', W / 2, H / 2 + 38);
+    }
+  };
+
+  /* ================================================================
+     15. 侵略者
+     ================================================================ */
+  function InvadersGame() { this.reset(); }
+  InvadersGame.prototype.reset = function () {
+    this.W = 32; this.H = 24;
+    this.shipX = 15;
+    this.bullet = null;
+    this.enemyBullets = [];
+    this.enemies = [];
+    var colors = ['#c890ff', '#64c8ff', '#60d040', '#ffd54f'];
+    for (var y = 0; y < 4; y++) {
+      for (var x = 0; x < 8; x++) {
+        this.enemies.push({ x: 4 + x * 3, y: 3 + y * 2, color: colors[y], alive: true });
+      }
+    }
+    this.dir = 1;
+    this.moveTimer = 0; this.moveInterval = 0.6;
+    this.enemyShootTimer = 2;
+    this.score = 0;
+    this.dead = false; this.win = false; this.flash = 0;
+  };
+  InvadersGame.prototype.input = function (k) {
+    if (this.win || this.dead) { if (k === 'a' || k === 'b') this.reset(); return; }
+    if (k === 'left') this.shipX = Math.max(0.5, this.shipX - 2);
+    else if (k === 'right') this.shipX = Math.min(this.W - 0.5, this.shipX + 2);
+    else if (k === 'a' || k === 'b') {
+      if (!this.bullet) this.bullet = { x: this.shipX, y: this.H - 2 };
+    }
+  };
+  InvadersGame.prototype.update = function (dt) {
+    if (this.win || this.dead) return;
+    if (this.flash > 0) this.flash -= dt;
+
+    if (this.bullet) {
+      this.bullet.y -= 30 * dt;
+      if (this.bullet.y < 0) this.bullet = null;
+      else {
+        for (var i = 0; i < this.enemies.length; i++) {
+          var e = this.enemies[i];
+          if (!e.alive) continue;
+          if (Math.abs(e.x + 0.5 - this.bullet.x) < 1 &&
+              Math.abs(e.y + 0.5 - this.bullet.y) < 1) {
+            e.alive = false;
+            this.bullet = null;
+            this.score += 30;
+            break;
+          }
+        }
+      }
+    }
+
+    this.moveTimer += dt;
+    if (this.moveTimer >= this.moveInterval) {
+      this.moveTimer = 0;
+      var alive = this.enemies.filter(function (e) { return e.alive; });
+      if (alive.length === 0) { this.win = true; return; }
+      var minX = Infinity, maxX = -Infinity;
+      for (var k = 0; k < alive.length; k++) {
+        if (alive[k].x < minX) minX = alive[k].x;
+        if (alive[k].x > maxX) maxX = alive[k].x;
+      }
+      if ((this.dir > 0 && maxX >= this.W - 1.5) ||
+          (this.dir < 0 && minX <= 0.5)) {
+        this.dir *= -1;
+        for (var m = 0; m < this.enemies.length; m++) {
+          this.enemies[m].y += 1;
+          if (this.enemies[m].y > this.H - 3) { this.dead = true; return; }
+        }
+      } else {
+        for (var n = 0; n < this.enemies.length; n++) this.enemies[n].x += this.dir;
+      }
+      if (this.moveInterval > 0.15) this.moveInterval -= 0.015;
+    }
+
+    this.enemyShootTimer -= dt;
+    if (this.enemyShootTimer <= 0) {
+      var alive2 = this.enemies.filter(function (e) { return e.alive; });
+      if (alive2.length > 0) {
+        var shooter = alive2[(Math.random() * alive2.length) | 0];
+        this.enemyBullets.push({ x: shooter.x + 0.5, y: shooter.y + 1 });
+      }
+      this.enemyShootTimer = 0.8 + Math.random() * 1.5;
+    }
+
+    for (var p = this.enemyBullets.length - 1; p >= 0; p--) {
+      var b = this.enemyBullets[p];
+      b.y += 12 * dt;
+      if (b.y > this.H) { this.enemyBullets.splice(p, 1); continue; }
+      if (Math.abs(b.x - this.shipX) < 0.8 && b.y > this.H - 2) {
+        this.dead = true; return;
+      }
+    }
+  };
+  InvadersGame.prototype.render = function (ctx, W, H) {
+    ctx.fillStyle = '#0a1a0a';
+    ctx.fillRect(0, 0, W, H);
+    var cell = Math.min(W / this.W, H / this.H);
+    var ox = (W - this.W * cell) / 2, oy = (H - this.H * cell) / 2;
+
+    for (var i = 0; i < this.enemies.length; i++) {
+      var e = this.enemies[i];
+      if (!e.alive) continue;
+      px(ctx, ox + e.x * cell, oy + e.y * cell, cell - 1, cell - 1, e.color);
+      px(ctx, ox + (e.x + 0.2) * cell, oy + (e.y + 0.3) * cell, cell * 0.2, cell * 0.2, '#0a1a0a');
+      px(ctx, ox + (e.x + 0.6) * cell, oy + (e.y + 0.3) * cell, cell * 0.2, cell * 0.2, '#0a1a0a');
+    }
+
+    var sx = ox + this.shipX * cell;
+    var sy = oy + (this.H - 1) * cell;
+    px(ctx, sx - cell, sy, cell * 2, cell * 0.6, '#a0ff80');
+    px(ctx, sx - cell * 0.3, sy - cell * 0.5, cell * 0.6, cell * 0.5, '#a0ff80');
+
+    if (this.bullet) {
+      px(ctx, ox + this.bullet.x * cell, oy + this.bullet.y * cell, cell * 0.3, cell, '#ffd54f');
+    }
+    for (var k = 0; k < this.enemyBullets.length; k++) {
+      var b = this.enemyBullets[k];
+      px(ctx, ox + b.x * cell, oy + b.y * cell, cell * 0.3, cell, '#ff6060');
+    }
+
+    ctx.fillStyle = '#a0ff80';
+    ctx.font = 'bold 11px "Courier New",monospace';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText('SCORE ' + this.score, 4, 4);
+
+    if (this.dead || this.win) {
+      ctx.fillStyle = 'rgba(0,0,0,0.75)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = this.win ? '#60d040' : '#ff6060';
+      ctx.font = 'bold 26px "Courier New",monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(this.win ? 'CLEAR!' : 'GAME OVER', W / 2, H / 2 - 14);
+      ctx.fillStyle = '#ffd54f';
+      ctx.font = 'bold 13px "Courier New",monospace';
+      ctx.fillText('得分 ' + this.score, W / 2, H / 2 + 14);
+      ctx.fillStyle = '#a0ff80';
+      ctx.font = '11px "Courier New",monospace';
+      ctx.fillText('按 A 再来', W / 2, H / 2 + 38);
+    }
+  };
+
+  /* ================================================================
+     16. 游戏运行循环
+     ================================================================ */
+  var FACTORIES = {
+    snake: SnakeGame, pong: PongGame, tetris: TetrisGame,
+    breakout: BreakoutGame, invaders: InvadersGame,
+  };
+
+  function startGame(cid) {
+    stopGame();
+    var F = FACTORIES[cid];
+    if (!F) { drawIdleScreen(); return; }
+    try {
+      currentGame = new F();
+      lastFrameTime = performance.now();
+      rafId = requestAnimationFrame(gameLoop);
+    } catch (err) {
+      console.error('[39-game-console] 启动游戏失败:', err);
+      currentGame = null;
+      drawCrashScreen(err);
+    }
+  }
+
+  function stopGame() {
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    currentGame = null;
+  }
+
+  function gameLoop(ts) {
+    if (!currentGame || !screenCtx) return;
+    rafId = requestAnimationFrame(gameLoop);
+
+    var dt = (ts - lastFrameTime) / 1000;
+    lastFrameTime = ts;
+    if (dt > 0.1) dt = 0.1;
+    if (dt < 0) dt = 0;
+
+    try {
+      currentGame.update(dt);
+      currentGame.render(screenCtx, screenCanvas.width, screenCanvas.height);
+    } catch (err) {
+      console.error('[40-game-console] 游戏循环错误:', err);
+      stopGame();
+      drawCrashScreen(err);
+    }
+  }
+
+  function drawCrashScreen(err) {
+    if (!screenCtx || !screenCanvas) return;
+    var W = screenCanvas.width, H = screenCanvas.height;
+    screenCtx.fillStyle = '#2a0a0a';
+    screenCtx.fillRect(0, 0, W, H);
+    screenCtx.fillStyle = '#ff6060';
+    screenCtx.font = 'bold 20px "Courier New",monospace';
+    screenCtx.textAlign = 'center'; screenCtx.textBaseline = 'middle';
+    screenCtx.fillText('SYSTEM ERROR', W / 2, H / 2 - 20);
+    screenCtx.font = '11px "Courier New",monospace';
+    screenCtx.fillStyle = '#ff9090';
+    var msg = (err && err.message) ? err.message.slice(0, 40) : '未知错误';
+    screenCtx.fillText(msg, W / 2, H / 2 + 10);
+    screenCtx.fillStyle = '#ffd54f';
+    screenCtx.fillText('重新插入卡带', W / 2, H / 2 + 40);
+  }
+
+  /* ================================================================
+     17. 输入
+     ================================================================ */
+  function handleInput(k) {
+    if (!currentGame || typeof currentGame.input !== 'function') return;
+    try { currentGame.input(k); } catch (_) {}
+  }
+
+  /* 键盘输入（capture 阶段，仅在面板打开时生效） */
+  function onKeyDown(e) {
+    if (!panelEl || !panelEl.classList.contains('show')) return;
+
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      closePanel();
+      return;
+    }
+
+    var k = null;
+    var key = e.key;
+    if (key === 'ArrowUp' || key === 'w' || key === 'W') k = 'up';
+    else if (key === 'ArrowDown' || key === 's' || key === 'S') k = 'down';
+    else if (key === 'ArrowLeft' || key === 'a' || key === 'A') k = 'left';
+    else if (key === 'ArrowRight' || key === 'd' || key === 'D') k = 'right';
+    else if (key === ' ' || key === 'Spacebar' || key === 'j' || key === 'J') k = 'a';
+    else if (key === 'k' || key === 'K' || key === 'Enter') k = 'b';
+
+    if (k) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      if (e.repeat) return;
+      handleInput(k);
+    }
+  }
+  document.addEventListener('keydown', onKeyDown, true);
+
+  /* ================================================================
+     18. 生命周期
+     ================================================================ */
+  function safeClose() {
+    try {
+      if (panelEl && panelEl.classList.contains('show')) closePanel();
+    } catch (_) {}
+  }
+  R.event('playerDeath', safeClose);
+  R.event('worldGenerate', safeClose);
+  R.event('enterBuilding', safeClose);
+  R.event('exitBuilding', safeClose);
+  R.event('enterHome', safeClose);
+  R.event('exitHome', safeClose);
+
+  /* ================================================================
+     19. 公开 API
+     ================================================================ */
+  G.GameConsole = {
+    version: '2.0',
+    open: openPanel,
+    close: closePanel,
+    isOpen: function () {
+      return !!(panelEl && panelEl.classList.contains('show'));
+    },
+    cartridges: CARTRIDGES,
+    giveCartridge: function (cid) {
+      if (!CARTRIDGES[cid]) return false;
+      return grantCartridge(CARTRIDGES[cid], G.player.x, G.player.y);
+    },
+    getOwned: function () {
+      try { return Object.keys(safeSaveExt()); } catch (_) { return []; }
+    },
+    resetDropRecord: function () {
+      try {
+        if (G.saveExt) G.saveExt.gcObtained = {};
+        if (G.flashMsg) G.flashMsg('卡带掉落记录已重置');
+      } catch (_) {}
+    },
+  };
+
+  console.log('[39-game-console] v2 加载完成 · 5 款小游戏');
+  console.log('  · 合成：工作台 · 铁锭3 + 铜锭3 + 玻璃2 + 木块4');
+  console.log('  · 卡带掉落：小怪 3% · 精英 6% · BOSS 100%');
+  console.log('  · 调试：G.GameConsole.giveCartridge("snake")');
+});
+</script>
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- 扩展 40：深层生态模拟 v3 · 最终版 -->
+<!--   依赖：09-interact / 29-more-creatures / 30-more-creatures-2 -->
+<!--   调试：G.Ecology.stats() / .listSpecies() / .profile("wolf") -->
+<!-- ══════════════════════════════════════════════════════ -->
+<script>
+Core.loadExt('40-ecology', function (ext) {
+  'use strict';
+  var G = Core.game, R = G.Register, API = G.API;
+  if (!G || !R || !API) return;
+  var MAP_W = G.MAP_W, MAP_H = G.MAP_H;
+
+  /* ============================================================
+     0. 配置
+     ============================================================ */
+  var CFG = {
+    gridRebuildInterval: 0.5,
+    metabolismInterval: 2.0,
+    predationInterval: 1.0,
+    reproductionInterval: 5.0,
+    migrationInterval: 25.0,
+    corpseInterval: 1.5,
+    fearDecayInterval: 5.0,
+
+    gridCellSize: 8,
+
+    hungerBaseRate: 100 / 240,
+    hungerThreshold: 50,
+    starveDamage: 1.0,
+
+    huntRange: 10,
+    huntEatDist: 1.3,
+    huntHungerGain: 65,
+    biteCooldown: 0.9,
+
+    minHungerToBreed: 60,
+    breedRange: 4,
+    breedCooldownBase: 90,
+    breedChancePerTick: 0.15,
+    softCapPerSpecies: 40,
+    globalTotalCap: 450,
+    lowPopRatio: 0.35,
+
+    corpseDecayTime: 120,
+    corpseNutrientRadius: 2,
+    maxCorpses: 50,
+    nutrientMaxCells: 1500,
+
+    fearDecayTime: 90,
+    fearRadius: 14,
+    fearMaxAccum: 1.0,
+    playerKillWindow: 0.5,
+
+    biomeRichness: {
+      'ocean': 0.6, 'beach': 0.6, 'plain': 1.2, 'swamp': 1.0,
+      'forest': 1.4, 'hill': 0.9, 'mountain': 0.7, 'volcano': 0.4,
+      'desert': 0.3, 'rainforest': 1.6, 'savanna': 0.8,
+      'mangrove': 1.0, 'cherry': 1.1, 'maple': 1.1,
+      'bamboo': 1.2, 'flower_field': 1.3, 'glacier': 0.4,
+      'tundra': 0.6, 'mushroom_forest': 1.2, 'crystal_forest': 0.6,
+      'scorched': 0.2, 'dead_forest': 0.4,
+    },
+    weatherHunger: {
+      'clear': 1.0, 'cloudy': 1.0, 'rain': 1.15, 'thunder': 1.2,
+      'snow': 1.4, 'fog': 1.0,
+    },
+    nightHungerMult: 1.25,
+  };
+
+  /* ============================================================
+     1. 基础食物链兜底
+     ============================================================ */
+  var BASE_CHAIN = {
+    rabbit:   { tier: 1, prey: [] },
+    deer:     { tier: 1, prey: [] },
+    frog:     { tier: 1, prey: [] },
+    fox:      { tier: 2, prey: ['rabbit', 'frog'] },
+    snake:    { tier: 2, prey: ['rabbit', 'frog'] },
+    cat:      { tier: 2, prey: ['rabbit', 'frog'] },
+    dog:      { tier: 2, prey: ['rabbit'] },
+    bat:      { tier: 2, prey: ['rabbit'] },
+    spider:   { tier: 2, prey: ['rabbit'] },
+    boar:     { tier: 2, prey: ['rabbit', 'frog'] },
+    wolf:     { tier: 3, prey: ['rabbit', 'deer', 'boar', 'frog', 'fox'] },
+    zombie:   { tier: 3, prey: ['rabbit', 'deer', 'boar'] },
+    bear:     { tier: 4, prey: ['rabbit', 'deer', 'boar', 'fox', 'wolf'] },
+    crocodile:{ tier: 4, prey: ['rabbit', 'deer', 'boar', 'frog'] },
+  };
+
+  /* ============================================================
+     2. 全局状态
+     ============================================================ */
+  var Eco = {
+    profiles: {},
+    predatorsIndex: {},
+    tickAccum: 0,
+    sub: { metab: 0, hunt: 0, breed: 0, migrate: 0, corpse: 0, fear: 0 },
+
+    grid: new Map(),
+    speciesCount: {},
+    gridDirty: true,
+
+    corpses: [],
+    corpseNutrient: new Map(),
+    playerFear: {},
+
+    stats: {
+      born: 0, starved: 0, aged: 0, eaten: 0,
+      bred: 0, migrated: 0, fearEvents: 0,
+    },
+
+    _inited: false,
+  };
+  G.Ecology = Eco;
+
+  /* ============================================================
+     3. 工具
+     ============================================================ */
+  function isAlive(c) {
+    return c && !c._ecoRemoved && c.hp > 0;
+  }
+
+  function dist2(ax, ay, bx, by) {
+    var dx = ax - bx, dy = ay - by;
+    return dx * dx + dy * dy;
+  }
+
+  function biomeRichness(x, y) {
+    try {
+      var b = G.getBiomeAt(Math.floor(x), Math.floor(y));
+      if (!b) return 1.0;
+      var v = CFG.biomeRichness[b.id];
+      return (typeof v === 'number') ? v : 1.0;
+    } catch (_) { return 1.0; }
+  }
+
+  function cellKey(gx, gy) {
+    return (gx + 500) * 4096 + (gy + 500);
+  }
+
+  /* ============================================================
+     4. 空间网格（复用数组，减少 GC）
+     ============================================================ */
+  function rebuildGrid() {
+    var cs = CFG.gridCellSize;
+    var arr = G.creatures;
+    var newGrid = new Map();
+    var oldGrid = Eco.grid;
+
+    /* 清空物种计数 */
+    for (var k in Eco.speciesCount) Eco.speciesCount[k] = 0;
+
+    for (var i = 0; i < arr.length; i++) {
+      var c = arr[i];
+      if (!c || c._ecoRemoved || c.hp <= 0) continue;
+      var gx = (c.x / cs) | 0;
+      var gy = (c.y / cs) | 0;
+      var key = cellKey(gx, gy);
+
+      var list = newGrid.get(key);
+      if (!list) {
+        /* 复用旧数组（如果存在） */
+        list = oldGrid.get(key);
+        if (!list) list = [];
+        else list.length = 0;
+        newGrid.set(key, list);
+      }
+      list.push(c);
+
+      Eco.speciesCount[c.type] = (Eco.speciesCount[c.type] || 0) + 1;
+    }
+
+    /* 换新网格，清空旧引用（让 GC 处理不再需要的） */
+    Eco.grid = newGrid;
+    Eco.gridDirty = false;
+  }
+
+  function queryRadius(x, y, r) {
+    var out = [];
+    if (r <= 0) return out;
+    var cs = CFG.gridCellSize;
+    var gx0 = ((x - r) / cs) | 0;
+    var gx1 = ((x + r) / cs) | 0;
+    var gy0 = ((y - r) / cs) | 0;
+    var gy1 = ((y + r) / cs) | 0;
+    var r2 = r * r;
+    for (var gy = gy0; gy <= gy1; gy++) {
+      for (var gx = gx0; gx <= gx1; gx++) {
+        var list = Eco.grid.get(cellKey(gx, gy));
+        if (!list) continue;
+        for (var i = 0; i < list.length; i++) {
+          var c = list[i];
+          if (!c || c._ecoRemoved || c.hp <= 0) continue;
+          var dx = c.x - x, dy = c.y - y;
+          if (dx * dx + dy * dy <= r2) out.push(c);
+        }
+      }
+    }
+    return out;
+  }
+
+  /* ============================================================
+     5. 物种档案
+     ============================================================ */
+  function inferProfile(type, def) {
+    var p = {
+      type: type,
+      tier: 1,
+      diet: 'herbivore',
+      prey: [],
+      preySet: new Set(),
+      lifespan: 300,
+      maturity: 60,
+      breedCd: CFG.breedCooldownBase,
+      litterSize: 1,
+      huntRange: CFG.huntRange,
+      hungerMult: 1.0,
+      nightOnly: false,
+      spawnBiome: null,
+      spawnE: [0, 1],
+    };
+
+    var chain = null;
+    if (G.FoodChain && G.FoodChain.CHAIN && G.FoodChain.CHAIN[type]) {
+      chain = G.FoodChain.CHAIN[type];
+    } else if (BASE_CHAIN[type]) {
+      chain = BASE_CHAIN[type];
+    }
+    if (chain) {
+      p.tier = chain.tier || 1;
+      if (Array.isArray(chain.prey) && chain.prey.length) {
+        p.prey = chain.prey.slice();
+        p.preySet = new Set(p.prey);
+        p.diet = 'carnivore';
+      }
+    }
+
+    if (def) {
+      if (def.behavior === 'passive' || def.behavior === 'friendly') {
+        p.diet = 'herbivore';
+        p.prey = [];
+        p.preySet = new Set();
+      }
+      if (def.behavior === 'aggressive' && p.tier < 3 && p.prey.length) p.tier = 3;
+      if (def.spawn) {
+        p.nightOnly = !!def.spawn.night;
+        p.spawnBiome = def.spawn.biome || null;
+        p.spawnE = [def.spawn.minE || 0, def.spawn.maxE || 1];
+      }
+    }
+
+    var hp = (def && def.hp) || 5;
+    var sz = (def && def.size) || 1;
+    p.lifespan = 240 + Math.min(1400, hp * 22);
+    p.maturity = p.lifespan * 0.18;
+    p.breedCd = CFG.breedCooldownBase + Math.min(180, hp * 6);
+    p.hungerMult = 0.8 + sz * 0.5;
+
+    if (sz < 0.8)      p.litterSize = 2;
+    else if (sz < 1.2) p.litterSize = 1;
+    else               { p.litterSize = 1; p.breedCd *= 1.6; }
+
+    if (p.tier >= 4)      { p.litterSize = 1; p.breedCd *= 2.2; p.huntRange = 14; }
+    else if (p.tier === 3){ p.breedCd *= 1.5; p.huntRange = 11; }
+    else if (p.tier === 2){ p.huntRange = 8; }
+
+    return p;
+  }
+
+  function buildProfiles() {
+    Eco.profiles = {};
+    Eco.predatorsIndex = {};
+    R.creatures.forEach(function (def, type) {
+      Eco.profiles[type] = inferProfile(type, def);
+    });
+    for (var t in Eco.profiles) {
+      var p = Eco.profiles[t];
+      for (var i = 0; i < p.prey.length; i++) {
+        var py = p.prey[i];
+        if (!Eco.predatorsIndex[py]) Eco.predatorsIndex[py] = new Set();
+        Eco.predatorsIndex[py].add(t);
+      }
+    }
+    var cnt = 0;
+    for (var k in Eco.predatorsIndex) cnt += Eco.predatorsIndex[k].size;
+    console.log('[40-ecology] 档案已构建 · ' +
+      Object.keys(Eco.profiles).length + ' 种 · ' + cnt + ' 条捕食关系');
+  }
+
+  /* ============================================================
+     6. 生物实例生态字段
+     ============================================================ */
+  function ensureEco(c) {
+    if (c._eco) return c._eco;
+    var p = Eco.profiles[c.type];
+    if (!p) {
+      var def = R.creatures.get(c.type);
+      if (!def) {
+        p = Eco.profiles[c.type] = {
+          type: c.type, tier: 1, diet: 'herbivore',
+          prey: [], preySet: new Set(),
+          lifespan: 300, maturity: 60, breedCd: 180,
+          litterSize: 1, huntRange: 6, hungerMult: 1.0,
+          nightOnly: false, spawnBiome: null, spawnE: [0, 1],
+        };
+      } else {
+        p = Eco.profiles[c.type] = inferProfile(c.type, def);
+      }
+    }
+    var initAge = Math.random() * p.maturity * 1.8;
+    c._eco = {
+      age: initAge,
+      hunger: 65 + Math.random() * 35,
+      lastBredAt: -Math.random() * p.breedCd,
+      juvenile: initAge < p.maturity,
+      _prey: null,
+      _biteCd: 0,
+    };
+    return c._eco;
+  }
+
+  /* ============================================================
+     7. 统一移除
+     ============================================================ */
+  function removeCreature(c, cause) {
+    if (!c || c._ecoRemoved) return;
+    c._ecoRemoved = true;
+    try { G.dropCreatureLoot(c); } catch (_) {}
+    var arr = G.creatures;
+    var i = arr.indexOf(c);
+    if (i >= 0) arr.splice(i, 1);
+  }
+
+  /* ============================================================
+     8. 玩家恐惧
+     ============================================================ */
+  function recordFear(c) {
+    if (!c || !c.type) return;
+    var f = Eco.playerFear[c.type];
+    if (!f) f = Eco.playerFear[c.type] = { fear: 0, x: 0, y: 0, lastAt: 0 };
+    f.fear = Math.min(CFG.fearMaxAccum, f.fear + 0.20);
+    f.x = c.x; f.y = c.y; f.lastAt = G.playSeconds;
+    Eco.stats.fearEvents++;
+  }
+
+  function fearLevel(c) {
+    var f = Eco.playerFear[c.type];
+    if (!f) return 0;
+    if (G.playSeconds - f.lastAt > CFG.fearDecayTime) return 0;
+    var d2 = dist2(c.x, c.y, f.x, f.y);
+    var r = CFG.fearRadius;
+    if (d2 > r * r) return 0;
+    return f.fear * (1 - Math.sqrt(d2) / r);
+  }
+
+  /* ============================================================
+     9. 任务：饥饿 / 年龄
+     ============================================================ */
+  function taskMetabolism(dt) {
+    var arr = G.creatures;
+    for (var i = arr.length - 1; i >= 0; i--) {
+      var c = arr[i];
+      if (!isAlive(c)) continue;
+      var p = Eco.profiles[c.type];
+      if (!p) continue;
+      var eco = ensureEco(c);
+
+      eco.age += dt;
+      if (eco.juvenile && eco.age >= p.maturity) eco.juvenile = false;
+
+      var rate = CFG.hungerBaseRate * p.hungerMult;
+      rate /= biomeRichness(c.x, c.y);
+      var w = G.weather && G.weather.type;
+      if (w && CFG.weatherHunger[w]) rate *= CFG.weatherHunger[w];
+      if (G.worldTime < 0.2 || G.worldTime > 0.75) rate *= CFG.nightHungerMult;
+
+      eco.hunger = Math.max(0, eco.hunger - rate * dt);
+
+      if (eco.hunger <= 0) {
+        c.hp -= CFG.starveDamage * dt;
+        if (c.hp <= 0) { Eco.stats.starved++; removeCreature(c, 'starve'); continue; }
+      }
+      if (eco.age >= p.lifespan) {
+        c.hp -= 0.8 * dt;
+        if (c.hp <= 0) { Eco.stats.aged++; removeCreature(c, 'aged'); continue; }
+      }
+    }
+  }
+
+  /* ============================================================
+     10. 任务：捕食（批量移除）
+     ============================================================ */
+  function taskPredation(dt) {
+    var arr = G.creatures;
+    var toRemove = null;
+
+    for (var i = 0; i < arr.length; i++) {
+      var c = arr[i];
+      if (!isAlive(c)) continue;
+      var p = Eco.profiles[c.type];
+      if (!p || p.preySet.size === 0) continue;
+      if (c.angry > 5) continue;
+      if (fearLevel(c) > 0.4) continue;
+
+      var eco = ensureEco(c);
+      if (eco._biteCd > 0) eco._biteCd -= dt;
+
+      var target = eco._prey;
+      if (target && (!isAlive(target) ||
+          dist2(c.x, c.y, target.x, target.y) > p.huntRange * p.huntRange * 1.8)) {
+        eco._prey = null; target = null;
+      }
+
+      if (!target && eco.hunger < CFG.hungerThreshold) {
+        target = findPrey(c, p);
+        eco._prey = target;
+      }
+      if (!target) continue;
+
+      var dx = target.x - c.x, dy = target.y - c.y;
+      var d2 = dx * dx + dy * dy;
+      var eatD2 = CFG.huntEatDist * CFG.huntEatDist;
+
+      if (d2 > eatD2) {
+        var d = Math.sqrt(d2) || 0.001;
+        c.dirX = dx / d;
+        c.dirY = dy / d;
+        c.timer = 2.0;
+        c.calm = 0;
+      } else if (eco._biteCd <= 0) {
+        var dmg = Math.max(2, p.tier * 3);
+        target.hp -= dmg;
+        target.hurtFlash = 0.2;
+        target.angry = Math.max(target.angry || 0, 6);
+        try {
+          if (G.spawnDamageNumber) G.spawnDamageNumber(target.x, target.y, dmg, '');
+        } catch (_) {}
+        eco._biteCd = CFG.biteCooldown;
+
+        if (target.hp <= 0) {
+          eco.hunger = Math.min(100, eco.hunger + CFG.huntHungerGain);
+          Eco.stats.eaten++;
+          spawnCorpse(target);
+          if (!toRemove) toRemove = [];
+          toRemove.push(target);
+          eco._prey = null;
+        }
+      }
+    }
+
+    if (toRemove) {
+      for (var k = 0; k < toRemove.length; k++) {
+        removeCreature(toRemove[k], 'eaten');
+      }
+    }
+  }
+
+  function findPrey(c, p) {
+    var near = queryRadius(c.x, c.y, p.huntRange);
+    var best = null, bd = p.huntRange * p.huntRange;
+    for (var i = 0; i < near.length; i++) {
+      var o = near[i];
+      if (o === c || !isAlive(o)) continue;
+      if (!p.preySet.has(o.type)) continue;
+      var oe = o._eco;
+      var priority = (oe && oe.juvenile) ? 0.6 : 1.0;
+      var d2 = dist2(c.x, c.y, o.x, o.y) * priority;
+      if (d2 < bd) { bd = d2; best = o; }
+    }
+    return best;
+  }
+
+  /* ============================================================
+     11. 任务：繁殖（成功才扣父母）
+     ============================================================ */
+  function taskReproduction(dt) {
+    if (G.creatures.length >= CFG.globalTotalCap) return;
+
+    var arr = G.creatures;
+    for (var i = 0; i < arr.length; i++) {
+      var a = arr[i];
+      if (!isAlive(a)) continue;
+      if (Math.random() > CFG.breedChancePerTick) continue;
+
+      var p = Eco.profiles[a.type];
+      if (!p) continue;
+
+      var ae = ensureEco(a);
+      if (ae.juvenile) continue;
+      if (ae.hunger < CFG.minHungerToBreed) continue;
+      if (G.playSeconds - ae.lastBredAt < p.breedCd) continue;
+
+      var cnt = Eco.speciesCount[a.type] || 0;
+      if (cnt >= CFG.softCapPerSpecies) continue;
+
+      var mate = findMate(a, p);
+      if (!mate) continue;
+      var me = ensureEco(mate);
+
+      var placed = 0;
+      for (var j = 0; j < p.litterSize; j++) {
+        if (tryBirth(a, p)) placed++;
+      }
+
+      if (placed > 0) {
+        ae.lastBredAt = G.playSeconds;
+        me.lastBredAt = G.playSeconds;
+        ae.hunger -= 25;
+        me.hunger -= 25;
+        Eco.stats.bred += placed;
+      }
+    }
+  }
+
+  function findMate(a, p) {
+    var near = queryRadius(a.x, a.y, CFG.breedRange);
+    var bd = CFG.breedRange * CFG.breedRange;
+    var best = null;
+    for (var i = 0; i < near.length; i++) {
+      var b = near[i];
+      if (b === a || b.type !== a.type || !isAlive(b)) continue;
+      var be = ensureEco(b);
+      if (be.juvenile) continue;
+      if (be.hunger < CFG.minHungerToBreed) continue;
+      if (G.playSeconds - be.lastBredAt < p.breedCd) continue;
+      var d2 = dist2(a.x, a.y, b.x, b.y);
+      if (d2 < bd) { bd = d2; best = b; }
+    }
+    return best;
+  }
+
+  function tryBirth(parent, p) {
+    for (var t = 0; t < 8; t++) {
+      var ang = Math.random() * Math.PI * 2;
+      var r = 0.5 + Math.random() * 1.5;
+      var bx = parent.x + Math.cos(ang) * r;
+      var by = parent.y + Math.sin(ang) * r;
+      var gx = Math.floor(bx), gy = Math.floor(by);
+      if (typeof G.canCreatureWalk === 'function' && !G.canCreatureWalk(gx, gy)) continue;
+      if (typeof G.cellInHomeSafe === 'function' && G.cellInHomeSafe(gx, gy)) continue;
+      var def = R.creatures.get(parent.type);
+      if (!def) return false;
+      var baby = {
+        type: parent.type,
+        x: bx, y: by,
+        dirX: 0, dirY: 0,
+        facing: Math.random() < 0.5 ? 1 : -1,
+        timer: Math.random() * 2,
+        walkPhase: Math.random() * Math.PI * 2,
+        calm: 0, hp: def.hp, hurtFlash: 0, attackTimer: 0, angry: 0,
+      };
+      baby._eco = {
+        age: 0, hunger: 60,
+        lastBredAt: G.playSeconds,
+        juvenile: true,
+        _prey: null,
+        _biteCd: 0,
+      };
+      G.creatures.push(baby);
+      Eco.stats.born++;
+      Eco.gridDirty = true;
+      return true;
+    }
+    return false;
+  }
+
+  /* ============================================================
+     12. 任务：尸体 + 养分
+     ============================================================ */
+  function spawnCorpse(c) {
+    if (Eco.corpses.length >= CFG.maxCorpses) {
+      var old = Eco.corpses.shift();
+      addNutrient(old.x, old.y, 2);
+    }
+    Eco.corpses.push({
+      x: c.x, y: c.y, type: c.type,
+      life: CFG.corpseDecayTime,
+      maxLife: CFG.corpseDecayTime,
+    });
+  }
+
+  function taskCorpse(dt) {
+    for (var i = Eco.corpses.length - 1; i >= 0; i--) {
+      var cp = Eco.corpses[i];
+      cp.life -= dt;
+
+      if (cp.life <= 0) {
+        addNutrient(cp.x, cp.y, 2);
+        Eco.corpses.splice(i, 1);
+        continue;
+      }
+
+      var near = queryRadius(cp.x, cp.y, 2.0);
+      var eaten = false;
+      for (var j = 0; j < near.length; j++) {
+        var c = near[j];
+        if (!isAlive(c)) continue;
+        var p = Eco.profiles[c.type];
+        if (!p) continue;
+        var scavenger = p.tier >= 2 ||
+          c.type === 'scavenger' || c.type === 'dog' || c.type === 'cat';
+        if (!scavenger) continue;
+        var eco = ensureEco(c);
+        if (eco.hunger >= 90) continue;
+        eco.hunger = Math.min(100, eco.hunger + 25);
+        cp.life -= 30;
+        eaten = true;
+        if (cp.life <= 0) break;
+      }
+      if (eaten && cp.life <= 0) {
+        addNutrient(cp.x, cp.y, 3);
+        Eco.corpses.splice(i, 1);
+      }
+    }
+  }
+
+  function addNutrient(x, y, amount) {
+    var cx = Math.floor(x), cy = Math.floor(y);
+    var r = CFG.corpseNutrientRadius;
+    for (var dy = -r; dy <= r; dy++) {
+      for (var dx = -r; dx <= r; dx++) {
+        if (dx * dx + dy * dy > r * r) continue;
+        var gx = cx + dx, gy = cy + dy;
+        if (gx < 0 || gy < 0 || gx >= MAP_W || gy >= MAP_H) continue;
+        var key = gx * 100000 + gy;
+        var cur = Eco.corpseNutrient.get(key) || 0;
+        Eco.corpseNutrient.set(key, cur + amount);
+      }
+    }
+    if (Eco.corpseNutrient.size > CFG.nutrientMaxCells) {
+      var toDel = Eco.corpseNutrient.size - CFG.nutrientMaxCells;
+      var it = Eco.corpseNutrient.keys();
+      for (var i = 0; i < toDel; i++) {
+        var k = it.next();
+        if (k.done) break;
+        Eco.corpseNutrient.delete(k.value);
+      }
+    }
+  }
+
+  /* ============================================================
+     13. 任务：迁徙
+     ============================================================ */
+  function taskMigration(dt) {
+    if (G.creatures.length >= CFG.globalTotalCap) return;
+
+    var budget = 8;
+    var minPerSpecies = Math.floor(CFG.softCapPerSpecies * CFG.lowPopRatio);
+
+    for (var type in Eco.profiles) {
+      if (budget <= 0) break;
+      var p = Eco.profiles[type];
+      var cnt = Eco.speciesCount[type] || 0;
+
+      if (cnt === 0) {
+        var f = Eco.playerFear[type];
+        if (f && G.playSeconds - f.lastAt < CFG.fearDecayTime * 1.5) continue;
+        if (migrateIn(type, p, 1)) budget--;
+        continue;
+      }
+      if (cnt < minPerSpecies) {
+        var need = Math.min(minPerSpecies - cnt, 2);
+        if (migrateIn(type, p, need)) budget -= need;
+      }
+    }
+  }
+
+  function migrateIn(type, p, count) {
+    var placedTotal = 0;
+    for (var n = 0; n < count; n++) {
+      var placed = false;
+      for (var a = 0; a < 15; a++) {
+        var ang = Math.random() * Math.PI * 2;
+        var r = 32 + Math.random() * 38;
+        var bx = G.player.x + Math.cos(ang) * r;
+        var by = G.player.y + Math.sin(ang) * r;
+        var gx = Math.floor(bx), gy = Math.floor(by);
+        if (gx < 5 || gy < 5 || gx >= MAP_W - 5 || gy >= MAP_H - 5) continue;
+        var idx = gy * MAP_W + gx;
+        if (G.isWater[idx] || G.occupied[idx]) continue;
+        if (typeof G.cellInHomeSafe === 'function' && G.cellInHomeSafe(gx, gy)) continue;
+        var e = G.elevation[idx];
+        if (e < p.spawnE[0] - 0.05 || e > p.spawnE[1] + 0.05) continue;
+        if (p.spawnBiome && G.biomeMap && G.biomeMap[idx] &&
+            G.biomeMap[idx].id !== p.spawnBiome) continue;
+
+        var def = R.creatures.get(type);
+        if (!def) return placedTotal > 0;
+        G.creatures.push({
+          type: type, x: bx, y: by,
+          dirX: 0, dirY: 0,
+          facing: Math.random() < 0.5 ? 1 : -1,
+          timer: Math.random() * 2,
+          walkPhase: Math.random() * Math.PI * 2,
+          calm: 0, hp: def.hp, hurtFlash: 0, attackTimer: 0, angry: 0,
+        });
+        ensureEco(G.creatures[G.creatures.length - 1]);
+        Eco.stats.migrated++;
+        Eco.gridDirty = true;
+        placed = true;
+        placedTotal++;
+        break;
+      }
+      if (!placed) break;
+    }
+    return placedTotal > 0;
+  }
+
+  /* ============================================================
+     14. 玩家攻击标记（时间戳，无需清理）
+     ============================================================ */
+  function tagPlayerAttack(c) {
+    if (!c) return;
+    c._playerAtkAt = G.playSeconds;
+  }
+
+  /* 纯查询：找玩家武器的最近敌人（不污染战斗锁定） */
+  function findLikelyTarget() {
+    var mw = (typeof G.getMainWeapon === 'function') ? G.getMainWeapon() : null;
+    var rng = mw ? G.getEffectiveWeaponStat(mw.weapon, 'range') : 2.5;
+    var r2 = rng * rng;
+    var best = null, bd = r2;
+    var arr = G.creatures;
+    var px = G.player.x, py = G.player.y;
+    for (var i = 0; i < arr.length; i++) {
+      var c = arr[i];
+      if (!c || c._ecoRemoved || c.hp <= 0) continue;
+      var dx = c.x - px, dy = c.y - py;
+      var d2 = dx * dx + dy * dy;
+      if (d2 < bd) { bd = d2; best = c; }
+    }
+    return best;
+  }
+
+  /* 包装 dropCreatureLoot：0.5 秒内被玩家攻击过 → 记录恐惧 */
+  var _dropLoot = G.dropCreatureLoot;
+  G.dropCreatureLoot = function (c) {
+    var r;
+    try { r = _dropLoot.call(G, c); } catch (_) {}
+    if (c && c.type && c._playerAtkAt !== undefined) {
+      if (G.playSeconds - c._playerAtkAt < CFG.playerKillWindow) {
+        recordFear(c);
+      }
+      c._playerAtkAt = undefined;
+    }
+    return r;
+  };
+
+  var _attackCreature = G.attackCreature;
+  G.attackCreature = function (c) {
+    tagPlayerAttack(c);
+    var r;
+    try { r = _attackCreature.call(G, c); } catch (_) { return false; }
+    return r;
+  };
+
+  var _doNearestAttack = G.doNearestAttack;
+  G.doNearestAttack = function () {
+    var target = findLikelyTarget();
+    if (target) tagPlayerAttack(target);
+    var r;
+    try { r = _doNearestAttack.call(G); } catch (_) { return false; }
+    return r;
+  };
+
+  var _doBareHandAttack = G.doBareHandAttack;
+  G.doBareHandAttack = function () {
+    var target = findLikelyTarget();
+    if (target) tagPlayerAttack(target);
+    var r;
+    try { r = _doBareHandAttack.call(G); } catch (_) { return false; }
+    return r;
+  };
+
+  /* ============================================================
+     15. 主循环
+     ============================================================ */
+  API.onUpdate.push(function (dt) {
+    if (G.sceneType !== 'world') return;
+    if (G.player.dead) return;
+
+    if (!Eco._inited) {
+      Eco._inited = true;
+      try { buildProfiles(); } catch (e) { console.warn('[40-ecology] buildProfiles:', e); }
+    }
+
+    Eco.tickAccum += dt;
+    if (Eco.tickAccum < 0.1) return;
+    var step = Eco.tickAccum;
+    Eco.tickAccum = 0;
+
+    if (Eco.gridDirty || step >= CFG.gridRebuildInterval) {
+      try { rebuildGrid(); } catch (e) { console.warn('[40-ecology] rebuildGrid:', e); }
+    }
+
+    Eco.sub.metab   += step;
+    Eco.sub.hunt    += step;
+    Eco.sub.breed   += step;
+    Eco.sub.migrate += step;
+    Eco.sub.corpse  += step;
+    Eco.sub.fear    += step;
+
+    if (Eco.sub.metab >= CFG.metabolismInterval) {
+      var sm = Eco.sub.metab; Eco.sub.metab = 0;
+      try { taskMetabolism(sm); } catch (e) { console.warn('[40-ecology] metab:', e); }
+    }
+    if (Eco.sub.hunt >= CFG.predationInterval) {
+      var sh = Eco.sub.hunt; Eco.sub.hunt = 0;
+      try { taskPredation(sh); } catch (e) { console.warn('[40-ecology] hunt:', e); }
+    }
+    if (Eco.sub.breed >= CFG.reproductionInterval) {
+      var sb = Eco.sub.breed; Eco.sub.breed = 0;
+      try { taskReproduction(sb); } catch (e) { console.warn('[40-ecology] breed:', e); }
+    }
+    if (Eco.sub.migrate >= CFG.migrationInterval) {
+      var sg = Eco.sub.migrate; Eco.sub.migrate = 0;
+      try { taskMigration(sg); } catch (e) { console.warn('[40-ecology] migrate:', e); }
+    }
+    if (Eco.sub.corpse >= CFG.corpseInterval) {
+      var sc = Eco.sub.corpse; Eco.sub.corpse = 0;
+      try { taskCorpse(sc); } catch (e) { console.warn('[40-ecology] corpse:', e); }
+    }
+    if (Eco.sub.fear >= CFG.fearDecayInterval) {
+      Eco.sub.fear = 0;
+      try { decayFear(); } catch (_) {}
+      try { decayNutrient(); } catch (_) {}
+    }
+  });
+
+  function decayFear() {
+    var now = G.playSeconds;
+    for (var t in Eco.playerFear) {
+      if (now - Eco.playerFear[t].lastAt > CFG.fearDecayTime) {
+        delete Eco.playerFear[t];
+      }
+    }
+  }
+
+  function decayNutrient() {
+    var toDelete = null;
+    var it = Eco.corpseNutrient.entries();
+    var step;
+    while (!(step = it.next()).done) {
+      var k = step.value[0];
+      var v = step.value[1];
+      var nv = v * 0.88;
+      if (nv < 0.05) {
+        if (!toDelete) toDelete = [];
+        toDelete.push(k);
+      } else {
+        Eco.corpseNutrient.set(k, nv);
+      }
+    }
+    if (toDelete) {
+      for (var i = 0; i < toDelete.length; i++) {
+        Eco.corpseNutrient.delete(toDelete[i]);
+      }
+    }
+  }
+
+  /* ============================================================
+     16. 渲染
+     ============================================================ */
+  R.addRenderHook(function (ctx, tlx, tly, cellPx) {
+    if (G.sceneType !== 'world') return;
+    try {
+      /* 尸体 */
+      var corpses = Eco.corpses;
+      for (var i = 0; i < corpses.length; i++) {
+        var cp = corpses[i];
+        var px = (cp.x - tlx + 0.5) * cellPx;
+        var py = (cp.y - tly + 0.5) * cellPx;
+        if (px < -40 || py < -40 || px > G.VW + 40 || py > G.VH + 40) continue;
+        var k = cp.life / cp.maxLife;
+        ctx.save();
+        ctx.globalAlpha = 0.4 + k * 0.5;
+        ctx.fillStyle = 'rgba(0,0,0,0.4)';
+        ctx.fillRect(px - cellPx * 0.4, py + cellPx * 0.3, cellPx * 0.8, cellPx * 0.15);
+        ctx.fillStyle = '#6a2a2a';
+        ctx.fillRect(px - cellPx * 0.35, py - cellPx * 0.05, cellPx * 0.7, cellPx * 0.35);
+        ctx.fillStyle = '#8a3a3a';
+        ctx.fillRect(px - cellPx * 0.30, py - cellPx * 0.02, cellPx * 0.5, cellPx * 0.15);
+        ctx.fillStyle = '#d8d0b8';
+        ctx.fillRect(px + cellPx * 0.2, py - cellPx * 0.15, cellPx * 0.15, cellPx * 0.15);
+        ctx.fillRect(px + cellPx * 0.35, py - cellPx * 0.05, cellPx * 0.1, cellPx * 0.1);
+        ctx.restore();
+      }
+
+      /* 幼体标记 */
+      var arr = G.creatures;
+      var vR0 = tlx - 2, vR1 = tlx + G.viewCols + 2;
+      var vT0 = tly - 2, vT1 = tly + G.viewRows + 2;
+      ctx.save();
+      ctx.fillStyle = 'rgba(180,255,180,0.65)';
+      for (var j = 0; j < arr.length; j++) {
+        var c = arr[j];
+        if (!c._eco || !c._eco.juvenile) continue;
+        if (c.x < vR0 || c.x > vR1 || c.y < vT0 || c.y > vT1) continue;
+        var cpx = (c.x - tlx + 0.5) * cellPx;
+        var cpy = (c.y - tly + 0.5) * cellPx;
+        ctx.fillRect(cpx - 1, cpy - cellPx * 0.9, 3, 3);
+      }
+      ctx.restore();
+
+      /* 养分地面 */
+      if (Eco.corpseNutrient.size > 0) {
+        ctx.save();
+        var vL = Math.max(0, Math.floor(tlx - 1));
+        var vT = Math.max(0, Math.floor(tly - 1));
+        var vRt = Math.min(MAP_W - 1, Math.ceil(tlx + G.viewCols + 1));
+        var vB = Math.min(MAP_H - 1, Math.ceil(tly + G.viewRows + 1));
+        Eco.corpseNutrient.forEach(function (v, k) {
+          var gx = Math.floor(k / 100000);
+          var gy = k - gx * 100000;
+          if (gx < vL || gx > vRt || gy < vT || gy > vB) return;
+          var a = Math.min(0.18, v * 0.05);
+          if (a < 0.01) return;
+          ctx.fillStyle = 'rgba(120,200,90,' + a + ')';
+          ctx.fillRect((gx - tlx) * cellPx, (gy - tly) * cellPx, cellPx, cellPx);
+        });
+        ctx.restore();
+      }
+    } catch (_) {}
+  });
+
+  /* ============================================================
+     17. 生命周期
+     ============================================================ */
+  R.event('worldGenerate', function () {
+    Eco.corpses.length = 0;
+    Eco.corpseNutrient.clear();
+    Eco.playerFear = {};
+    Eco.stats = { born: 0, starved: 0, aged: 0, eaten: 0,
+                  bred: 0, migrated: 0, fearEvents: 0 };
+    Eco._inited = false;
+    Eco.grid.clear();
+    Eco.gridDirty = true;
+  });
+
+  /* ============================================================
+     18. 存档
+     ============================================================ */
+  var _serialize = G.serializeSave;
+  G.serializeSave = function () {
+    try {
+      if (!G.saveExt) G.saveExt = {};
+      G.saveExt.ecology = {
+        corpses: Eco.corpses.map(function (c) {
+          return [c.x, c.y, c.type, c.life, c.maxLife];
+        }),
+        fear: (function () {
+          var o = {};
+          for (var k in Eco.playerFear) {
+            var f = Eco.playerFear[k];
+            o[k] = [f.fear, f.x, f.y, f.lastAt];
+          }
+          return o;
+        })(),
+        stats: Eco.stats,
+      };
+    } catch (_) {}
+    return _serialize.call(G);
+  };
+
+  var _applySave = G.applySave;
+  G.applySave = function (data) {
+    var ok = _applySave.call(G, data);
+    if (!ok) return false;
+    try {
+      Eco.corpses.length = 0;
+      Eco.corpseNutrient.clear();
+      Eco.playerFear = {};
+      var d = G.saveExt && G.saveExt.ecology;
+      if (d) {
+        if (Array.isArray(d.corpses)) {
+          for (var i = 0; i < d.corpses.length; i++) {
+            var c = d.corpses[i];
+            if (!c || c.length < 4) continue;
+            Eco.corpses.push({
+              x: c[0], y: c[1], type: c[2],
+              life: c[3], maxLife: c[4] || c[3],
+            });
+          }
+        }
+        if (d.fear && typeof d.fear === 'object') {
+          for (var k in d.fear) {
+            var f = d.fear[k];
+            if (!Array.isArray(f) || f.length < 4) continue;
+            Eco.playerFear[k] = { fear: f[0], x: f[1], y: f[2], lastAt: f[3] };
+          }
+        }
+        if (d.stats) Object.assign(Eco.stats, d.stats);
+      }
+      Eco._inited = false;
+      Eco.gridDirty = true;
+    } catch (e) {
+      console.warn('[40-ecology] applySave:', e);
+    }
+    return true;
+  };
+
+  /* ============================================================
+     19. 调试 API
+     ============================================================ */
+  G.Ecology.stats = function () {
+    var byType = {};
+    var arr = G.creatures;
+    var juveniles = 0, hungry = 0, hunting = 0;
+    for (var i = 0; i < arr.length; i++) {
+      var c = arr[i];
+      byType[c.type] = (byType[c.type] || 0) + 1;
+      var e = c._eco;
+      if (!e) continue;
+      if (e.juvenile) juveniles++;
+      if (e.hunger < CFG.hungerThreshold) hungry++;
+      if (e._prey) hunting++;
+    }
+    return {
+      total: arr.length,
+      byType: byType,
+      juveniles: juveniles,
+      hungry: hungry,
+      hunting: hunting,
+      corpses: Eco.corpses.length,
+      nutrients: Eco.corpseNutrient.size,
+      fearSpecies: Object.keys(Eco.playerFear).length,
+      gridCells: Eco.grid.size,
+      stats: Object.assign({}, Eco.stats),
+    };
+  };
+
+  G.Ecology.profile = function (type) {
+    var p = Eco.profiles[type];
+    if (!p) return null;
+    return {
+      type: p.type, tier: p.tier, diet: p.diet,
+      prey: p.prey.slice(),
+      predators: Array.from(Eco.predatorsIndex[type] || []),
+      lifespan: Math.round(p.lifespan),
+      maturity: Math.round(p.maturity),
+      breedCd: Math.round(p.breedCd),
+      litterSize: p.litterSize,
+      huntRange: p.huntRange,
+      currentCount: Eco.speciesCount[type] || 0,
+    };
+  };
+
+  G.Ecology.listSpecies = function () {
+    var out = [];
+    for (var t in Eco.profiles) out.push(G.Ecology.profile(t));
+    out.sort(function (a, b) { return b.tier - a.tier; });
+    return out;
+  };
+
+  G.Ecology.forceBreed = function (type) {
+    var p = Eco.profiles[type];
+    if (!p) return false;
+    var adults = [];
+    for (var i = 0; i < G.creatures.length; i++) {
+      var c = G.creatures[i];
+      if (c.type !== type) continue;
+      var e = ensureEco(c);
+      if (!e.juvenile) adults.push(c);
+    }
+    if (adults.length < 2) return false;
+    var a = adults[0], b = adults[1];
+    ensureEco(a).lastBredAt = -9999;
+    ensureEco(b).lastBredAt = -9999;
+    ensureEco(a).hunger = 100;
+    ensureEco(b).hunger = 100;
+    return tryBirth(a, p);
+  };
+
+  G.Ecology.forceHunt = function (predType) {
+    for (var i = 0; i < G.creatures.length; i++) {
+      var c = G.creatures[i];
+      if (c.type !== predType) continue;
+      var e = ensureEco(c);
+      e.hunger = 5;
+      e._prey = null;
+      return true;
+    }
+    return false;
+  };
+
+  G.Ecology.clearCorpses = function () {
+    Eco.corpses.length = 0;
+    if (G.flashMsg) G.flashMsg('尸体已清空');
+  };
+
+  G.Ecology.reset = function () {
+    Eco.corpses.length = 0;
+    Eco.corpseNutrient.clear();
+    Eco.playerFear = {};
+    Eco.grid.clear();
+    Eco.gridDirty = true;
+    Eco.stats = { born: 0, starved: 0, aged: 0, eaten: 0,
+                  bred: 0, migrated: 0, fearEvents: 0 };
+    if (G.flashMsg) G.flashMsg('生态已重置');
+  };
+
+  /* ============================================================
+     20. 收尾
+     ============================================================ */
+  console.log('[40-ecology] v3 最终版加载完成');
+  console.log('  · 空间网格（复用数组）· Set 缓存 · 时间戳击杀标记');
+  console.log('  · 批量移除 · 成功才扣父母 · 纯查询选敌');
+  console.log('  · 调试：G.Ecology.stats() / .listSpecies() / .profile("wolf")');
+  console.log('  · 调试：G.Ecology.forceBreed("rabbit") / .forceHunt("wolf")');
+  console.log('  · 调试：G.Ecology.clearCorpses() / .reset()');
+});
+</script>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- 扩展 41：动植物图鉴 v3（最终版） -->
+<!--   · 扫描范围覆盖 world / mine（含矿洞生物 + 矿脉之主）
+<!--   · 新发现立即弹提示 · count 变更立即写盘（节流合并）
+<!--   · 图标后台预渲染 · 面板刷新节流 · 打开时零卡顿
+<!--   · 每只生物/每株植物只记一次 count（击杀/采集除外）
+<!--   调试：G.Codex.discoverAll() / .reset() / .stats()
+<!-- ══════════════════════════════════════════════════════ -->
+<script>
+Core.loadExt('41-codex', function (ext) {
+  'use strict';
+  var G = Core.game, R = G.Register, API = G.API;
+  if (!G || !R || !API) return;
+
+  /* ============================================================
+     0. 常量
+     ============================================================ */
+  var STORAGE_KEY      = 'island-codex-v1';
+  var SCAN_INTERVAL    = 0.8;
+  var DISCOVER_RANGE   = 14;
+  var PLANT_RANGE      = 5;
+  var MINE_PLANT_RANGE = 4;
+  var ICON_SIZE        = 96;
+  var OUT_SIZE         = 64;
+  var SAVE_THROTTLE    = 500;   /* ms */
+  var REFRESH_THROTTLE = 120;   /* ms */
+
+  /* ============================================================
+     1. 植物数据表
+     ============================================================ */
+  var PLANTS = {
+    'tree':          { name: '树',     group: '基础', desc: '岛上最常见的树。徒手也能撸倒，只是很慢。' },
+    'grass':         { name: '野草',   group: '基础', desc: '随处可见。采集可得种子。' },
+    'sand_pile':     { name: '沙堆',   group: '基础', desc: '沙滩上的小沙堆，挖开就是沙子。' },
+    'coconut_tree':  { name: '椰子树', group: '基础', desc: '海边的高树。敲下椰子能填肚子。' },
+    'cactus_saguaro':{ name: '巨人柱', group: '沙漠', desc: '高大的柱状仙人掌，顶端会开花。' },
+    'cactus_barrel': { name: '仙人球', group: '沙漠', desc: '圆滚滚的，刺很扎手。' },
+    'aloe_plant':    { name: '芦荟',   group: '沙漠', desc: '叶片肥厚，胶质可以疗伤。' },
+    'dry_grass':     { name: '干草',   group: '沙漠', desc: '枯黄的草，是引火的好材料。' },
+    'dead_bush':     { name: '枯灌',   group: '沙漠', desc: '干枯的灌木，一折就断。' },
+    'giant_tree':    { name: '巨乔木', group: '雨林', desc: '雨林之王，树冠遮蔽天空。' },
+    'vine_palm':     { name: '藤棕',   group: '雨林', desc: '挂着藤蔓的棕榈树。' },
+    'fern_big':      { name: '大叶蕨', group: '雨林', desc: '巨大的蕨类，看着很原始。' },
+    'orchid':        { name: '兰花',   group: '雨林', desc: '雨林里鲜艳的花，很值钱。' },
+    'banana_tree':   { name: '香蕉树', group: '雨林', desc: '宽大的叶子，挂着香蕉。' },
+    'acacia_tree':   { name: '金合欢', group: '草原', desc: '伞状的树冠，长着刺。' },
+    'thorn_bush':    { name: '荆棘',   group: '草原', desc: '带刺的灌木，采集会受伤。' },
+    'herb_plant':    { name: '药草',   group: '草原', desc: '可以入药的草。' },
+    'mangrove_tree': { name: '红树',   group: '湿地', desc: '气生根扎进水里，长得奇形怪状。' },
+    'aerial_root':   { name: '气生根', group: '湿地', desc: '从树枝垂下的根，可以做成绳子。' },
+    'sea_coconut':   { name: '海椰树', group: '湿地', desc: '靠海生长的椰子树。' },
+    'cherry_tree':   { name: '樱花树', group: '樱花', desc: '春风吹过，花瓣如雪。' },
+    'pink_flower':   { name: '粉花',   group: '樱花', desc: '小小的粉色花朵。' },
+    'small_bamboo':  { name: '小竹丛', group: '樱花', desc: '矮小的竹子。' },
+    'maple_red':     { name: '红枫',   group: '枫林', desc: '秋天的火焰。' },
+    'maple_orange':  { name: '橙枫',   group: '枫林', desc: '金橙色的枫叶，可以熬糖浆。' },
+    'matsutake_mushroom': { name: '松茸', group: '枫林', desc: '珍贵的蘑菇，味道极鲜。' },
+    'bamboo_tall':   { name: '高竹',   group: '竹林', desc: '笔直挺立，可以做成笛子。' },
+    'bamboo_shoot':  { name: '竹笋',   group: '竹林', desc: '刚冒头的嫩笋，很脆。' },
+    'bamboo_shrub':  { name: '竹丛',   group: '竹林', desc: '成簇的竹子。' },
+    'lavender_plant':{ name: '薰衣草', group: '花海', desc: '紫色的香气，可以做成香囊。' },
+    'rose_plant':    { name: '玫瑰',   group: '花海', desc: '带刺的浪漫。' },
+    'sunflower_plant':{ name: '向日葵', group: '花海', desc: '永远朝着太阳的方向。' },
+    'tulip_plant':   { name: '郁金香', group: '花海', desc: '整齐的杯状花。' },
+    'ice_tree':      { name: '冰晶树', group: '极地', desc: '树枝上结满冰晶。' },
+    'snow_cedar':    { name: '雪松',   group: '极地', desc: '被雪覆盖的针叶树。' },
+    'ice_flower':    { name: '冰花',   group: '极地', desc: '在严寒中绽放的小花。' },
+    'dwarf_birch':   { name: '矮桦',   group: '苔原', desc: '长不高的桦树。' },
+    'moss_clump':    { name: '苔藓',   group: '苔原', desc: '贴地生长的绿色苔藓。' },
+    'arctic_willow': { name: '北极柳', group: '苔原', desc: '极地特有的矮柳。' },
+    'snow_lotus':    { name: '雪莲',   group: '苔原', desc: '传说中的仙草。' },
+    'giant_mushroom':{ name: '巨型蘑菇', group: '菌林', desc: '比人还高的蘑菇，菌盖有白斑。' },
+    'glow_mushroom': { name: '发光菇',   group: '菌林', desc: '会在黑暗中发出微光。' },
+    'spore_puff':    { name: '孢子菌',   group: '菌林', desc: '一碰就喷出孢子。' },
+    'toxic_mushroom':{ name: '毒蘑菇',   group: '菌林', desc: '鲜艳但有毒，别乱吃。' },
+    'crystal_tree':  { name: '水晶树', group: '水晶', desc: '整棵树都是水晶，会发光。' },
+    'glow_crystal':  { name: '发光水晶', group: '水晶', desc: '散落在林间的水晶。' },
+    'magic_flower':  { name: '魔法花', group: '水晶', desc: '花的中心是纯粹的魔法。' },
+    'silver_leaf':   { name: '银叶树', group: '水晶', desc: '叶子像银子一样反光。' },
+    'burnt_stump':   { name: '黑树桩', group: '焦土', desc: '被烧过的树桩。' },
+    'charred_tree':  { name: '焦树',   group: '焦土', desc: '烧得只剩骨架的树。' },
+    'ash_flower':    { name: '灰烬花', group: '焦土', desc: '从灰烬中长出的花。' },
+    'dead_tree':     { name: '枯树',   group: '枯林', desc: '不再长叶子的树。' },
+    'dry_branch':    { name: '枯枝',   group: '枯林', desc: '地上散落的干枝。' },
+    'crow_nest':     { name: '乌鸦巢', group: '枯林', desc: '高高的树上，有黑鸟居住。' },
+    'ghost_flower':  { name: '幽灵花', group: '枯林', desc: '半透明的花，据说有灵魂附在上面。' },
+    'mine_mushroom': { name: '矿蘑菇', group: '特殊', desc: '矿洞深处的紫色蘑菇。' },
+    'bee_hive':      { name: '蜂巢',   group: '特殊', desc: '挂着的蜂巢，里面全是蜂蜜。' },
+  };
+
+  /* ============================================================
+     2. 生物描述
+     ============================================================ */
+  var CREATURE_DESCS = {
+    rabbit: '胆小、跑得快。岛上的基础食物来源。',
+    deer:   '温顺的食草动物。肉多、皮厚。',
+    boar:   '会主动攻击的野猪。别去招惹它。',
+    wolf:   '成群结队的掠食者。夜里更凶。',
+    bear:   '血厚伤害高。遇到就跑。',
+    bat:    '夜行的小型掠食者。会吸血。',
+    spider: '吐丝的八脚怪。有毒。',
+    zombie: '不知疲倦地游荡。夜里成群出现。',
+    skeleton:'只剩骨头的战士。会射箭。',
+    dog:    '人类的朋友。喂食可以驯服。',
+    cat:    '高傲的小家伙。喂食可以驯服。',
+    frog:   '沼泽里的毒蛙。看着可爱，其实有毒。',
+    crocodile:'沼泽霸主。一口能咬掉半管血。',
+    fire_elem:'火山深处的火焰生命。会点燃你。',
+    magma:  '缓慢但致命。一拳能打倒牛。',
+    cave_bat:'洞穴里的蝙蝠。群居。',
+    cave_spider:'洞穴蜘蛛。比地面的同类更狠。',
+    glow_worm:'发光的虫子。夜里像小灯笼。',
+    rock_golem:'岩石构成的守卫者。会主动攻击。',
+    underground_slime:'地下的史莱姆。会分裂。',
+    crystal_bat:'水晶蝠。翼膜半透明。',
+    puppet:'被创造出的傀儡。可以被驯服。',
+  };
+
+  var BOSS_DESCS = {
+    titan: '远古的巨人。一怒之下能撕开大地。',
+    wraith: '幽影领主。来自深渊的黑暗。',
+    colossus: '钢铁巨像。行走的堡垒。',
+    mine_lord: '矿脉之主。锁在铁链里千万年。',
+    earthshaker: '裂地者。每一次踏步都是地震。',
+    frost_witch: '寒霜女巫。冻住时间，冻住你。',
+    flame_behemoth: '烈焰巨兽。走过的地方全是火。',
+    void_devourer: '虚空吞噬者。一口吞下光。',
+    thunder_shaman: '雷电萨满。天罚由它召唤。',
+    bone_commander: '骸骨指挥官。死亡是它的军队。',
+  };
+
+  var BEHAVIOR_LABEL = {
+    aggressive: '主动攻击',
+    defensive:  '受击反击',
+    passive:    '被动逃跑',
+    friendly:   '友好可驯',
+  };
+
+  /* ============================================================
+     3. 状态
+     ============================================================ */
+  var Codex = {
+    discovered: {},
+    iconCache: {},
+    _inited: false,
+    _open: false,
+    _filter: 'all',
+    _detail: null,
+    _scanAccum: 0,
+    _panelEl: null,
+    _refreshTimer: null,
+    _saveTimer: null,
+  };
+  G.Codex = Codex;
+
+  /* ============================================================
+     4. 持久化
+     ============================================================ */
+  function loadFromStorage() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      var d = JSON.parse(raw);
+      if (d && typeof d === 'object' && d.discovered) {
+        Codex.discovered = d.discovered;
+      }
+    } catch (_) {}
+  }
+
+  function writeStorageNow() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        v: 1,
+        discovered: Codex.discovered,
+        at: Date.now(),
+      }));
+    } catch (_) {}
+  }
+
+  function saveToStorage() {
+    if (Codex._saveTimer) return;
+    Codex._saveTimer = setTimeout(function () {
+      Codex._saveTimer = null;
+      writeStorageNow();
+    }, SAVE_THROTTLE);
+  }
+
+  function flushStorage() {
+    if (Codex._saveTimer) {
+      clearTimeout(Codex._saveTimer);
+      Codex._saveTimer = null;
+    }
+    writeStorageNow();
+  }
+
+  /* ============================================================
+     5. 发现系统
+     ============================================================ */
+  function key(cat, type) { return cat + ':' + type; }
+
+  function isDiscovered(cat, type) {
+    return !!Codex.discovered[key(cat, type)];
+  }
+
+  function getDisplayName(cat, type) {
+    if (cat === 'creature') {
+      var cd = R.creatures.get(type);
+      return cd ? (cd.name || type) : type;
+    }
+    if (cat === 'plant') {
+      var p = PLANTS[type];
+      return p ? p.name : type;
+    }
+    if (cat === 'boss') {
+      var bd = R.bosses.get(type);
+      return bd ? (bd.name || type) : type;
+    }
+    return type;
+  }
+
+  /**
+   * 标记发现
+   * opts.silent  true=不弹提示（批量解锁）
+   * opts.count   false=不累加次数（扫描时用，避免站旁边刷）
+   */
+  function markDiscovered(cat, type, opts) {
+    if (!type) return false;
+    opts = opts || {};
+    var silent  = !!opts.silent;
+    var doCount = opts.count !== false;
+
+    var k = key(cat, type);
+    var rec = Codex.discovered[k];
+
+    /* 已存在：累加计数 */
+    if (rec) {
+      if (doCount) {
+        rec.count = (rec.count || 1) + 1;
+        rec.lastAt = Date.now();
+        saveToStorage();   /* ★ 修复：count 变了要保存 */
+      }
+      return false;
+    }
+
+    /* 新发现 */
+    Codex.discovered[k] = {
+      at: Date.now(),
+      count: 1,
+      firstSeen: (G.playSeconds | 0) || 0,
+    };
+    saveToStorage();
+
+    /* 弹提示（只在新发现时，且非批量解锁） */
+    if (!silent && typeof G.flashMsg === 'function') {
+      var name = getDisplayName(cat, type);
+      if (name) G.flashMsg('📖 新发现：' + name);
+    }
+
+    /* 后台预渲染图标，避免打开面板时同步渲染卡顿 */
+    setTimeout(function () {
+      try {
+        getIcon(cat, type);
+        scheduleRefresh();
+      } catch (_) {}
+    }, 30);
+
+    scheduleRefresh();
+    return true;
+  }
+
+  /* ============================================================
+     6. 面板刷新节流
+     ============================================================ */
+  function scheduleRefresh() {
+    if (!Codex._open) return;
+    if (Codex._refreshTimer) return;
+    Codex._refreshTimer = setTimeout(function () {
+      Codex._refreshTimer = null;
+      if (Codex._open) refreshPanel();
+    }, REFRESH_THROTTLE);
+  }
+
+  /* ============================================================
+     7. 扫描
+     ============================================================ */
+  function scanCreatureArray(arr, r2, px, py) {
+    if (!arr) return;
+    for (var i = 0; i < arr.length; i++) {
+      var c = arr[i];
+      if (!c || c._codexCounted) continue;
+      if (c.hp !== undefined && c.hp <= 0) continue;
+      var dx = c.x - px, dy = c.y - py;
+      if (dx * dx + dy * dy > r2) continue;
+      c._codexCounted = true;
+      markDiscovered('creature', c.type, { count: false });
+    }
+  }
+
+  function scanPlants(objMap, gx, gy, range) {
+    if (!objMap || !G.objKey) return;
+    for (var oy = -range; oy <= range; oy++) {
+      for (var ox = -range; ox <= range; ox++) {
+        if (ox * ox + oy * oy > range * range) continue;
+        var obj = objMap.get(G.objKey(gx + ox, gy + oy));
+        if (!obj || !obj.type) continue;
+        if (!PLANTS[obj.type]) continue;
+        if (obj._codexCounted) continue;
+        obj._codexCounted = true;
+        markDiscovered('plant', obj.type, { count: false });
+      }
+    }
+  }
+
+  function scanNearby() {
+    try {
+      if (!G.gameStarted) return;
+      if (!G.player || G.player.dead) return;
+      var px = G.player.x, py = G.player.y;
+      var gx = Math.floor(px), gy = Math.floor(py);
+      var r2 = DISCOVER_RANGE * DISCOVER_RANGE;
+
+      /* ---- 世界：生物 + 植物 ---- */
+      if (G.sceneType === 'world') {
+        scanCreatureArray(G.creatures, r2, px, py);
+        if (G.objectsByCell) scanPlants(G.objectsByCell, gx, gy, PLANT_RANGE);
+      }
+
+      /* ---- 矿洞：生物 + 植物 + 矿脉之主 ---- */
+      if (G.sceneType === 'mine' && G.mine) {
+        scanCreatureArray(G.mine.creatures, r2, px, py);
+        if (G.mine.objectsByCell) {
+          scanPlants(G.mine.objectsByCell, gx, gy, MINE_PLANT_RANGE);
+        }
+        /* 矿脉之主 */
+        var mb = G.mine.boss;
+        if (mb && mb.def && !mb._codexCounted &&
+            (mb.active || mb.chained || mb.defeated)) {
+          mb._codexCounted = true;
+          var foundType = null;
+          R.bosses.forEach(function (def, t) {
+            if (!foundType && def === mb.def) foundType = t;
+          });
+          if (foundType) markDiscovered('boss', foundType, { count: false });
+        }
+      }
+
+      /* ---- 城市：仅扫 G.creatures（城市丧尸不在标准注册表里，不扫） ---- */
+      if (G.sceneType === 'city') {
+        scanCreatureArray(G.creatures, r2, px, py);
+      }
+
+      /* ---- 主 BOSS（唯一 G.boss 系统） ---- */
+      if (G.boss && G.boss.active && G.boss.type && !G.boss._codexCounted) {
+        G.boss._codexCounted = true;
+        markDiscovered('boss', G.boss.type, { count: false });
+      }
+    } catch (_) {}
+  }
+
+  /* ============================================================
+     8. 图标渲染（含透明边裁切）
+     ============================================================ */
+  function cropAndScale(srcCanvas) {
+    var w = srcCanvas.width, h = srcCanvas.height;
+    var sctx = srcCanvas.getContext('2d');
+    var img;
+    try { img = sctx.getImageData(0, 0, w, h); }
+    catch (_) { return null; }
+    var data = img.data;
+
+    var minX = w, minY = h, maxX = -1, maxY = -1;
+    for (var y = 0; y < h; y++) {
+      var row = y * w * 4;
+      for (var x = 0; x < w; x++) {
+        if (data[row + x * 4 + 3] > 8) {
+          if (x < minX) minX = x;
+          if (x > maxX) maxX = x;
+          if (y < minY) minY = y;
+          if (y > maxY) maxY = y;
+        }
+      }
+    }
+    if (maxX < 0) return null;
+
+    var pad = 2;
+    var bx = Math.max(0, minX - pad);
+    var by = Math.max(0, minY - pad);
+    var bw = Math.min(w - bx, maxX - minX + 1 + pad * 2);
+    var bh = Math.min(h - by, maxY - minY + 1 + pad * 2);
+
+    var out = document.createElement('canvas');
+    out.width = OUT_SIZE;
+    out.height = OUT_SIZE;
+    var octx = out.getContext('2d');
+    octx.imageSmoothingEnabled = false;
+
+    var scale = Math.min(OUT_SIZE / bw, OUT_SIZE / bh);
+    var dw = Math.max(1, Math.round(bw * scale));
+    var dh = Math.max(1, Math.round(bh * scale));
+    var dx = Math.round((OUT_SIZE - dw) / 2);
+    var dy = Math.round((OUT_SIZE - dh) / 2);
+
+    try {
+      octx.drawImage(srcCanvas, bx, by, bw, bh, dx, dy, dw, dh);
+    } catch (_) { return null; }
+    return out.toDataURL('image/png');
+  }
+
+  function getPlantDrawFn(type) {
+    if (type === 'tree') {
+      return function (c, px, py, cell, obj) {
+        var sz = (obj && obj.size) || 1;
+        var v = (obj && obj.variant) || 0;
+        G.drawTreeTrunkC(c, px, py, cell, sz, v);
+        G.drawTreeCrown(c, px, py - cell * 0.3, cell, sz, v, 1);
+      };
+    }
+    if (type === 'grass') {
+      return function (c, px, py, cell, obj) {
+        G.drawGrassC(c, px, py, cell, (obj && obj.variant) || 0);
+      };
+    }
+    if (type === 'sand_pile') {
+      return function (c, px, py, cell, obj) {
+        G.drawSandPileC(c, px, py, cell, (obj && obj.variant) || 0);
+      };
+    }
+    var def = R.items.get(type);
+    return def && def.draw ? def.draw : null;
+  }
+
+  function renderPlantIcon(type) {
+    var drawFn = getPlantDrawFn(type);
+    if (!drawFn) return null;
+    var cv = document.createElement('canvas');
+    cv.width = ICON_SIZE; cv.height = ICON_SIZE;
+    var c = cv.getContext('2d');
+    c.imageSmoothingEnabled = false;
+    var cell = ICON_SIZE * 0.32;
+    var px = (ICON_SIZE - cell) / 2;
+    var py = ICON_SIZE * 0.68;
+    var fake = { type: type, x: 0, y: 0, w: 1, h: 1, variant: 0, size: 1, stage: 3, growTimer: 0 };
+    try { drawFn(c, px, py, cell, fake, 'world'); }
+    catch (_) { return null; }
+    return cropAndScale(cv);
+  }
+
+  function renderCreatureIcon(type) {
+    var def = R.creatures.get(type);
+    if (!def) return null;
+    var cv = document.createElement('canvas');
+    cv.width = ICON_SIZE; cv.height = ICON_SIZE;
+    var c = cv.getContext('2d');
+    c.imageSmoothingEnabled = false;
+    var savedCtx = G.ctx;
+    G.ctx = c;
+    try {
+      var cell = ICON_SIZE * 0.42;
+      var px = ICON_SIZE / 2;
+      var py = ICON_SIZE * 0.58;
+      var fake = {
+        type: type, x: 0, y: 0,
+        hp: def.hp || 1, maxHp: def.hp || 1,
+        hurtFlash: 0, walkPhase: 0, facing: 1,
+        angry: 0, calm: 0, attackTimer: 0,
+        dirX: 1, dirY: 0, timer: 0,
+      };
+      if (def.draw) {
+        def.draw(c, px, py, cell, fake, def);
+      } else if (typeof G.drawBuiltinCreature === 'function') {
+        G.drawBuiltinCreature(fake, px, py, cell, def);
+      } else {
+        return null;
+      }
+    } catch (_) {
+      return null;
+    } finally {
+      G.ctx = savedCtx;
+    }
+    return cropAndScale(cv);
+  }
+
+  function renderBossIcon(type) {
+    var def = R.bosses.get(type);
+    if (!def) return null;
+    var cv = document.createElement('canvas');
+    cv.width = ICON_SIZE; cv.height = ICON_SIZE;
+    var c = cv.getContext('2d');
+    c.imageSmoothingEnabled = false;
+    var savedCtx = G.ctx;
+    G.ctx = c;
+    try {
+      var cell = ICON_SIZE * 0.32;
+      var px = ICON_SIZE / 2;
+      var py = ICON_SIZE * 0.58;
+      var fake = {
+        type: type, x: 0, y: 0,
+        hp: def.hp || 1, maxHp: def.hp || 1,
+        hurtFlash: 0, walkPhase: 0, facing: 1,
+        active: false, def: def,
+      };
+      if (def.draw) {
+        def.draw(c, px, py, cell, fake, def);
+      } else {
+        c.fillStyle = def.body || '#8a3a2a';
+        c.fillRect(px - cell * 0.5, py - cell * 0.5, cell, cell);
+        c.fillStyle = def.dark || '#3a1808';
+        c.fillRect(px - cell * 0.5, py - cell * 0.5, cell, cell * 0.2);
+      }
+    } catch (_) {
+      return null;
+    } finally {
+      G.ctx = savedCtx;
+    }
+    return cropAndScale(cv);
+  }
+
+  function getIcon(cat, type) {
+    var k = key(cat, type);
+    if (Codex.iconCache[k] !== undefined) return Codex.iconCache[k];
+    var url = null;
+    try {
+      if (cat === 'creature')      url = renderCreatureIcon(type);
+      else if (cat === 'plant')    url = renderPlantIcon(type);
+      else if (cat === 'boss')     url = renderBossIcon(type);
+    } catch (err) {
+      console.warn('[41-codex] 图标渲染失败：' + k, err);
+    }
+    Codex.iconCache[k] = url;
+    return url;
+  }
+
+  /* ============================================================
+     9. 样式
+     ============================================================ */
+  function injectStyles() {
+    if (document.getElementById('codex-styles')) return;
+    var st = document.createElement('style');
+    st.id = 'codex-styles';
+    st.textContent = [
+      '#codex-panel{position:fixed;inset:0;z-index:321;',
+        'background:rgba(6,10,16,0.97);',
+        'display:none;flex-direction:column;overflow:hidden;',
+        'padding-top:calc(14px + env(safe-area-inset-top,0px));',
+        'padding-bottom:calc(14px + env(safe-area-inset-bottom,0px));',
+        '-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);',
+        'touch-action:pan-y;}',
+      '#codex-panel.show{display:flex;}',
+
+      '.codex-head{display:flex;align-items:center;justify-content:space-between;',
+        'padding:0 16px 10px;flex-shrink:0;',
+        'border-bottom:1px solid rgba(100,200,255,0.18);}',
+      '.codex-head .codex-title{color:#9cd6ff;',
+        'font:600 14px/1 "Courier New",monospace;letter-spacing:5px;',
+        'text-shadow:0 0 10px rgba(100,200,255,0.35);}',
+      '.codex-head .codex-close{width:30px;height:30px;',
+        'background:transparent;border:1px solid rgba(255,255,255,0.18);',
+        'color:#778;font:14px/1 monospace;cursor:pointer;',
+        'display:flex;align-items:center;justify-content:center;',
+        '-webkit-tap-highlight-color:transparent;}',
+      '.codex-head .codex-close:active{color:#ff9090;',
+        'border-color:rgba(255,128,128,0.7);background:rgba(255,128,128,0.12);}',
+
+      '.codex-tabs{display:flex;gap:6px;padding:10px 16px;flex-shrink:0;',
+        'overflow-x:auto;-webkit-overflow-scrolling:touch;}',
+      '.codex-tabs button{flex:0 0 auto;padding:6px 14px;',
+        'background:rgba(255,255,255,0.04);',
+        'border:1px solid rgba(255,255,255,0.15);',
+        'color:#8899aa;font:11px/1 inherit;font-family:inherit;',
+        'letter-spacing:1px;cursor:pointer;transition:all .15s;',
+        '-webkit-tap-highlight-color:transparent;}',
+      '.codex-tabs button.active{background:rgba(100,200,255,0.18);',
+        'border-color:rgba(100,200,255,0.75);color:#9cd6ff;}',
+
+      '.codex-progress{color:#88a0b8;font:11px monospace;',
+        'text-align:center;padding:4px 0 8px;flex-shrink:0;letter-spacing:2px;}',
+      '.codex-progress b{color:#ffd54f;font-weight:bold;}',
+
+      '.codex-grid{flex:1;overflow-y:auto;overflow-x:hidden;',
+        '-webkit-overflow-scrolling:touch;overscroll-behavior:contain;',
+        'display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));',
+        'gap:8px;padding:4px 16px 20px;align-content:start;touch-action:pan-y;}',
+      '.codex-grid::-webkit-scrollbar{width:8px;}',
+      '.codex-grid::-webkit-scrollbar-track{background:rgba(255,255,255,0.04);border-radius:4px;}',
+      '.codex-grid::-webkit-scrollbar-thumb{background:rgba(100,200,255,0.4);border-radius:4px;}',
+
+      '.codex-cell{position:relative;display:flex;flex-direction:column;',
+        'align-items:center;justify-content:flex-start;gap:4px;',
+        'background:rgba(255,255,255,0.03);',
+        'border:1px solid rgba(255,255,255,0.12);',
+        'padding:8px 4px 6px;min-height:92px;cursor:pointer;',
+        'transition:all .15s;-webkit-tap-highlight-color:transparent;}',
+      '.codex-cell:hover,.codex-cell:active{background:rgba(100,200,255,0.1);',
+        'border-color:rgba(100,200,255,0.55);}',
+      '.codex-cell img{width:56px;height:56px;image-rendering:pixelated;',
+        'image-rendering:crisp-edges;pointer-events:none;}',
+      '.codex-cell .codex-name{color:#c8d8e8;font:10px/1.2 monospace;',
+        'text-align:center;max-width:100%;overflow:hidden;',
+        'text-overflow:ellipsis;white-space:nowrap;letter-spacing:0.5px;}',
+      '.codex-cell.locked{opacity:0.55;cursor:default;}',
+      '.codex-cell.locked:hover{background:rgba(255,255,255,0.03);',
+        'border-color:rgba(255,255,255,0.12);}',
+      '.codex-cell .codex-mystery{width:56px;height:56px;',
+        'display:flex;align-items:center;justify-content:center;',
+        'background:rgba(0,0,0,0.4);color:#445;',
+        'font:bold 28px monospace;',
+        'border:1px dashed rgba(255,255,255,0.18);}',
+      '.codex-cell.locked .codex-name{color:#5a6a7a;}',
+      '.codex-cell .codex-badge{position:absolute;top:3px;right:4px;',
+        'font:9px monospace;color:#ffd54f;',
+        'background:rgba(0,0,0,0.65);padding:1px 4px;border-radius:2px;',
+        'pointer-events:none;}',
+
+      '.codex-detail{flex:1;overflow-y:auto;overflow-x:hidden;',
+        '-webkit-overflow-scrolling:touch;overscroll-behavior:contain;',
+        'display:none;flex-direction:column;align-items:center;',
+        'padding:8px 16px 24px;touch-action:pan-y;}',
+      '.codex-detail.show{display:flex;}',
+      '.codex-detail::-webkit-scrollbar{width:8px;}',
+      '.codex-detail::-webkit-scrollbar-thumb{background:rgba(100,200,255,0.4);border-radius:4px;}',
+
+      '.codex-back{align-self:flex-start;margin-bottom:10px;',
+        'padding:6px 14px;background:rgba(255,255,255,0.05);',
+        'border:1px solid rgba(255,255,255,0.2);color:#9cd6ff;',
+        'font:11px/1 inherit;font-family:inherit;letter-spacing:1px;',
+        'cursor:pointer;-webkit-tap-highlight-color:transparent;}',
+      '.codex-back:active{background:rgba(100,200,255,0.15);}',
+
+      '.codex-hero{width:120px;height:120px;',
+        'background:rgba(0,0,0,0.5);',
+        'border:2px solid rgba(100,200,255,0.45);',
+        'display:flex;align-items:center;justify-content:center;',
+        'margin:6px 0 14px;}',
+      '.codex-hero img{width:104px;height:104px;image-rendering:pixelated;}',
+      '.codex-hero .codex-mystery{font-size:60px;color:#445;}',
+
+      '.codex-name-big{color:#ffd54f;font:bold 18px monospace;',
+        'letter-spacing:4px;text-align:center;margin-bottom:6px;',
+        'text-shadow:0 0 12px rgba(255,215,80,0.4);}',
+
+      '.codex-meta{display:flex;flex-wrap:wrap;gap:6px;',
+        'justify-content:center;margin-bottom:14px;}',
+      '.codex-tag{padding:3px 10px;font:10px monospace;',
+        'border:1px solid rgba(255,255,255,0.25);color:#c8d8e8;',
+        'letter-spacing:1px;}',
+      '.codex-tag.tier-1{border-color:rgba(120,220,120,0.6);color:#a0e8a0;}',
+      '.codex-tag.tier-2{border-color:rgba(100,200,255,0.6);color:#9cd6ff;}',
+      '.codex-tag.tier-3{border-color:rgba(200,144,255,0.6);color:#c890ff;}',
+      '.codex-tag.tier-4{border-color:rgba(255,120,80,0.7);color:#ffa060;}',
+      '.codex-tag.tier-5{border-color:rgba(255,80,80,0.85);color:#ff6060;}',
+
+      '.codex-desc{color:#b8c8d8;font:13px/1.8 inherit;',
+        'font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;',
+        'text-align:center;max-width:420px;margin-bottom:20px;padding:0 8px;}',
+
+      '.codex-section{width:100%;max-width:420px;margin-bottom:16px;}',
+      '.codex-section .codex-sec-title{color:#9cd6ff;',
+        'font:600 12px monospace;letter-spacing:2px;',
+        'padding-bottom:5px;margin-bottom:8px;',
+        'border-bottom:1px solid rgba(156,214,255,0.22);}',
+      '.codex-section .codex-row{color:#c8d8e8;',
+        'font:12px/1.6 monospace;padding:3px 0;',
+        'display:flex;justify-content:space-between;gap:8px;}',
+      '.codex-section .codex-row .k{color:#8899aa;}',
+      '.codex-section .codex-row .v{color:#ffd54f;}',
+
+      '.codex-drops{display:flex;flex-wrap:wrap;gap:6px;}',
+      '.codex-drop{padding:4px 10px;',
+        'background:rgba(255,215,80,0.08);',
+        'border:1px solid rgba(255,215,80,0.35);',
+        'color:#ffd54f;font:11px monospace;}',
+
+      '.codex-stat-panel{display:flex;justify-content:space-around;',
+        'width:100%;max-width:420px;padding:12px 0;',
+        'background:rgba(0,0,0,0.3);',
+        'border-top:1px solid rgba(255,255,255,0.08);',
+        'border-bottom:1px solid rgba(255,255,255,0.08);',
+        'margin-bottom:16px;}',
+      '.codex-stat-panel .s{text-align:center;flex:1;}',
+      '.codex-stat-panel .s .num{color:#ffd54f;',
+        'font:bold 20px monospace;display:block;margin-bottom:2px;}',
+      '.codex-stat-panel .s .lbl{color:#8899aa;font:10px monospace;letter-spacing:1px;}',
+
+      '@media (max-width:480px){',
+        '.codex-head .codex-title{font-size:13px;letter-spacing:3px;}',
+        '.codex-grid{grid-template-columns:repeat(auto-fill,minmax(72px,1fr));',
+          'gap:6px;padding:4px 10px 20px;}',
+        '.codex-cell{min-height:82px;padding:6px 2px 4px;}',
+        '.codex-cell img{width:48px;height:48px;}',
+        '.codex-cell .codex-mystery{width:48px;height:48px;font-size:24px;}',
+        '.codex-hero{width:100px;height:100px;}',
+        '.codex-hero img{width:84px;height:84px;}',
+        '.codex-name-big{font-size:16px;}',
+      '}',
+    ].join('');
+    document.head.appendChild(st);
+  }
+
+  /* ============================================================
+     10. 面板
+     ============================================================ */
+  function escapeHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;',
+               '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function ensurePanel() {
+    if (Codex._panelEl && Codex._panelEl.parentNode) return Codex._panelEl;
+    injectStyles();
+    var p = document.createElement('div');
+    p.id = 'codex-panel';
+    p.innerHTML = [
+      '<div class="codex-head">',
+        '<span class="codex-title">动 植 物 图 鉴</span>',
+        '<button class="codex-close" type="button" aria-label="关闭">✕</button>',
+      '</div>',
+      '<div class="codex-tabs">',
+        '<button data-filter="all" class="active">全 部</button>',
+        '<button data-filter="creature">生 物</button>',
+        '<button data-filter="plant">植 物</button>',
+        '<button data-filter="boss">首 领</button>',
+      '</div>',
+      '<div class="codex-progress" id="codex-progress">—</div>',
+      '<div class="codex-grid" id="codex-grid"></div>',
+      '<div class="codex-detail" id="codex-detail"></div>',
+    ].join('');
+    document.body.appendChild(p);
+    Codex._panelEl = p;
+
+    p.querySelector('.codex-close').addEventListener('click', closePanel);
+
+    p.querySelector('.codex-tabs').addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('button[data-filter]');
+      if (!btn) return;
+      Codex._filter = btn.dataset.filter;
+      Codex._detail = null;
+      try { G.Sound && G.Sound.click && G.Sound.click(); } catch (_) {}
+      refreshPanel();
+    });
+
+    p.querySelector('#codex-grid').addEventListener('click', function (e) {
+      var cell = e.target.closest && e.target.closest('.codex-cell');
+      if (!cell || cell.classList.contains('locked')) return;
+      var type = cell.dataset.type;
+      var cat = cell.dataset.cat;
+      if (!type || !cat) return;
+      Codex._detail = { cat: cat, type: type };
+      try { G.Sound && G.Sound.click && G.Sound.click(); } catch (_) {}
+      refreshPanel();
+    });
+
+    p.querySelector('#codex-detail').addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('.codex-back')) {
+        Codex._detail = null;
+        try { G.Sound && G.Sound.click && G.Sound.click(); } catch (_) {}
+        refreshPanel();
+      }
+    });
+
+    return p;
+  }
+
+  /* ============================================================
+     11. 条目构建
+     ============================================================ */
+  function buildEntries(filter) {
+    var list = [];
+    if (filter === 'all' || filter === 'creature') {
+      R.creatures.forEach(function (def, type) {
+        list.push({ cat: 'creature', type: type, name: def.name || type, def: def });
+      });
+    }
+    if (filter === 'all' || filter === 'plant') {
+      for (var t in PLANTS) {
+        list.push({ cat: 'plant', type: t, name: PLANTS[t].name, info: PLANTS[t] });
+      }
+    }
+    if (filter === 'all' || filter === 'boss') {
+      R.bosses.forEach(function (def, type) {
+        list.push({ cat: 'boss', type: type, name: def.name || type, def: def });
+      });
+    }
+    list.sort(function (a, b) {
+      var da = isDiscovered(a.cat, a.type) ? 0 : 1;
+      var db = isDiscovered(b.cat, b.type) ? 0 : 1;
+      if (da !== db) return da - db;
+      return String(a.name).localeCompare(String(b.name), 'zh');
+    });
+    return list;
+  }
+
+  /* ============================================================
+     12. 渲染面板
+     ============================================================ */
+  function refreshPanel() {
+    var p = Codex._panelEl;
+    if (!p || !Codex._open) return;
+
+    var tabsEl = p.querySelector('.codex-tabs');
+    var gridEl = p.querySelector('#codex-grid');
+    var progEl = p.querySelector('#codex-progress');
+    var detailEl = p.querySelector('#codex-detail');
+
+    var tabs = tabsEl.querySelectorAll('button');
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].classList.toggle('active', tabs[i].dataset.filter === Codex._filter);
+    }
+
+    if (Codex._detail) {
+      gridEl.style.display = 'none';
+      progEl.style.display = 'none';
+      detailEl.classList.add('show');
+      renderDetail(Codex._detail);
+      return;
+    }
+
+    gridEl.style.display = '';
+    progEl.style.display = '';
+    detailEl.classList.remove('show');
+    detailEl.innerHTML = '';
+
+    var allEntries = buildEntries('all');
+    var allTotal = allEntries.length;
+    var allFound = 0;
+    for (var j = 0; j < allEntries.length; j++) {
+      if (isDiscovered(allEntries[j].cat, allEntries[j].type)) allFound++;
+    }
+
+    var entries = buildEntries(Codex._filter);
+    var total = entries.length;
+    var found = 0;
+    var html = '';
+
+    for (var k = 0; k < entries.length; k++) {
+      var e = entries[k];
+      var known = isDiscovered(e.cat, e.type);
+      if (known) found++;
+
+      var badge = '';
+      if (known && e.cat === 'creature') {
+        var rec = Codex.discovered[key(e.cat, e.type)];
+        if (rec && rec.count > 1) {
+          badge = '<span class="codex-badge">×' +
+                  (rec.count > 99 ? '99+' : rec.count) + '</span>';
+        }
+      }
+
+      var cls = 'codex-cell' + (known ? '' : ' locked');
+      var cellHtml = '<div class="' + cls + '" data-cat="' + e.cat +
+                     '" data-type="' + escapeHtml(e.type) + '">';
+
+      if (known) {
+        var iconURL = getIcon(e.cat, e.type);
+        if (iconURL) cellHtml += '<img src="' + iconURL + '" alt="" draggable="false">';
+        else         cellHtml += '<div class="codex-mystery">?</div>';
+        cellHtml += '<div class="codex-name">' + escapeHtml(e.name) + '</div>';
+      } else {
+        cellHtml += '<div class="codex-mystery">?</div>';
+        cellHtml += '<div class="codex-name">？？？</div>';
+      }
+
+      cellHtml += badge;
+      cellHtml += '</div>';
+      html += cellHtml;
+    }
+
+    gridEl.innerHTML = html;
+    progEl.innerHTML = '已发现 <b>' + allFound + '</b> / ' + allTotal +
+      '  （当前分类 ' + found + ' / ' + total + '）';
+  }
+
+  /* ============================================================
+     13. 详情页
+     ============================================================ */
+  function renderDetail(d) {
+    var p = Codex._panelEl;
+    if (!p) return;
+    var el = p.querySelector('#codex-detail');
+
+    if (!d || !isDiscovered(d.cat, d.type)) {
+      Codex._detail = null;
+      refreshPanel();
+      return;
+    }
+
+    var html = '<button class="codex-back" type="button">← 返回图鉴</button>';
+    if (d.cat === 'plant') html += renderPlantDetail(d.type);
+    else if (d.cat === 'creature') html += renderCreatureDetail(d.type);
+    else if (d.cat === 'boss') html += renderBossDetail(d.type);
+    el.innerHTML = html;
+  }
+
+  function renderPlantDetail(type) {
+    var info = PLANTS[type];
+    if (!info) return '<div class="codex-desc">无资料</div>';
+    var url = getIcon('plant', type);
+    var rec = Codex.discovered[key('plant', type)] || {};
+    var def = R.items.get(type);
+
+    var html = '';
+    html += '<div class="codex-hero">';
+    if (url) html += '<img src="' + url + '" alt="">';
+    else html += '<div class="codex-mystery">?</div>';
+    html += '</div>';
+
+    html += '<div class="codex-name-big">' + escapeHtml(info.name) + '</div>';
+
+    html += '<div class="codex-meta">';
+    html += '<span class="codex-tag">植 物</span>';
+    if (info.group) html += '<span class="codex-tag">' + escapeHtml(info.group) + '</span>';
+    html += '</div>';
+
+    html += '<div class="codex-desc">' + escapeHtml(info.desc || '暂无描述。') + '</div>';
+
+    if (def && def.dismantle && def.dismantle.length > 0) {
+      html += '<div class="codex-section">';
+      html += '<div class="codex-sec-title">🎁 采集产物</div>';
+      html += '<div class="codex-drops">';
+      for (var i = 0; i < def.dismantle.length; i++) {
+        var it = def.dismantle[i];
+        var id = R.items.get(it.type);
+        var nm = id ? (id.name || it.type) : it.type;
+        html += '<span class="codex-drop">' + escapeHtml(nm) + ' ×' + it.count + '</span>';
+      }
+      html += '</div></div>';
+    }
+
+    html += '<div class="codex-section">';
+    html += '<div class="codex-sec-title">📖 发现记录</div>';
+    html += '<div class="codex-row"><span class="k">首次发现</span>' +
+            '<span class="v">' + (rec.firstSeen !== undefined ? (rec.firstSeen + 's') : '—') + '</span></div>';
+    html += '<div class="codex-row"><span class="k">采集次数</span>' +
+            '<span class="v">' + (rec.count || 1) + '</span></div>';
+    html += '</div>';
+    return html;
+  }
+
+  function renderCreatureDetail(type) {
+    var def = R.creatures.get(type);
+    if (!def) return '<div class="codex-desc">无资料</div>';
+    var url = getIcon('creature', type);
+    var rec = Codex.discovered[key('creature', type)] || {};
+
+    var html = '';
+    html += '<div class="codex-hero">';
+    if (url) html += '<img src="' + url + '" alt="">';
+    else html += '<div class="codex-mystery">?</div>';
+    html += '</div>';
+
+    html += '<div class="codex-name-big">' + escapeHtml(def.name || type) + '</div>';
+
+    html += '<div class="codex-meta">';
+    html += '<span class="codex-tag">生 物</span>';
+    if (def.behavior) {
+      var lbl = BEHAVIOR_LABEL[def.behavior] || def.behavior;
+      var tier = def.behavior === 'aggressive' ? 5
+                : def.behavior === 'defensive' ? 3
+                : 1;
+      html += '<span class="codex-tag tier-' + tier + '">' + escapeHtml(lbl) + '</span>';
+    }
+    try {
+      if (G.Ecology && G.Ecology.profiles && G.Ecology.profiles[type]) {
+        var tn = G.Ecology.profiles[type].tier || 1;
+        html += '<span class="codex-tag tier-' + tn + '">' + ('生态层 ' + tn) + '</span>';
+      }
+    } catch (_) {}
+    html += '</div>';
+
+    var desc = CREATURE_DESCS[type];
+    if (!desc) {
+      if (def.behavior === 'passive') desc = '一种温顺的生物。不会主动攻击，但逃跑速度很快。';
+      else if (def.behavior === 'defensive') desc = '平时不惹事，被攻击后会疯狂反击。';
+      else if (def.behavior === 'aggressive') desc = '会主动攻击接近的生物，包括你在内。';
+      else if (def.behavior === 'friendly') desc = '友善的生物，喂食可以尝试驯服。';
+      else desc = '一种生活在岛上的生物。';
+    }
+    html += '<div class="codex-desc">' + escapeHtml(desc) + '</div>';
+
+    html += '<div class="codex-stat-panel">';
+    html += '<div class="s"><span class="num">' + (def.hp || 1) +
+            '</span><span class="lbl">HP</span></div>';
+    if (def.speed !== undefined) {
+      html += '<div class="s"><span class="num">' + (Number(def.speed).toFixed(1)) +
+              '</span><span class="lbl">速度</span></div>';
+    }
+    if (def.exp !== undefined) {
+      html += '<div class="s"><span class="num">' + def.exp +
+              '</span><span class="lbl">经验</span></div>';
+    }
+    html += '</div>';
+
+    if (def.drops && def.drops.length > 0) {
+      html += '<div class="codex-section">';
+      html += '<div class="codex-sec-title">🎁 击杀掉落</div>';
+      html += '<div class="codex-drops">';
+      for (var i = 0; i < def.drops.length; i++) {
+        var dd = def.drops[i];
+        var it = R.items.get(dd.type);
+        var nm = it ? (it.name || dd.type) : dd.type;
+        var cnt = (dd.min === dd.max) ? ('×' + dd.min) : ('×' + dd.min + '~' + dd.max);
+        html += '<span class="codex-drop">' + escapeHtml(nm) + ' ' + cnt + '</span>';
+      }
+      html += '</div></div>';
+    }
+
+    html += '<div class="codex-section">';
+    html += '<div class="codex-sec-title">📖 发现记录</div>';
+    html += '<div class="codex-row"><span class="k">首次遇见</span>' +
+            '<span class="v">' + (rec.firstSeen !== undefined ? (rec.firstSeen + 's') : '—') + '</span></div>';
+    html += '<div class="codex-row"><span class="k">击杀次数</span>' +
+            '<span class="v">' + (rec.count || 1) + ' 次</span></div>';
+    html += '</div>';
+    return html;
+  }
+
+  function renderBossDetail(type) {
+    var def = R.bosses.get(type);
+    if (!def) return '<div class="codex-desc">无资料</div>';
+    var url = getIcon('boss', type);
+    var rec = Codex.discovered[key('boss', type)] || {};
+
+    var html = '';
+    html += '<div class="codex-hero" style="border-color:rgba(255,80,80,0.7);">';
+    if (url) html += '<img src="' + url + '" alt="">';
+    else html += '<div class="codex-mystery">?</div>';
+    html += '</div>';
+
+    html += '<div class="codex-name-big" style="color:#ff9090;' +
+            'text-shadow:0 0 14px rgba(255,80,80,0.6);">' +
+            escapeHtml(def.name || type) + '</div>';
+
+    html += '<div class="codex-meta">';
+    html += '<span class="codex-tag tier-5">首 领</span>';
+    if (def.duration) html += '<span class="codex-tag">存在 ' + def.duration + ' 秒</span>';
+    html += '</div>';
+
+    var desc = BOSS_DESCS[type] || '一位强大的首领。击退它需要充分的准备。';
+    html += '<div class="codex-desc">' + escapeHtml(desc) + '</div>';
+
+    html += '<div class="codex-stat-panel">';
+    html += '<div class="s"><span class="num">' + (def.hp || 1) +
+            '</span><span class="lbl">HP</span></div>';
+    if (def.attackDamage !== undefined) {
+      html += '<div class="s"><span class="num">' + def.attackDamage +
+              '</span><span class="lbl">伤害</span></div>';
+    }
+    if (def.speed !== undefined) {
+      html += '<div class="s"><span class="num">' + (Number(def.speed).toFixed(1)) +
+              '</span><span class="lbl">速度</span></div>';
+    }
+    html += '</div>';
+
+    if (def.drops && def.drops.length > 0) {
+      html += '<div class="codex-section">';
+      html += '<div class="codex-sec-title">🎁 击杀掉落</div>';
+      html += '<div class="codex-drops">';
+      for (var i = 0; i < def.drops.length; i++) {
+        var dd = def.drops[i];
+        var it = R.items.get(dd.type);
+        var nm = it ? (it.name || dd.type) : dd.type;
+        html += '<span class="codex-drop">' + escapeHtml(nm) + ' ×' + dd.count + '</span>';
+      }
+      html += '</div></div>';
+    }
+
+    html += '<div class="codex-section">';
+    html += '<div class="codex-sec-title">📖 发现记录</div>';
+    html += '<div class="codex-row"><span class="k">首次出现</span>' +
+            '<span class="v">' + (rec.firstSeen !== undefined ? (rec.firstSeen + 's') : '—') + '</span></div>';
+    html += '</div>';
+    return html;
+  }
+
+  /* ============================================================
+     14. 打开 / 关闭
+     ============================================================ */
+  function openPanel() {
+    ensurePanel();
+    Codex._open = true;
+    Codex._detail = null;
+    Codex._panelEl.classList.add('show');
+    refreshPanel();
+    try { G.Sound && G.Sound.init && G.Sound.init(); } catch (_) {}
+    try { G.Sound && G.Sound.click && G.Sound.click(); } catch (_) {}
+  }
+
+  function closePanel() {
+    if (!Codex._panelEl) return;
+    Codex._panelEl.classList.remove('show');
+    Codex._open = false;
+    Codex._detail = null;
+    flushStorage();
+    try { G.Sound && G.Sound.click && G.Sound.click(); } catch (_) {}
+  }
+
+  /* ============================================================
+     15. HUD 按钮
+     ============================================================ */
+  function createEntryButton() {
+    if (document.getElementById('codex-btn')) return;
+    var btn = document.createElement('button');
+    btn.id = 'codex-btn';
+    btn.type = 'button';
+    btn.textContent = '📖';
+    btn.title = '动植物图鉴 (P)';
+    btn.style.cssText = [
+      'position:fixed',
+      'right:8px',
+      'top:calc(env(safe-area-inset-top, 0px) + 274px)',
+      'width:34px','height:34px',
+      'background:rgba(100,200,255,0.1)',
+      'border:2px solid rgba(100,200,255,0.45)',
+      'color:#9cd6ff',
+      'font:16px/1 monospace',
+      'cursor:pointer','z-index:15',
+      'display:none',
+      'align-items:center','justify-content:center',
+      'touch-action:manipulation',
+      '-webkit-tap-highlight-color:transparent',
+      'box-shadow:inset 2px 2px 0 rgba(255,255,255,0.08),' +
+        'inset -2px -2px 0 rgba(0,0,0,0.3)',
+    ].join(';');
+
+    btn.addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (Codex._open) closePanel();
+      else openPanel();
+    });
+
+    document.body.appendChild(btn);
+
+    setInterval(function () {
+      try {
+        if (Codex._open) { btn.style.display = 'none'; return; }
+        if (!G.gameStarted || !G.player || G.player.dead) {
+          btn.style.display = 'none';
+          return;
+        }
+        var st = G.sceneType;
+        var show = (st === 'world' || st === 'home' || st === 'mine' ||
+                    st === 'city' || st === 'interior');
+        btn.style.display = show ? 'flex' : 'none';
+      } catch (_) {
+        btn.style.display = 'none';
+      }
+    }, 400);
+  }
+
+  /* ============================================================
+     16. 键盘
+     ============================================================ */
+  function isInputFocused() {
+    try {
+      var ae = document.activeElement;
+      if (!ae) return false;
+      var tag = ae.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return true;
+      if (ae.isContentEditable) return true;
+    } catch (_) {}
+    return false;
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      if (Codex._open) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        closePanel();
+      }
+      return;
+    }
+    if (e.key !== 'p' && e.key !== 'P') return;
+    if (!G.gameStarted) return;
+    if (isInputFocused()) return;
+    if (G.dialogPanel && G.dialogPanel.classList.contains('show')) return;
+    if (G.settingsPanel && G.settingsPanel.classList.contains('show')) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    if (Codex._open) closePanel();
+    else openPanel();
+  }, true);
+
+  /* ============================================================
+     17. 生命周期
+     ============================================================ */
+  function safeClose() { if (Codex._open) closePanel(); }
+  R.event('playerDeath',   safeClose);
+  R.event('worldGenerate', safeClose);
+  R.event('enterBuilding', safeClose);
+  R.event('enterHome',     safeClose);
+
+  /* 击杀时累加 count（首次也会弹提示） */
+  var _dropLoot = G.dropCreatureLoot;
+  G.dropCreatureLoot = function (c) {
+    var r;
+    try { r = _dropLoot.call(G, c); } catch (_) {}
+    try {
+      if (c && c.type) {
+        markDiscovered('creature', c.type, { silent: false, count: true });
+      }
+    } catch (_) {}
+    return r;
+  };
+
+  /* 采集时累加 count */
+  var _removeObject = G.removeObject;
+  if (typeof _removeObject === 'function') {
+    G.removeObject = function (obj) {
+      try {
+        if (obj && obj.type && PLANTS[obj.type] && G.sceneType === 'world') {
+          markDiscovered('plant', obj.type, { silent: false, count: true });
+        }
+      } catch (_) {}
+      return _removeObject.call(G, obj);
+    };
+  }
+
+  /* ★ 修复：BOSS 重生时清空 _codexCounted，让每次召唤都能记录 */
+  if (typeof G.trySpawnBoss === 'function') {
+    var _trySpawnBoss = G.trySpawnBoss;
+    G.trySpawnBoss = function () {
+      try { if (G.boss) G.boss._codexCounted = false; } catch (_) {}
+      return _trySpawnBoss.call(G);
+    };
+  }
+  /* 32-bosses-plus 的手动 spawn 也照顾一下 */
+  if (G.BossesPlus && typeof G.BossesPlus.spawn === 'function') {
+    var _bpSpawn = G.BossesPlus.spawn;
+    G.BossesPlus.spawn = function (type) {
+      try { if (G.boss) G.boss._codexCounted = false; } catch (_) {}
+      return _bpSpawn.call(G.BossesPlus, type);
+    };
+  }
+
+  /* 主循环：定时扫描 */
+  API.onUpdate.push(function (dt) {
+    if (!Codex._inited) return;
+    if (!G.gameStarted) return;
+    if (!G.player || G.player.dead) return;
+    Codex._scanAccum += dt;
+    if (Codex._scanAccum < SCAN_INTERVAL) return;
+    Codex._scanAccum = 0;
+    scanNearby();
+  });
+
+  /* ============================================================
+     18. 启动
+     ============================================================ */
+  loadFromStorage();
+  createEntryButton();
+  Codex._inited = true;
+
+  setTimeout(function () {
+    try { scanNearby(); } catch (_) {}
+  }, 3000);
+
+  /* ============================================================
+     19. 公开 API
+     ============================================================ */
+  G.Codex.open  = openPanel;
+  G.Codex.close = closePanel;
+  G.Codex.isOpen = function () { return !!Codex._open; };
+
+  G.Codex.discoverAll = function () {
+    var n = 0;
+    R.creatures.forEach(function (def, type) {
+      if (markDiscovered('creature', type, { silent: true })) n++;
+    });
+    for (var t in PLANTS) {
+      if (markDiscovered('plant', t, { silent: true })) n++;
+    }
+    R.bosses.forEach(function (def, type) {
+      if (markDiscovered('boss', type, { silent: true })) n++;
+    });
+    flushStorage();
+    if (Codex._open) refreshPanel();   /* ★ 立即刷新 */
+    if (G.flashMsg) G.flashMsg('图鉴已解锁 ' + n + ' 项');
+    return n;
+  };
+
+  G.Codex.reset = function () {
+    Codex.discovered = {};
+    /* 保留 iconCache —— 图标是静态的，下次打开直接复用 */
+    flushStorage();
+    if (Codex._open) refreshPanel();
+    if (G.flashMsg) G.flashMsg('图鉴已重置');
+  };
+
+  G.Codex.stats = function () {
+    var cT = R.creatures.size;
+    var pT = Object.keys(PLANTS).length;
+    var bT = R.bosses.size;
+    var cF = 0, pF = 0, bF = 0;
+    R.creatures.forEach(function (def, t) { if (isDiscovered('creature', t)) cF++; });
+    for (var k in PLANTS) { if (isDiscovered('plant', k)) pF++; }
+    R.bosses.forEach(function (def, t) { if (isDiscovered('boss', t)) bF++; });
+    return {
+      creature: { found: cF, total: cT },
+      plant:    { found: pF, total: pT },
+      boss:     { found: bF, total: bT },
+      overall:  { found: cF + pF + bF, total: cT + pT + bT },
+      iconsCached: Object.keys(Codex.iconCache).length,
+    };
+  };
+
+  G.Codex.mark = function (cat, type, silent) {
+    return markDiscovered(cat, type, { silent: !!silent });
+  };
+
+  console.log('[41-codex] v3 最终版已加载');
+  console.log('  · 快捷键 P · 右上角 📖 按钮');
+  console.log('  · 覆盖 world / mine · 击杀/采集累加计数');
+  console.log('  · 调试：G.Codex.discoverAll() / .reset() / .stats()');
+});
+</script>
 
 
+
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- 扩展 y：信息公告板 —— 启动后自动弹出 · 支持长文滚动 -->
+<!--   放在 x-boot 之后，因为要等 #boot-cover 被隐藏 -->
+<!--   调试：G.Notice.show() / .reset() / .close() -->
+<!-- ══════════════════════════════════════════════════════ -->
+<script>
+Core.loadExt('y-notice', function (ext) {
+  'use strict';
+  var G = Core.game;
+  if (!G) return;
+
+  /* ═══════════════════════════════════════════════════════
+     ①  配置区 —— 你只需要改这里
+     ═══════════════════════════════════════════════════════ */
+  var CONFIG = {
+
+    /* 唯一 ID。
+       改掉这个字符串 → 老玩家也会重新看到公告。
+       例如改成 'welcome-v2'、'patch-2025-01' …… */
+    id: 'welcome-v1',
+
+    /* 面板标题 */
+    title: '📜 公  告',
+
+    /* 底部按钮文字 */
+    confirmText: '我 知 道 了',
+
+    /* 是否显示「不再显示此公告」复选框 */
+    allowDismiss: true,
+
+    /* 面板最大宽度（px） */
+    maxWidth: 560,
+
+    /* 面板最大高度（占屏幕高度比例 0~1） */
+    maxHeightRatio: 0.82,
+
+    /* ── 公告内容 ──
+       支持 HTML，可用这些 class 让它好看一点：
+         .n-h1    大标题
+         .n-h2    小节标题
+         .n-list  列表容器（里面的每个 <div> 是一行）
+         .n-quote 引用块
+         .n-tip   绿色提示文字
+         .n-warn  橙色警告文字
+         <b>      黄色高亮
+         <hr>     分隔线                                      */
+    content: `
+
+<div class="n-h1">🏝️ 岛 · ISLAND</div>
+
+<div class="n-p">
+  这是一个像素风海岛生存沙盒。采集、建造、战斗、探索——
+  从一无所有，到在这片土地上站稳脚跟。
+</div>
+
+<hr>
+
+<div class="n-h2">🎮 基础操作</div>
+<div class="n-list">
+  <div><b>WASD</b> / 方向键 —— 移动</div>
+  <div><b>左摇杆</b> 移动 · <b>右摇杆</b> 控制光标</div>
+  <div><b>空格</b> / <b>E</b> —— 执行动作（采集 / 攻击 / 进入）</div>
+  <div><b>F</b> 吃东西 · <b>R</b> 切换攻击模式</div>
+  <div><b>B</b> 背包 · <b>C</b> 合成 · <b>J</b> 任务日志</div>
+  <div><b>Esc</b> 菜单 · <b>U</b> 脱离卡死</div>
+</div>
+
+<div class="n-h2">🌱 上手流程</div>
+<div class="n-list">
+  <div>1. 地上有树枝和石头，先捡起来</div>
+  <div>2. 用手撸树、敲石，攒够材料做工作台</div>
+  <div>3. 做石斧 / 石镐 / 石剑</div>
+  <div>4. 造篝火（烤食物）和床（设置重生点）</div>
+  <div>5. 夜里丧尸和野兽会变强，别忘了点火</div>
+</div>
+
+<div class="n-h2">💡 小技巧</div>
+<div class="n-list">
+  <div>· 长按动作按钮可以连续攻击</div>
+  <div>· 光标可以拖得很远，用来放置方块</div>
+  <div>· 靠近建筑时按钮会变成「进入」</div>
+  <div>· 死亡会掉一半经验，但背包里的东西还在</div>
+  <div>· 卡住了按 U 脱离到安全位置</div>
+</div>
+
+<div class="n-h2">⚠ 注意事项</div>
+<div class="n-p">
+  存档保存在浏览器本地。清理浏览器数据会导致存档丢失。
+  <b>重要进度请用「菜单 → 存档」导出备份。</b>
+</div>
+
+<div class="n-quote">
+  「岛上没有一条路是白走的。<br>
+    —— 走错的路，也算数。」
+</div>
+
+<div class="n-p n-tip">
+  祝你玩得开心。有任何问题，主菜单 → 诊断 可以查看错误信息。
+</div>
+
+    `
+  };
+
+  /* ═══════════════════════════════════════════════════════
+     ②  内部状态
+     ═══════════════════════════════════════════════════════ */
+  var STORAGE_KEY = 'island-notice-dismissed:' + CONFIG.id;
+  var shown = false;
+  var overlay = null;
+  var bodyEl = null;
+  var hintEl = null;
+  var _keyHandler = null;
+
+  function isDismissed() {
+    try { return localStorage.getItem(STORAGE_KEY) === '1'; }
+    catch (_) { return false; }
+  }
+  function setDismissed() {
+    try { localStorage.setItem(STORAGE_KEY, '1'); } catch (_) {}
+  }
+  function clearDismissed() {
+    try { localStorage.removeItem(STORAGE_KEY); } catch (_) {}
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     ③  样式
+     ═══════════════════════════════════════════════════════ */
+  function injectStyles() {
+    if (document.getElementById('notice-styles')) return;
+    var st = document.createElement('style');
+    st.id = 'notice-styles';
+    st.textContent = [
+      /* ---------- 遮罩 ---------- */
+      '#notice-overlay{position:fixed;inset:0;z-index:99995;',
+        'display:none;align-items:center;justify-content:center;',
+        'background:rgba(4,8,14,0.88);',
+        '-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);',
+        'padding:16px;',
+        'padding-top:calc(16px + env(safe-area-inset-top,0px));',
+        'padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));',
+        'opacity:0;transition:opacity .22s ease;',
+        'touch-action:pan-y;}',
+      '#notice-overlay.show{opacity:1;}',
+
+      /* ---------- 面板 ---------- */
+      '#notice-box{position:relative;width:100%;',
+        'display:flex;flex-direction:column;',
+        'background:linear-gradient(180deg,#121822 0%,#0d131c 100%);',
+        'border:2px solid rgba(255,215,80,0.5);',
+        'box-shadow:0 0 0 1px rgba(0,0,0,0.6),',
+          '0 20px 60px rgba(0,0,0,0.75),',
+          '0 0 48px rgba(255,215,80,0.08);',
+        'overflow:hidden;',
+        'transform:translateY(16px) scale(0.97);',
+        'transition:transform .28s cubic-bezier(.2,.9,.3,1.15);}',
+      '#notice-overlay.show #notice-box{transform:translateY(0) scale(1);}',
+
+      /* ---------- 头部 ---------- */
+      '#notice-header{display:flex;align-items:center;justify-content:space-between;',
+        'padding:12px 12px 10px 18px;flex-shrink:0;',
+        'background:linear-gradient(180deg,rgba(255,215,80,0.08),transparent);',
+        'border-bottom:1px solid rgba(255,215,80,0.22);}',
+      '#notice-title{color:#ffd54f;',
+        'font:600 14px/1.4 "Courier New",monospace;',
+        'letter-spacing:4px;',
+        'text-shadow:0 0 12px rgba(255,215,80,0.45);}',
+      '#notice-x{width:30px;height:30px;flex-shrink:0;',
+        'background:transparent;border:1px solid rgba(255,255,255,0.18);',
+        'color:#778;font:14px/1 monospace;cursor:pointer;',
+        'display:flex;align-items:center;justify-content:center;',
+        'transition:all .15s;',
+        '-webkit-tap-highlight-color:transparent;}',
+      '#notice-x:hover,#notice-x:active{color:#ff9090;',
+        'border-color:rgba(255,128,128,0.6);background:rgba(255,128,128,0.1);}',
+
+      /* ---------- 内容（滚动区） ---------- */
+      '#notice-body{flex:1 1 auto;min-height:0;',
+        'overflow-y:auto;overflow-x:hidden;',
+        '-webkit-overflow-scrolling:touch;',
+        'overscroll-behavior:contain;',
+        'padding:18px 22px 22px;',
+        'color:#b8c8d8;outline:none;',
+        'font:13.5px/1.9 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;',
+        'scrollbar-width:thin;',
+        'scrollbar-color:rgba(255,215,80,0.5) rgba(255,255,255,0.06);}',
+      '#notice-body::-webkit-scrollbar{width:8px;}',
+      '#notice-body::-webkit-scrollbar-track{',
+        'background:rgba(255,255,255,0.04);border-radius:4px;}',
+      '#notice-body::-webkit-scrollbar-thumb{',
+        'background:rgba(255,215,80,0.45);border-radius:4px;}',
+      '#notice-body::-webkit-scrollbar-thumb:hover{',
+        'background:rgba(255,215,80,0.75);}',
+
+      /* ---------- 内容元素 ---------- */
+      '#notice-body .n-h1{color:#ffd54f;',
+        'font:700 17px/1.5 "Courier New",monospace;',
+        'letter-spacing:3px;margin:0 0 12px;',
+        'text-shadow:0 0 14px rgba(255,215,80,0.45);}',
+      '#notice-body .n-h2{color:#9cd6ff;',
+        'font:600 13px/1.5 "Courier New",monospace;',
+        'letter-spacing:2px;margin:20px 0 10px;',
+        'padding-bottom:5px;',
+        'border-bottom:1px solid rgba(156,214,255,0.22);}',
+      '#notice-body .n-h2:first-child{margin-top:0;}',
+      '#notice-body .n-p{margin:8px 0;}',
+      '#notice-body .n-list{display:flex;flex-direction:column;',
+        'gap:6px;margin:8px 0;}',
+      '#notice-body .n-list > div{padding-left:2px;}',
+      '#notice-body b,#notice-body strong{color:#ffd54f;font-weight:600;}',
+      '#notice-body .n-tip{color:#8ed89e;}',
+      '#notice-body .n-warn{color:#ffa060;}',
+      '#notice-body .n-quote{margin:14px 0;padding:10px 14px;',
+        'background:rgba(255,215,80,0.05);',
+        'border-left:3px solid rgba(255,215,80,0.5);',
+        'color:#a8b8c8;font-style:italic;line-height:1.8;}',
+      '#notice-body hr{border:none;',
+        'border-top:1px dashed rgba(255,255,255,0.12);',
+        'margin:18px 0;}',
+
+      /* ---------- 滚动提示 ---------- */
+      '#notice-scroll-hint{position:absolute;left:50%;bottom:70px;',
+        'transform:translateX(-50%);pointer-events:none;',
+        'background:rgba(0,0,0,0.78);color:#ffd54f;',
+        'font:10px/1 monospace;letter-spacing:1px;white-space:nowrap;',
+        'padding:4px 12px;border-radius:12px;',
+        'border:1px solid rgba(255,215,80,0.35);',
+        'opacity:0;transition:opacity .3s;}',
+
+      /* ---------- 底部 ---------- */
+      '#notice-footer{display:flex;align-items:center;justify-content:space-between;',
+        'gap:12px;padding:12px 16px;flex-shrink:0;',
+        'background:rgba(0,0,0,0.3);',
+        'border-top:1px solid rgba(255,215,80,0.22);}',
+      '#notice-dismiss-wrap{display:flex;align-items:center;gap:7px;',
+        'color:#7a8a9a;font:11px/1 monospace;cursor:pointer;',
+        'user-select:none;-webkit-user-select:none;',
+        '-webkit-tap-highlight-color:transparent;}',
+      '#notice-dismiss{width:15px;height:15px;cursor:pointer;',
+        'accent-color:#ffd54f;}',
+      '#notice-ok{padding:10px 26px;flex-shrink:0;',
+        'background:linear-gradient(180deg,rgba(255,215,80,0.2),rgba(255,215,80,0.08));',
+        'border:2px solid rgba(255,215,80,0.75);color:#ffd54f;',
+        'font:600 13px/1 "Courier New",monospace;letter-spacing:3px;',
+        'cursor:pointer;transition:all .15s;font-family:inherit;',
+        '-webkit-tap-highlight-color:transparent;}',
+      '#notice-ok:hover,#notice-ok:active{',
+        'background:rgba(255,215,80,0.32);',
+        'box-shadow:0 0 22px rgba(255,215,80,0.45);}',
+
+      /* ---------- 小屏 ---------- */
+      '@media (max-width:480px){',
+        '#notice-overlay{padding:10px;',
+          'padding-top:calc(10px + env(safe-area-inset-top,0px));',
+          'padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));}',
+        '#notice-body{padding:14px 16px 18px;font-size:13px;}',
+        '#notice-title{font-size:13px;letter-spacing:2px;}',
+        '#notice-ok{padding:9px 18px;font-size:12px;letter-spacing:2px;}',
+        '#notice-footer{padding:10px 12px;gap:8px;}',
+        '#notice-scroll-hint{bottom:60px;font-size:9px;padding:3px 10px;}',
+      '}',
+    ].join('');
+    document.head.appendChild(st);
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     ④  DOM 构建
+     ═══════════════════════════════════════════════════════ */
+  function buildOverlay() {
+    if (overlay && overlay.parentNode) return overlay;
+
+    injectStyles();
+
+    overlay = document.createElement('div');
+    overlay.id = 'notice-overlay';
+
+    var box = document.createElement('div');
+    box.id = 'notice-box';
+    if (CONFIG.maxWidth) {
+      box.style.maxWidth = CONFIG.maxWidth + 'px';
+    }
+    /* 同时设置 vh 和 dvh 兜底（移动端地址栏问题） */
+    box.style.maxHeight = (CONFIG.maxHeightRatio * 100) + 'vh';
+    box.style.maxHeight = (CONFIG.maxHeightRatio * 100) + 'dvh';
+
+    /* 头部 */
+    var header = document.createElement('div');
+    header.id = 'notice-header';
+
+    var titleEl = document.createElement('span');
+    titleEl.id = 'notice-title';
+    titleEl.textContent = CONFIG.title || '公 告';
+
+    var xBtn = document.createElement('button');
+    xBtn.id = 'notice-x';
+    xBtn.type = 'button';
+    xBtn.setAttribute('aria-label', '关闭');
+    xBtn.textContent = '✕';
+
+    header.appendChild(titleEl);
+    header.appendChild(xBtn);
+
+    /* 内容 */
+    var body = document.createElement('div');
+    body.id = 'notice-body';
+    body.tabIndex = 0;
+    body.innerHTML = CONFIG.content || '';
+
+    /* 滚动提示 */
+    var hint = document.createElement('div');
+    hint.id = 'notice-scroll-hint';
+    hint.textContent = '↕  上下滚动查看完整内容';
+
+    /* 底部 */
+    var footer = document.createElement('div');
+    footer.id = 'notice-footer';
+
+    var dismissWrap = document.createElement('label');
+    dismissWrap.id = 'notice-dismiss-wrap';
+    if (!CONFIG.allowDismiss) dismissWrap.style.visibility = 'hidden';
+
+    var dismissCb = document.createElement('input');
+    dismissCb.type = 'checkbox';
+    dismissCb.id = 'notice-dismiss';
+
+    var dismissTxt = document.createElement('span');
+    dismissTxt.textContent = '不再显示此公告';
+
+    dismissWrap.appendChild(dismissCb);
+    dismissWrap.appendChild(dismissTxt);
+
+    var okBtn = document.createElement('button');
+    okBtn.id = 'notice-ok';
+    okBtn.type = 'button';
+    okBtn.textContent = CONFIG.confirmText || '关 闭';
+
+    footer.appendChild(dismissWrap);
+    footer.appendChild(okBtn);
+
+    box.appendChild(header);
+    box.appendChild(body);
+    box.appendChild(hint);
+    box.appendChild(footer);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+
+    bodyEl = body;
+    hintEl = hint;
+
+    /* ---- 事件 ---- */
+    xBtn.addEventListener('click', close);
+    okBtn.addEventListener('click', close);
+
+    /* 点击空白处（遮罩）不关闭，避免误触 —— 想改成点击关闭就取消注释 */
+    // overlay.addEventListener('click', function (e) {
+    //   if (e.target === overlay) close();
+    // });
+
+    body.addEventListener('scroll', updateScrollHint, { passive: true });
+    window.addEventListener('resize', updateScrollHint);
+    window.addEventListener('orientationchange', function () {
+      setTimeout(updateScrollHint, 180);
+    });
+
+    /* 阻止滚动事件冒泡到游戏层 */
+    body.addEventListener('touchmove', function (e) {
+      e.stopPropagation();
+    }, { passive: true });
+    body.addEventListener('wheel', function (e) {
+      e.stopPropagation();
+    }, { passive: true });
+
+    return overlay;
+  }
+
+  function updateScrollHint() {
+    if (!bodyEl || !hintEl) return;
+    var scrollable = bodyEl.scrollHeight > bodyEl.clientHeight + 4;
+    var atBottom = bodyEl.scrollTop + bodyEl.clientHeight >= bodyEl.scrollHeight - 10;
+    hintEl.style.opacity = (scrollable && !atBottom) ? '1' : '0';
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     ⑤  显示 / 关闭
+     ═══════════════════════════════════════════════════════ */
+  function show() {
+    if (shown) return;
+    shown = true;
+
+    buildOverlay();
+
+    /* 允许页面纵向滚动（本作默认 touch-action:none） */
+    document.documentElement.style.touchAction = 'pan-y';
+    document.body.style.touchAction = 'pan-y';
+
+    /* 让过渡生效 */
+    overlay.style.display = 'flex';
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        overlay.classList.add('show');
+        setTimeout(function () {
+          updateScrollHint();
+          try { bodyEl.focus({ preventScroll: true }); } catch (_) {}
+        }, 120);
+      });
+    });
+
+    /* 捕获阶段吃掉键盘，防止触发游戏快捷键 */
+    _keyHandler = function (e) {
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        close();
+        return;
+      }
+      /* 阻止空格 / B / C / J 等游戏快捷键 */
+      e.stopImmediatePropagation();
+    };
+    window.addEventListener('keydown', _keyHandler, true);
+
+    /* 播放一个轻提示音（可选） */
+    try {
+      if (G.Sound && G.Sound.init) G.Sound.init();
+    } catch (_) {}
+  }
+
+  function close() {
+    if (!overlay) return;
+
+    var cb = overlay.querySelector('#notice-dismiss');
+    if (cb && cb.checked) setDismissed();
+
+    overlay.classList.remove('show');
+
+    /* 恢复 touch-action */
+    document.documentElement.style.touchAction = '';
+    document.body.style.touchAction = '';
+
+    if (_keyHandler) {
+      window.removeEventListener('keydown', _keyHandler, true);
+      _keyHandler = null;
+    }
+
+    try {
+      if (G.Sound && G.Sound.click) G.Sound.click();
+    } catch (_) {}
+
+    setTimeout(function () {
+      if (overlay && overlay.parentNode) {
+        overlay.parentNode.removeChild(overlay);
+      }
+      overlay = null;
+      bodyEl = null;
+      hintEl = null;
+    }, 280);
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     ⑥  等待 #boot-cover 消失后弹出
+     ═══════════════════════════════════════════════════════ */
+  function waitForBoot(cb) {
+    var bc = document.getElementById('boot-cover');
+
+    /* 已经消失（或根本不存在）→ 稍等一拍直接弹 */
+    if (!bc || bc.classList.contains('hidden')) {
+      setTimeout(cb, 320);
+      return;
+    }
+
+    /* 监听 class 变化 */
+    var done = false;
+    function fire() {
+      if (done) return;
+      done = true;
+      setTimeout(cb, 380);
+    }
+
+    try {
+      var obs = new MutationObserver(function () {
+        if (bc.classList.contains('hidden')) {
+          obs.disconnect();
+          fire();
+        }
+      });
+      obs.observe(bc, { attributes: true, attributeFilter: ['class'] });
+    } catch (_) {
+      /* 老浏览器兜底：轮询 */
+      var t = setInterval(function () {
+        if (bc.classList.contains('hidden')) {
+          clearInterval(t);
+          fire();
+        }
+      }, 200);
+    }
+
+    /* 硬兜底：8 秒后无论怎样都弹 */
+    setTimeout(fire, 8000);
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     ⑦  启动
+     ═══════════════════════════════════════════════════════ */
+  if (!isDismissed()) {
+    waitForBoot(function () {
+      /* 如果玩家已经进游戏了就不打扰（正常情况下不会发生） */
+      if (G.gameStarted) return;
+      show();
+    });
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     ⑧  公开 API
+     ═══════════════════════════════════════════════════════ */
+  G.Notice = {
+    /* 手动打开 */
+    show: function () {
+      if (shown && overlay) return;
+      shown = false;
+      show();
+    },
+    /* 手动关闭 */
+    close: close,
+    /* 重置「不再显示」标记（下次启动会重新弹） */
+    reset: function () {
+      clearDismissed();
+      if (G.flashMsg) G.flashMsg('公告已重置 · 下次启动会重新弹出');
+    },
+    /* 直接改写内容并立刻重弹（调试用） */
+    setContent: function (html) {
+      CONFIG.content = html;
+      if (overlay && bodyEl) bodyEl.innerHTML = html;
+      setTimeout(updateScrollHint, 50);
+    },
+    /* 当前是否正在显示 */
+    isOpen: function () {
+      return !!(overlay && overlay.classList.contains('show'));
+    },
+    /* 读取配置 */
+    config: CONFIG,
+  };
+
+  console.log('[y-notice] 信息公告板已加载 · id=' + CONFIG.id);
+});
+</script>
 <!-- ══════════════════════════════════════════════════════ -->
 <!-- 扩展 x：初始化 + 事件绑定 + 启动 + 启动报告（最后） -->
 <!-- ══════════════════════════════════════════════════════ -->
@@ -40643,7 +45381,7 @@ if (typeof G.generateWorld !== 'function') {
      8. 收尾日志
      ============================================================ */
   var _finalExtCount = (Core.exts || []).length;
-console.log('🏝️ 岛 v22 加载完成 · 插件化引擎 · 共 ' + _finalExtCount + ' 个扩展');
+console.log('岛 加载完成 · 插件化引擎 · 共 ' + _finalExtCount + ' 个扩展');
   console.log('📁 媒体库已启用：主菜单 → 媒体库 → 选择文件夹');
   console.log('🔧 诊断：主菜单 → 诊断，可查看错误和启动报告');
 
