@@ -11434,6 +11434,235 @@ Core.loadExt('11-ui', function (ext) {
 });
 </script>
 <!-- ══════════════════════════════════════════════════════ -->
+<!-- 扩展 11a：基地光标交互补丁 v2 -->
+<!--   修正 1：用 inter.type 判断物件类型（原来错用了 inter.kind）
+<!--   修正 2：进入基地/推摇杆时清空 gridPlace.target，避免光标被"假位置"污染
+<!--   修正 3：增加 G.HomeCursor.probe() 打印诊断
+<!-- ══════════════════════════════════════════════════════ -->
+<script>
+Core.loadExt('11a-home-cursor', function (ext) {
+  'use strict';
+  var G = Core.game, R = G.Register;
+  if (!G || !R) return;
+
+  if (typeof G.updateActionBtn !== 'function' ||
+      typeof G.hideRightJoystick !== 'function') {
+    console.warn('[11a-home-cursor] 11-ui 未加载，跳过');
+    return;
+  }
+
+  /* ============================================================
+     1. home 场景禁止隐藏右摇杆
+     ============================================================ */
+  var _origHideRightJoystick = G.hideRightJoystick;
+  G.hideRightJoystick = function () {
+    try {
+      var inHome = (G.sceneType === 'home');
+      var alive  = G.gameStarted && G.player && !G.player.dead;
+      var paused = G.pauseMenuEl && G.pauseMenuEl.classList.contains('show');
+      var dead   = G.deathScreen && G.deathScreen.classList.contains('show');
+      if (inHome && alive && !paused && !dead) return;
+    } catch (_) {}
+    return _origHideRightJoystick.call(G);
+  };
+
+  /* ============================================================
+     2. 包装 updateActionBtn —— home 场景主动 show 右摇杆
+     ============================================================ */
+  var _origUpdateActionBtn = G.updateActionBtn;
+  G.updateActionBtn = function () {
+    var r;
+    try { r = _origUpdateActionBtn.call(G); }
+    catch (e) {
+      try { Core.reportError(e, '11a:updateActionBtn'); } catch (_) {}
+      return;
+    }
+    try {
+      if (G.sceneType === 'home' &&
+          G.gameStarted &&
+          G.player && !G.player.dead &&
+          typeof G.showRightJoystick === 'function') {
+        G.showRightJoystick();
+      }
+    } catch (_) {}
+    return r;
+  };
+
+  /* ============================================================
+     3. ★ 关键修正：清空污染的 gridPlace.target
+        在 home 场景里只要推了摇杆，就清掉 gridPlace.target，
+        强制 getCursorCell 走"真实光标位置"分支
+     ============================================================ */
+  var _origUpdateCursor = G.updateCursor;
+  if (typeof _origUpdateCursor === 'function') {
+    G.updateCursor = function (dt) {
+      if (G.sceneType !== 'home') return _origUpdateCursor.call(G, dt);
+
+      // 检测是否在推右摇杆
+      var pushing = false;
+      try {
+        var cd = G.cursorDir;
+        pushing = !!(cd && (Math.abs(cd.dx) > 0.05 || Math.abs(cd.dy) > 0.05));
+      } catch (_) {}
+
+      if (pushing && G.gridPlace && G.gridPlace.target) {
+        G.gridPlace.target = null;
+      }
+
+      // 伪装 legacy，让原 updateCursor 走完整移动逻辑
+      var saved = G.uiMode;
+      G.uiMode = 'legacy';
+      try { return _origUpdateCursor.call(G, dt); }
+      finally { G.uiMode = saved; }
+    };
+  }
+
+  /* ============================================================
+     4. 光标格越界保护
+     ============================================================ */
+  var _origGetCursorCell = G.getCursorCell;
+  if (typeof _origGetCursorCell === 'function') {
+    G.getCursorCell = function () {
+      var r = _origGetCursorCell.call(G);
+      if (G.sceneType === 'home' && r && G.homeState) {
+        r.x = Math.max(0, Math.min(G.homeState.w - 1, r.x | 0));
+        r.y = Math.max(0, Math.min(G.homeState.h - 1, r.y | 0));
+      }
+      return r;
+    };
+  }
+
+  /* ============================================================
+     5. ★ 关键修正：用 inter.type 判断，不是 inter.kind
+        homeInteractionFor 返回：
+          { obj, type:'chest'|'bed'|'speaker'|'screen'|'screen_v'|'upgrade_stone',
+            label, kind:'enter'|'upgrade'|'dismantle' }
+        kind 永远只有 'enter'/'upgrade'/'dismantle' 三种！
+     ============================================================ */
+  if (G.ActionRegistry && typeof G.ActionRegistry.register === 'function') {
+    G.ActionRegistry.register(30, 'home_cursor_priority', function (sceneType) {
+      if (sceneType !== 'home') return null;
+      if (!G.player || G.player.dead) return null;
+      if (G.homeEditMode) return null;
+
+      var cell;
+      try { cell = G.getCursorCell(); } catch (_) { return null; }
+      if (!cell) return null;
+
+      var obj = null;
+      try { obj = G.findHomeObjectAtCell(cell); } catch (_) {}
+      if (!obj) return null;
+
+      var inter = null;
+      try { inter = G.homeInteractionFor(obj); } catch (_) {}
+      if (!inter) return null;
+
+      /* ---- 按 inter.type 分派 ---- */
+      switch (inter.type) {
+        case 'chest':
+          return { kind:'chest', label:'开箱', btnKind:'enter',
+            mode:'legacy', target:obj,
+            onPress:function(){
+              if (typeof G.openWorldChest === 'function') G.openWorldChest(obj);
+            } };
+
+        case 'bed':
+          return { kind:'setspawn', label:'设为家', btnKind:'enter',
+            mode:'legacy', target:obj,
+            onPress:function(){
+              if (typeof G.setBedSpawn === 'function') G.setBedSpawn(obj);
+            } };
+
+        case 'speaker':
+          return { kind:'speaker', label:'音响', btnKind:'enter',
+            mode:'legacy', target:obj,
+            onPress:function(){
+              if (typeof G.openSpeakerPanel === 'function') G.openSpeakerPanel(obj);
+            } };
+
+        case 'screen':
+        case 'screen_v':
+          return { kind:'screen',
+            label: inter.type === 'screen_v' ? '竖屏' : '屏幕',
+            btnKind:'enter', mode:'legacy', target:obj,
+            onPress:function(){
+              if (typeof G.openScreenPanel === 'function') G.openScreenPanel(obj);
+            } };
+
+        case 'upgrade_stone':
+          return { kind:'upgrade', label:'升级基地', btnKind:'upgrade',
+            mode:'legacy', target:obj,
+            onPress:function(){
+              if (typeof G.openHomeUpgradePanel === 'function') G.openHomeUpgradePanel();
+            } };
+      }
+
+      /* ---- 兜底：拆除类（inter.kind 是 dismantle） ---- */
+      if (inter.kind === 'dismantle') {
+        return { kind:'dismantle', label:'拆除', btnKind:'danger',
+          mode:'legacy', target:obj,
+          onPress:function(){
+            if (typeof G.dismantleObject === 'function') G.dismantleObject(obj);
+          } };
+      }
+
+      return null;
+    });
+  }
+
+  /* ============================================================
+     6. 进入基地时清空 gridPlace + 刷新
+     ============================================================ */
+  R.event('enterHome', function () {
+    try { if (G.gridPlace) { G.gridPlace.target = null; G.gridPlace.scene = ''; } } catch (_) {}
+    setTimeout(function () {
+      try {
+        if (G.sceneType === 'home' && G.player && !G.player.dead) {
+          G.updateActionBtn();
+          G.showRightJoystick();
+        }
+      } catch (_) {}
+    }, 120);
+  });
+
+  /* ============================================================
+     7. 死亡时收起摇杆
+     ============================================================ */
+  R.event('playerDeath', function () {
+    try { _origHideRightJoystick.call(G); } catch (_) {}
+  });
+
+  /* ============================================================
+     8. 调试 API
+     ============================================================ */
+  G.HomeCursor = {
+    version: '2.0',
+    probe: function () {
+      var cell  = G.getCursorCell();
+      var obj   = G.findHomeObjectAtCell(cell);
+      var inter = obj ? G.homeInteractionFor(obj) : null;
+      var action = (G.ActionRegistry && G.ActionRegistry.pick)
+        ? G.ActionRegistry.pick('home') : null;
+      console.log('光标格:', cell);
+      console.log('命中物件:', obj);
+      console.log('homeInteractionFor:', inter);
+      console.log('按钮动作:', action);
+      console.log('gridPlace.target:', G.gridPlace ? G.gridPlace.target : null);
+      return { cell:cell, obj:obj, inter:inter, action:action,
+               gridTarget: G.gridPlace ? G.gridPlace.target : null };
+    },
+    refresh: function () {
+      try { if (G.gridPlace) G.gridPlace.target = null; } catch (_) {}
+      try { G.updateActionBtn(); } catch (_) {}
+      try { G.showRightJoystick(); } catch (_) {}
+    },
+  };
+
+  console.log('[11a-home-cursor] v2 加载完成 · 修正 inter.type + gridPlace 污染');
+});
+</script>
+
+<!-- ══════════════════════════════════════════════════════ -->
 <!-- 扩展 12：世界/家/室内渲染 + 主循环 -->
 <!-- ══════════════════════════════════════════════════════ -->
 <script>
@@ -11872,9 +12101,9 @@ Core.loadExt('12-render', function (ext) {
     if (_isPlacing) {
       G.drawPlacementGrid(ox, oy, drawCell, homeState.w, homeState.h, null);
     } else if (!G.settings.hideHomeCursor) {
-      const cw = G.getCursorWorld();
-      const cxp = pcx + (cw.x - player.x) * drawCell;
-      const cyp = pcy + (cw.y - player.y) * drawCell;
+      const cc = G.getCursorCell();
+const cxp = ox + cc.x * drawCell;
+const cyp = oy + cc.y * drawCell;
       const tt = performance.now() * 0.005, alpha = 0.7 + Math.sin(tt) * 0.25;
       ctx.strokeStyle = 'rgba(255,215,80,' + alpha + ')';
       ctx.lineWidth = 2;
@@ -16018,7 +16247,9 @@ Core.loadExt('17-glow', function (ext) {
 });
 </script>
 <!-- ══════════════════════════════════════════════════════ -->
-<!-- 扩展 18：夜晚在床上按「睡觉」回血 + 跳到清晨 -->
+<!-- 扩展 18：夜晚在床上按「睡觉」回血 + 跳到清晨（修正版 v2） -->
+<!--   修复：isNight() 判断反了 —— 改为基于 G.getDarkness()
+<!--   其余逻辑不变（ActionRegistry 优先级 60、N 键、全屏遮罩）
 <!-- ══════════════════════════════════════════════════════ -->
 <script>
 Core.loadExt('18-sleep', function (ext) {
@@ -16054,11 +16285,20 @@ Core.loadExt('18-sleep', function (ext) {
   document.body.appendChild(hint);
 
   /* ============================================================
-     时间判断：和 08-logic 里的 night 保持一致
+     ★ 关键修正：夜晚判断
+       原逻辑 t < 0.20 || t > 0.75 反了：
+         0 < t < 0.20  是清晨（06:00 - 10:48）—— 亮的
+         0.75 < t < 1  是凌晨（00:00 - 06:00）
+       真正黑暗在 t ∈ [0.507, 0.993]，对应 darkness > 0.40
      ============================================================ */
   function isNight() {
+    try {
+      if (typeof G.getDarkness === 'function') {
+        return G.getDarkness(G.worldTime) > 0.40;
+      }
+    } catch (_) {}
     var t = G.worldTime;
-    return t < 0.20 || t > 0.75;
+    return t > 0.507 && t < 0.993;
   }
 
   /* ============================================================
@@ -16068,7 +16308,6 @@ Core.loadExt('18-sleep', function (ext) {
     if (sleeping || !bed) return;
     if (G.player.dead) return;
 
-    /* ---- 各种不能睡的情况 ---- */
     if (!isNight()) {
       G.flashMsg('天还亮着，等入夜后再睡吧');
       G.Sound.deny();
@@ -16082,50 +16321,39 @@ Core.loadExt('18-sleep', function (ext) {
       }
     }
 
-    /* ---- 开始睡觉 ---- */
     sleeping = true;
-    G.gameStarted = false;  /* 冻结世界，禁掉一切输入 */
+    G.gameStarted = false;
     G.Sound.door();
 
-    /* 第一步：渐黑 */
     overlay.style.transition = 'opacity 0.7s ease-in';
     overlay.style.opacity = '1';
 
     setTimeout(function () {
       hint.style.opacity = '1';
 
-      /* 第二步：全黑下恢复 + 推时间 */
       setTimeout(function () {
         var p = G.player;
 
-        /* HP 回满 */
         p.hp = p.maxHp;
-
-        /* 饥饿回一点（不至于醒来就饿死） */
         p.hunger = Math.min(p.maxHunger, p.hunger + 20);
 
-        /* 清负面状态 */
         if (G.playerStatus) {
           G.playerStatus.poison = 0;
           G.playerStatus.burn   = 0;
           G.playerStatus.slow   = 0;
         }
         p.hurtFlash = 0;
-        p.invuln = Math.max(p.invuln || 0, 1.5); /* 醒来 1.5 秒无敌 */
+        p.invuln = Math.max(p.invuln || 0, 1.5);
 
-        /* 顺便把这张床设成重生点 */
         p.spawnX = bed.x + 0.5;
         p.spawnY = bed.y + 0.5;
         p.hasSpawn = true;
 
-        /* 时间跳到清晨 */
-        G.worldTime = 0.22;
+        G.worldTime = 0.22;   /* 清晨 */
 
-        /* 刷新 UI */
         G.updateStatsUI();
         G.updateInventoryUI();
 
-        /* 第三步：渐亮 */
         hint.style.opacity = '0';
         overlay.style.transition = 'opacity 0.7s ease-out';
         overlay.style.opacity = '0';
@@ -16143,23 +16371,20 @@ Core.loadExt('18-sleep', function (ext) {
   }
 
   /* ============================================================
-     ★ 用 ActionRegistry 抢占床按钮（夜晚改为「睡觉」）
-     优先级 60：高于 base（0），低于钓鱼（70）、特殊场景（80+）
-     只在 world / home 场景生效
+     ActionRegistry：夜晚把床的按钮改成「睡觉」
+     优先级 60：高于 base（0），低于钓鱼（70）、城市/矿洞（80+）
      ============================================================ */
   G.ActionRegistry.register(60, 'sleep', function (sceneType) {
     if (sleeping) return null;
     if (G.player && G.player.dead) return null;
-    if (!isNight()) return null;   /* 白天保持原「设为家」 */
+    if (!isNight()) return null;
 
     if (sceneType === 'world') {
-      /* 世界场景：找光标下的床 */
       if (typeof G.getCursorCell !== 'function') return null;
       var cell = G.getCursorCell();
       if (typeof G.findObjectAtCell !== 'function') return null;
       var bed = G.findObjectAtCell(cell, ['bed']);
       if (!bed) {
-        /* 若没有光标下的床，尝试玩家附近的床 */
         if (typeof G.findBedAtCell === 'function') {
           bed = G.findBedAtCell(cell);
         }
@@ -16195,12 +16420,7 @@ Core.loadExt('18-sleep', function (ext) {
   });
 
   /* ============================================================
-     捕获阶段拦截动作按钮点击：
-     如果 actionBtn 当前的动作就是 sleep，就阻止默认行为并直接睡
-     —— 这一层是为了和 09-interact 注册的 actionBtn 监听器配合，
-        因为 G.updateActionBtn 已经把 onPress 挂上去了，
-        所以正常路径下 actionBtn 的 onPress 会自动执行 doSleep，
-        这里只做保险，防止有些扩展在 actionBtn 上做了 stopImmediatePropagation。
+     保险：动作按钮点击时兜底
      ============================================================ */
   G.actionBtn.addEventListener('pointerdown', function (e) {
     if (sleeping) {
@@ -16209,8 +16429,6 @@ Core.loadExt('18-sleep', function (ext) {
       return;
     }
     if (G.currentActionKind === 'sleep' && G.currentActionTarget) {
-      /* 交给 11-ui 的默认 onPress 执行；但若它已被 stop，
-         这里做兜底 */
       if (typeof G.currentActionHandler !== 'function') {
         e.preventDefault();
         e.stopImmediatePropagation();
@@ -16247,7 +16465,7 @@ Core.loadExt('18-sleep', function (ext) {
   });
 
   /* ============================================================
-     睡觉中死亡 → 强制结束睡眠，防止卡黑屏
+     睡觉中死亡 → 强制结束，防止卡黑屏
      ============================================================ */
   Register.event('playerDeath', function () {
     if (sleeping) {
@@ -16259,7 +16477,7 @@ Core.loadExt('18-sleep', function (ext) {
     }
   });
 
-  console.log('[18-sleep] 加载完成 —— 夜晚在床上按「睡觉」回血 + 跳到清晨（ActionRegistry）');
+  console.log('[18-sleep] v2 加载完成 · isNight 已修正为基于 darkness');
 });
 </script>
 <!-- ══════════════════════════════════════════════════════ -->
