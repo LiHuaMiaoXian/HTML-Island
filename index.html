@@ -1621,6 +1621,111 @@ html,body{width:100%;height:100%;background:#0a0e14;overflow:hidden;touch-action
 #main-menu .menu-buttons button{padding:14px 24px;background:rgba(255,215,80,.08);border:2px solid rgba(255,215,80,.55);color:#ffd54f;font-family:inherit;font-size:15px;font-weight:bold;letter-spacing:6px;text-align:center;cursor:pointer;box-shadow:inset 2px 2px 0 rgba(255,255,255,.12),inset -2px -2px 0 rgba(0,0,0,.35),0 4px 12px rgba(0,0,0,.4)}
 #main-menu .menu-buttons button.secondary{background:rgba(100,200,255,.06);border-color:rgba(100,200,255,.5);color:#9cd6ff}
 #main-menu .menu-footer{color:#3a4a5a;font-size:10px;font-family:monospace;letter-spacing:2px;margin-top:10px}
+/* ═══════════════════════════════════════════════════════
+   主菜单 · 布局修复 + 横屏适配
+   ═══════════════════════════════════════════════════════ */
+
+/* ── 1. 修复居中溢出：把 justify-content:center 换成 margin:auto ── */
+#main-menu{
+  justify-content:flex-start;      /* ★ 关键修复 */
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+}
+#main-menu .menu-inner{
+  margin:auto;                     /* ★ 有空间时居中，没空间时贴顶可滚 */
+  width:100%;
+  max-width:520px;
+  padding:8px 0;
+}
+
+/* ── 2. 横屏紧凑：左右两栏（标题 | 按钮） ── */
+@media (orientation:landscape) and (max-height:600px){
+  #main-menu{
+    padding:10px 16px;
+    padding-top:calc(10px + env(safe-area-inset-top,0px));
+    padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));
+  }
+  #main-menu .menu-inner{
+    display:grid;
+    grid-template-columns:minmax(120px,auto) minmax(200px,260px);
+    grid-template-areas:
+      "title   buttons"
+      "sub     buttons"
+      "tag     buttons"
+      "footer  buttons";
+    align-items:center;
+    justify-content:center;
+    gap:0;                                        /* 清空原 gap:20px */
+    column-gap:clamp(16px, 5vw, 48px);
+    row-gap:2px;
+    max-width:760px;
+    padding:0;
+  }
+
+  /* 左侧：标题区 */
+  #main-menu .game-title{
+    grid-area:title;
+    font-size:clamp(36px, 9vh, 64px);
+    letter-spacing:clamp(8px, 2.5vw, 18px);
+    margin-left:clamp(8px, 2.5vw, 18px);   /* 抵消 letter-spacing 视觉偏左 */
+    align-self:end;
+  }
+  #main-menu .game-sub{
+    grid-area:sub;
+    font-size:11px;
+    letter-spacing:6px;
+    margin:0 0 0 6px;
+    align-self:start;
+  }
+  #main-menu .menu-tag{
+    grid-area:tag;
+    font-size:9px;
+    letter-spacing:2px;
+    margin:6px 0 0 0;
+    align-self:start;
+  }
+  #main-menu .menu-footer{
+    grid-area:footer;
+    font-size:9px;
+    letter-spacing:1px;
+    margin:6px 0 0 0;
+    align-self:start;
+  }
+
+  /* 右侧：按钮区 */
+  #main-menu .menu-buttons{
+    grid-area:buttons;
+    width:100%;
+    gap:6px;
+    align-self:center;
+  }
+  #main-menu .menu-buttons button{
+    padding:8px 16px;
+    font-size:13px;
+    letter-spacing:3px;
+    border-width:1.5px;
+  }
+}
+
+/* ── 3. 极矮横屏（如 iPhone 横屏 ~340px 高）：再压一档 ── */
+@media (orientation:landscape) and (max-height:400px){
+  #main-menu .game-title{ font-size:32px; letter-spacing:8px; margin-left:8px; }
+  #main-menu .game-sub{ font-size:10px; letter-spacing:4px; margin-left:4px; }
+  #main-menu .menu-tag{ display:none; }
+  #main-menu .menu-buttons{ gap:4px; }
+  #main-menu .menu-buttons button{
+    padding:6px 12px;
+    font-size:12px;
+    letter-spacing:2px;
+  }
+  #main-menu .menu-footer{ font-size:8px; }
+}
+
+/* ── 4. 竖屏大屏（如 iPad 竖屏）：保持原有紧凑感 ── */
+@media (orientation:portrait) and (min-width:600px){
+  #main-menu .menu-inner{ gap:24px; }
+  #main-menu .game-title{ font-size:96px; letter-spacing:32px; margin-left:32px; }
+}
 #slots-panel{position:fixed;inset:0;z-index:315;background:rgba(0,0,0,.96);display:none;flex-direction:column;align-items:center;justify-content:flex-start;padding:20px 12px;overflow-y:auto}
 #slots-panel.show{display:flex}
 #slots-panel .title{color:#ffd54f;font-size:16px;letter-spacing:6px;font-family:monospace;margin-bottom:16px;flex-shrink:0}
