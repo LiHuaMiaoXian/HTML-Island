@@ -1366,7 +1366,7 @@ Core.loadExt('01-skin', function (ext) {
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100%;background:#0a0e14;overflow:hidden;touch-action:none;overscroll-behavior:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
 #game{display:block;width:100%;height:100%;image-rendering:pixelated}
-:root{--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px);--safe-right:env(safe-area-inset-right,0px);--joy-size:110px;--joy-knob:44px;--joy-margin:24px;--joy-bottom:24px;--quick-size:54px;--quick-gap:8px;--quick-bottom:152px;--action-size:72px;--action-bottom:152px;--action-right:24px;--action-font:13px;--minimap-size:80px;--minimap-top:8px;--minimap-right:8px;--btn-w:62px;--btn-h:28px;--btn-font:11px;--btn-right:8px;--btn-top-save:94px;--btn-top-fs:128px;--btn-top-menu:162px;--btn-top-unstuck:196px;--zoom-size:34px;--zoom-font:16px;--zoom-top:232px;--zoom-in-right:8px;--zoom-out-right:48px;--hud-top:8px;--hud-left:8px;--stats-top:42px;--exp-top:66px}
+:root{--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px);--safe-right:env(safe-area-inset-right,0px);--joy-size:110px;--joy-knob:44px;--joy-margin:24px;--joy-bottom:24px;--quick-size:54px;--quick-gap:8px;--quick-bottom:152px;--action-size:72px;--action-bottom:152px;--action-right:24px;--action-font:13px;--minimap-size:80px;--minimap-top:8px;--minimap-right:8px;--btn-w:62px;--btn-h:28px;--btn-font:11px;--btn-right:8px;--btn-top-save:94px;--btn-top-fs:128px;--btn-top-menu:162px;--btn-top-unstuck:196px;--zoom-size:30px;--zoom-font:16px;--zoom-top:232px;--zoom-in-right:4px;--zoom-out-right:40px;--hud-top:8px;--hud-left:8px;--stats-top:42px;--exp-top:66px}
 @media (orientation:landscape){:root{--joy-size:130px;--joy-knob:54px;--joy-margin:18px;--joy-bottom:18px;--quick-size:46px;--quick-gap:6px;--quick-bottom:16px;--action-size:62px;--action-bottom:118px;--action-right:14px;--action-font:11px;--minimap-size:60px;--btn-w:44px;--btn-h:24px;--btn-font:10px;--btn-right:72px;--btn-top-save:8px;--btn-top-fs:8px;--btn-top-menu:8px;--btn-top-unstuck:8px;--zoom-size:24px;--zoom-font:13px;--zoom-top:8px;--zoom-in-right:200px;--zoom-out-right:230px;--hud-top:8px;--hud-left:8px;--stats-top:40px;--exp-top:64px}}
 #minimap{position:fixed;top:calc(var(--minimap-top) + var(--safe-top));right:calc(var(--minimap-right) + var(--safe-right));width:var(--minimap-size);height:var(--minimap-size);border:2px solid rgba(255,255,255,.4);background:#000;z-index:15;image-rendering:pixelated;cursor:pointer;touch-action:manipulation}
 #hud{position:fixed;top:calc(var(--hud-top) + var(--safe-top));left:calc(var(--hud-left) + var(--safe-left));color:#ccc;font-size:10px;font-family:"Courier New",monospace;background:rgba(0,0,0,.5);padding:4px 8px;pointer-events:none;line-height:1.4;z-index:15;max-width:65%}
@@ -18405,7 +18405,8 @@ Core.loadExt('22-tree-art', function (ext) {
 });
 </script>
 <!-- ══════════════════════════════════════════════════════ -->
-<!-- 扩展 23：元胞机矿洞 · 10 种宝石 · 洞穴装饰 -->
+<!-- 扩展 23：元胞机矿洞 · 10 种宝石 · 洞穴装饰 · 双向矿车 -->
+<!--   · 矿车端点离 A/B 出口各留 5 格，避免遮挡出口
 <!-- ══════════════════════════════════════════════════════ -->
 <script>
 Core.loadExt('23-mine', function (ext) {
@@ -18435,11 +18436,11 @@ Core.loadExt('23-mine', function (ext) {
   R.item('mithril',  { icon: '秘', color: '#80e0ff', name: '秘银矿', sell: 100, light: { radius: 3.4, color: '#80e0ff' } });
 
   R.item('mine_lamp', {
-  icon: '灯', color: '#e8ffc0', name: '矿灯', sell: 0,
-  light: { radius: 6, color: '#e8ffc0' },
-  place: { size: [1, 1], validIn: ['world', 'mine', 'home'], dontOverlapPlayer: true },
-  dismantle: [{ type: 'ingot_iron', count: 1 }, { type: 'glow_dust', count: 1 }],
-  draw: function (c, px, py, cell, obj, scene) {
+    icon: '灯', color: '#e8ffc0', name: '矿灯', sell: 0,
+    light: { radius: 6, color: '#e8ffc0' },
+    place: { size: [1, 1], validIn: ['world', 'mine', 'home'], dontOverlapPlayer: true },
+    dismantle: [{ type: 'ingot_iron', count: 1 }, { type: 'glow_dust', count: 1 }],
+    draw: function (c, px, py, cell, obj, scene) {
       if (scene === 'chunk') return;
       c.fillStyle = '#3a2a1a'; c.fillRect(px + cell * 0.4, py, cell * 0.2, cell * 0.3);
       var f = 0.7 + Math.sin(performance.now() * 0.005 + (obj.x || 0)) * 0.3;
@@ -18557,11 +18558,16 @@ Core.loadExt('23-mine', function (ext) {
     return tool.pickaxe === 1 ? 2 : 4;
   };
 
+  /* ★ 矿车端点安全距离（避免遮挡出口） */
+  var CART_END_OFFSET = 5;
+
   G.mine = {
     W: 128, H: 128, grid: null, objects: [], objectsByCell: new Map(), occupied: null,
     entranceA: { x: 0, y: 0 }, entranceB: { x: 0, y: 0 },
     railPath: [], cart: null, seed: 0, generated: false,
     removedKeys: new Set(), creatures: [], bossRoom: null,
+    cartMinProgress: 0,
+    cartMaxProgress: 0,
     boss: {
       active: false, chained: true, defeated: false,
       x: 0, y: 0, hp: 0, maxHp: 320, def: null,
@@ -19050,21 +19056,48 @@ Core.loadExt('23-mine', function (ext) {
       G.mine.occupied[ccy2 * W + ccx2] = 1;
     }
 
-    var cartIdx = -1;
-    for (var ci3 = 0; ci3 < railPath.length; ci3++) {
-      if (railPath[ci3].x >= ax + 3) { cartIdx = ci3; break; }
+    /* ════════════════════════════════════════════════════
+       ★ 矿车初始化（端点离出口留出安全距离）
+         端点：
+           cartMinProgress = CART_END_OFFSET
+           cartMaxProgress = N - 1 - CART_END_OFFSET
+         位置以 progress 表示：
+           progress = cartMinProgress  → 靠近 A 侧停车位
+           progress = cartMaxProgress  → 靠近 B 侧停车位
+       ════════════════════════════════════════════════════ */
+    var N = railPath.length;
+    /* 安全距离：既不超过 1/4 轨道，也至少留 3 格 */
+    var safeOffset = Math.min(
+      CART_END_OFFSET,
+      Math.max(3, Math.floor(N / 4))
+    );
+    var cartMin = safeOffset;
+    var cartMax = N - 1 - safeOffset;
+    if (cartMax <= cartMin + 1) {
+      /* 轨道过短：强行折中 */
+      cartMin = Math.max(1, Math.floor(N * 0.25));
+      cartMax = Math.max(cartMin + 1, Math.floor(N * 0.75));
     }
-    if (cartIdx < 0) cartIdx = Math.min(3, railPath.length - 1);
-    var cpt = railPath[cartIdx];
+    G.mine.cartMinProgress = cartMin;
+    G.mine.cartMaxProgress = cartMax;
+
+    /* 初始位置放在中段，视觉上更像"停在轨道中间" */
+    var initProgress = Math.floor((cartMin + cartMax) / 2);
     G.mine.cart = {
-      x: cpt.x + 0.5, y: cpt.y + 0.5,
-      pathIdx: cartIdx, t: 0, riding: false, moving: false,
+      x: 0, y: 0,
+      progress: initProgress,
+      riding: false,
+      moving: false,
+      autoReturning: false,
+      direction: 1,
     };
+    computeCartPos(G.mine.cart);
 
     G.mine.railPath = railPath;
     spawnMineCreatures();
     buildMineMinimap();
-    console.log('[mine] 生成完成 · 轨道 ' + railPath.length);
+    console.log('[mine] 生成完成 · 轨道 ' + N + ' 段 · 矿车范围 [' +
+                cartMin + ', ' + cartMax + ']');
   };
 
   function spawnMineCreatures() {
@@ -19139,6 +19172,8 @@ Core.loadExt('23-mine', function (ext) {
     G.mine.removedKeys = new Set();
     G.mine.creatures = [];
     G.mine.cart = null;
+    G.mine.cartMinProgress = 0;
+    G.mine.cartMaxProgress = 0;
     G.mine.boss = {
       active: false, chained: true, defeated: false,
       x: 0, y: 0, hp: 0, maxHp: 320, def: null,
@@ -19186,7 +19221,11 @@ Core.loadExt('23-mine', function (ext) {
   };
 
   G.exitMine = function () {
-    if (G.mine.cart && G.mine.cart.riding) { G.flashMsg('请先下车'); return; }
+    if (G.mine.cart && G.mine.cart.riding) {
+      G.flashMsg('请先下车');
+      G.Sound.deny();
+      return;
+    }
     var ret = G.mineReturn || { x: G.player.x, y: G.player.y };
     G.sceneType = 'world';
     G.player.x = ret.x;
@@ -19241,7 +19280,7 @@ Core.loadExt('23-mine', function (ext) {
   };
 
   /* ═══════════════════════════════════════════
-     9. 采集 / 战斗 / 矿车 / BOSS
+     9. 采集 / 战斗 / BOSS
      ═══════════════════════════════════════════ */
   G.removeMineObj = function (obj) {
     var idx = G.mine.objects.indexOf(obj);
@@ -19397,64 +19436,199 @@ Core.loadExt('23-mine', function (ext) {
     return true;
   };
 
+  /* ═══════════════════════════════════════════════════════════
+     ★★★ 矿车核心逻辑 ★★★
+     端点留出 CART_END_OFFSET 格安全距离，避免遮挡出口。
+       cartMinProgress = 靠近 A 侧的停车点
+       cartMaxProgress = 靠近 B 侧的停车点
+     ═══════════════════════════════════════════════════════════ */
+
+  /* 依据 progress 反算世界坐标，同时把 progress clamp 到有效范围 */
+  function computeCartPos(cart) {
+    if (!cart) return;
+    var path = G.mine.railPath;
+    if (!path || path.length < 2) return;
+    var N = path.length;
+    var minP = G.mine.cartMinProgress;
+    var maxP = G.mine.cartMaxProgress;
+    if (!isFinite(minP)) minP = 0;
+    if (!isFinite(maxP) || maxP <= minP) maxP = N - 1;
+    if (minP < 0) minP = 0;
+    if (maxP > N - 1) maxP = N - 1;
+
+    var p = cart.progress;
+    if (!isFinite(p)) p = Math.floor((minP + maxP) / 2);
+    if (p < minP) p = minP;
+    if (p > maxP) p = maxP;
+    cart.progress = p;
+
+    var i0 = Math.floor(p);
+    var i1 = i0 + 1;
+    if (i1 > N - 1) i1 = N - 1;
+    if (i1 < i0) i1 = i0;
+    var frac = p - i0;
+    var a = path[i0], b = path[i1];
+    cart.x = a.x + (b.x - a.x) * frac + 0.5;
+    cart.y = a.y + (b.y - a.y) * frac + 0.5;
+  }
+
+  /* 让玩家从矿车下来，站到旁边的可走格 */
+  function dismountPlayer(cart) {
+    var cx = Math.floor(cart.x);
+    var cy = Math.floor(cart.y);
+    var offs = [[0,-1],[0,1],[-1,0],[1,0],[-1,-1],[1,-1],[-1,1],[1,1]];
+    for (var i = 0; i < offs.length; i++) {
+      var nx = cx + offs[i][0];
+      var ny = cy + offs[i][1];
+      if (canWalkMine(nx, ny)) {
+        G.player.x = nx + 0.5;
+        G.player.y = ny + 0.5;
+        return true;
+      }
+    }
+    G.player.x = cx + 0.5;
+    G.player.y = cy + 0.5;
+    return false;
+  }
+
+  /* 上下车总入口 */
   G.toggleMineCart = function () {
     var cart = G.mine.cart;
     if (!cart) { G.flashMsg('矿车丢失'); return; }
+    var path = G.mine.railPath;
+    if (!path || path.length < 2) return;
+    var minP = G.mine.cartMinProgress;
+    var maxP = G.mine.cartMaxProgress;
+
     if (cart.riding) {
+      /* ════════ 下车 ════════ */
       cart.riding = false;
       cart.moving = false;
-      var offs = [[1,0],[-1,0],[0,1],[0,-1]], placed = false;
-      for (var i = 0; i < offs.length; i++) {
-        var nx = Math.floor(cart.x) + offs[i][0];
-        var ny = Math.floor(cart.y) + offs[i][1];
-        if (canWalkMine(nx, ny)) {
-          G.player.x = nx + 0.5;
-          G.player.y = ny + 0.5;
-          placed = true;
-          break;
+
+      dismountPlayer(cart);
+
+      var atA = cart.progress <= minP + 0.001;
+      var atB = cart.progress >= maxP - 0.001;
+      if (atA || atB) {
+        cart.autoReturning = false;
+        G.flashMsg('已下车');
+      } else {
+        cart.autoReturning = true;
+        var distToA = cart.progress - minP;
+        var distToB = maxP - cart.progress;
+        if (distToA <= distToB) {
+          G.flashMsg('已下车 · 矿车返回 A 侧');
+        } else {
+          G.flashMsg('已下车 · 矿车返回 B 侧');
         }
       }
-      if (!placed) {
-        G.player.x = cart.x;
-        G.player.y = cart.y;
-      }
-      G.flashMsg('已下车');
+      G.Sound.door();
+
     } else {
+      /* ════════ 上车 ════════ */
+      var distA = cart.progress - minP;
+      var distB = maxP - cart.progress;
+
+      if (distA <= distB) {
+        cart.direction = 1;   /* 向 B 侧 */
+      } else {
+        cart.direction = -1;  /* 向 A 侧 */
+      }
+
       cart.riding = true;
       cart.moving = true;
-      G.flashMsg('矿车启动');
+      cart.autoReturning = false;
+
+      G.player.x = cart.x;
+      G.player.y = cart.y;
+
+      if (cart.direction > 0) {
+        G.flashMsg('矿车启动 → B 侧（可随时下车）');
+      } else {
+        G.flashMsg('矿车启动 → A 侧（可随时下车）');
+      }
       G.Sound.door();
     }
   };
 
+  /* 每帧更新矿车 */
   function updateMineCart(dt) {
     var cart = G.mine.cart;
-    if (!cart || !cart.moving || !cart.riding) return;
+    if (!cart) return;
     var path = G.mine.railPath;
     if (!path || path.length < 2) return;
-    cart.t += 5.5 * dt;
-    while (cart.t >= 1 && cart.pathIdx < path.length - 1) {
-      cart.t -= 1;
-      cart.pathIdx++;
-    }
-    if (cart.pathIdx >= path.length - 1) {
-      var end = path[path.length - 1];
-      cart.x = end.x + 0.5;
-      cart.y = end.y + 0.5;
-      cart.moving = false;
-      cart.t = 0;
+    var minP = G.mine.cartMinProgress;
+    var maxP = G.mine.cartMaxProgress;
+
+    /* ---------- ① 玩家驾驶中 ---------- */
+    if (cart.riding && cart.moving) {
+      var driveSpeed = 5.5;
+      cart.progress += cart.direction * driveSpeed * dt;
+
+      if (cart.progress >= maxP) {
+        cart.progress = maxP;
+        cart.moving = false;
+        cart.riding = false;
+        cart.autoReturning = false;
+        computeCartPos(cart);
+        dismountPlayer(cart);
+        G.flashMsg('到达 B 侧停车点 · 已自动下车');
+        G.Sound.door();
+        return;
+      }
+      if (cart.progress <= minP) {
+        cart.progress = minP;
+        cart.moving = false;
+        cart.riding = false;
+        cart.autoReturning = false;
+        computeCartPos(cart);
+        dismountPlayer(cart);
+        G.flashMsg('到达 A 侧停车点 · 已自动下车');
+        G.Sound.door();
+        return;
+      }
+
+      computeCartPos(cart);
       G.player.x = cart.x;
       G.player.y = cart.y;
-      G.flashMsg('到达 B 出口');
       return;
     }
-    var p0 = path[cart.pathIdx], p1 = path[cart.pathIdx + 1];
-    cart.x = p0.x + (p1.x - p0.x) * cart.t + 0.5;
-    cart.y = p0.y + (p1.y - p0.y) * cart.t + 0.5;
-    G.player.x = cart.x;
-    G.player.y = cart.y;
+
+    /* ---------- ② 自动返回端点 ---------- */
+    if (cart.autoReturning) {
+      var distA2 = cart.progress - minP;
+      var distB2 = maxP - cart.progress;
+      var targetP = (distA2 <= distB2) ? minP : maxP;
+      var returnSpeed = 8.0;
+      var diff = targetP - cart.progress;
+
+      if (Math.abs(diff) <= 0.005) {
+        cart.progress = targetP;
+        cart.autoReturning = false;
+        computeCartPos(cart);
+        return;
+      }
+
+      var step = returnSpeed * dt;
+      if (step >= Math.abs(diff)) {
+        cart.progress = targetP;
+        cart.autoReturning = false;
+      } else {
+        cart.progress += (diff > 0 ? 1 : -1) * step;
+      }
+      computeCartPos(cart);
+      return;
+    }
+
+    /* ---------- ③ 静止：同步坐标 ---------- */
+    computeCartPos(cart);
   }
 
+  G.tickMineCart = updateMineCart;
+
+  /* ═══════════════════════════════════════════
+     BOSS
+     ═══════════════════════════════════════════ */
   function updateMineBoss(dt) {
     var b = G.mine.boss;
     if (!b || b.defeated || b.chained) return;
@@ -20208,13 +20382,34 @@ Core.loadExt('23-mine', function (ext) {
       drawMineObject(ctx, o, (o.x - tlx) * cellPx, (o.y - tly) * cellPx, cellPx);
     }
 
-    /* 矿车 */
+    /* ───── 矿车绘制 ───── */
     var cart = G.mine.cart;
     if (cart) {
       var cpx = (cart.x - tlx) * cellPx;
       var cpy = (cart.y - tly) * cellPx;
       if (cpx > -cellPx * 2 && cpx < G.VW + cellPx * 2 &&
           cpy > -cellPx * 2 && cpy < G.VH + cellPx * 2) {
+
+        if (cart.riding) {
+          var pul = 0.7 + Math.sin(performance.now() * 0.008) * 0.3;
+          var grd = ctx.createRadialGradient(cpx, cpy, 0, cpx, cpy, cellPx * 1.5);
+          grd.addColorStop(0, 'rgba(100,200,255,' + (0.35 * pul) + ')');
+          grd.addColorStop(1, 'rgba(100,200,255,0)');
+          ctx.fillStyle = grd;
+          ctx.beginPath();
+          ctx.arc(cpx, cpy, cellPx * 1.5, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (cart.autoReturning) {
+          var pul2 = 0.6 + Math.sin(performance.now() * 0.01) * 0.4;
+          var grd2 = ctx.createRadialGradient(cpx, cpy, 0, cpx, cpy, cellPx * 1.8);
+          grd2.addColorStop(0, 'rgba(255,180,80,' + (0.35 * pul2) + ')');
+          grd2.addColorStop(1, 'rgba(255,180,80,0)');
+          ctx.fillStyle = grd2;
+          ctx.beginPath();
+          ctx.arc(cpx, cpy, cellPx * 1.8, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
         ctx.fillStyle = '#1a1a1a';
         ctx.beginPath();
         ctx.arc(cpx - cellPx * 0.3, cpy + cellPx * 0.35, cellPx * 0.14, 0, Math.PI * 2);
@@ -20222,14 +20417,28 @@ Core.loadExt('23-mine', function (ext) {
         ctx.beginPath();
         ctx.arc(cpx + cellPx * 0.3, cpy + cellPx * 0.35, cellPx * 0.14, 0, Math.PI * 2);
         ctx.fill();
+
         ctx.fillStyle = '#5a4a3a';
         ctx.fillRect(cpx - cellPx * 0.45, cpy - cellPx * 0.42, cellPx * 0.90, cellPx * 0.75);
         ctx.fillStyle = '#7a6a5a';
         ctx.fillRect(cpx - cellPx * 0.40, cpy - cellPx * 0.36, cellPx * 0.80, cellPx * 0.18);
+
+        var facingRight = true;
+        if (cart.riding) facingRight = cart.direction > 0;
+        else if (cart.autoReturning) {
+          var minP = G.mine.cartMinProgress;
+          var maxP = G.mine.cartMaxProgress;
+          facingRight = (cart.progress - minP) < (maxP - cart.progress);
+        }
+        ctx.fillStyle = cart.riding ? '#64c8ff' : (cart.autoReturning ? '#ffb050' : '#a0a0a0');
+        if (facingRight) {
+          ctx.fillRect(cpx + cellPx * 0.42, cpy - cellPx * 0.30, cellPx * 0.10, cellPx * 0.10);
+        } else {
+          ctx.fillRect(cpx - cellPx * 0.52, cpy - cellPx * 0.30, cellPx * 0.10, cellPx * 0.10);
+        }
       }
     }
 
-    /* 尘埃 */
     for (var di = 0; di < G.mine.dust.length; di++) {
       var dd = G.mine.dust[di];
       if (dd.x < tlx - 2 || dd.x > tlx + G.viewCols + 2) continue;
@@ -20239,7 +20448,6 @@ Core.loadExt('23-mine', function (ext) {
       ctx.fillRect((dd.x - tlx) * cellPx, (dd.y - tly) * cellPx, dd.size, dd.size);
     }
 
-    /* 生物 */
     var sorted = G.mine.creatures.slice().sort(function (a, b) { return a.y - b.y; });
     for (var ci = 0; ci < sorted.length; ci++) {
       var c = sorted[ci];
@@ -20248,7 +20456,6 @@ Core.loadExt('23-mine', function (ext) {
       G.drawCreature(c, (c.x - tlx + 0.5) * cellPx, (c.y - tly + 0.5) * cellPx, cellPx);
     }
 
-    /* 傀儡宠物 */
     for (var pi = 0; pi < G.pets.length; pi++) {
       var p = G.pets[pi];
       if (p.type !== 'puppet') continue;
@@ -20266,7 +20473,6 @@ Core.loadExt('23-mine', function (ext) {
       ctx.stroke();
     }
 
-    /* 矿脉之主 BOSS */
     if (!G.mine.boss.defeated && G.mine.boss.def) {
       var b = G.mine.boss;
       var bpx = (b.x - tlx + 0.5) * cellPx;
@@ -20297,13 +20503,13 @@ Core.loadExt('23-mine', function (ext) {
       }
     }
 
-    /* 玩家 */
-    var pcx = (G.player.x - tlx + 0.5) * cellPx;
-    var pcy = (G.player.y - tly + 0.5) * cellPx;
-    var blink = G.player.invuln > 0 && (Math.floor(performance.now() / 80) % 2 === 0);
-    if (!blink) G.drawPlayerAt(pcx, pcy, cellPx * 1.4);
+    if (!cart || !cart.riding) {
+      var pcx = (G.player.x - tlx + 0.5) * cellPx;
+      var pcy = (G.player.y - tly + 0.5) * cellPx;
+      var blink = G.player.invuln > 0 && (Math.floor(performance.now() / 80) % 2 === 0);
+      if (!blink) G.drawPlayerAt(pcx, pcy, cellPx * 1.4);
+    }
 
-    /* 掉落 */
     for (var di2 = 0; di2 < G.drops.length; di2++) {
       var d = G.drops[di2];
       var dpx = (d.x - tlx + 0.5) * cellPx;
@@ -20319,7 +20525,6 @@ Core.loadExt('23-mine', function (ext) {
       ctx.strokeRect(dpx - sz / 2 + 0.5, dpy - sz / 2 + 0.5, sz - 1, sz - 1);
     }
 
-    /* 出口标记 */
     function drawExitMark(ent, label) {
       var px = (ent.x - tlx) * cellPx;
       var py = (ent.y - tly) * cellPx;
@@ -20351,7 +20556,6 @@ Core.loadExt('23-mine', function (ext) {
     drawExitMark(G.mine.entranceA, '出口 A');
     drawExitMark(G.mine.entranceB, '出口 B');
 
-    /* 采集范围 / 目标框 / 副手范围 */
     G.renderOffhandRadius(tlx, tly);
     G.renderToolRadiusUI(tlx, tly);
 
@@ -20433,32 +20637,28 @@ Core.loadExt('23-mine', function (ext) {
     ctx.fillStyle = '#c82020';
     ctx.fillRect(bx, by, bw * Math.max(0, b.hp / b.maxHp), bh);
     var fontSize = Math.max(10, Math.round(cell * 0.9));
-var nameY = by - Math.max(fontSize * 0.6, cell * 0.5);
-ctx.font = 'bold ' + fontSize + 'px monospace';
-ctx.textAlign = 'center';
-ctx.textBaseline = 'alphabetic';
+    var nameY = by - Math.max(fontSize * 0.6, cell * 0.5);
+    ctx.font = 'bold ' + fontSize + 'px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'alphabetic';
 
-/* 黑描边：矿洞 / 火光背景也能看清 */
-ctx.lineWidth = Math.max(2, fontSize * 0.22);
-ctx.strokeStyle = 'rgba(0,0,0,0.9)';
-ctx.strokeText(def.name, cx, nameY);
+    ctx.lineWidth = Math.max(2, fontSize * 0.22);
+    ctx.strokeStyle = 'rgba(0,0,0,0.9)';
+    ctx.strokeText(def.name, cx, nameY);
 
-/* 名字填充 */
-ctx.fillStyle = '#ff9090';
-ctx.fillText(def.name, cx, nameY);
+    ctx.fillStyle = '#ff9090';
+    ctx.fillText(def.name, cx, nameY);
 
-ctx.textAlign = 'start';
-ctx.textBaseline = 'alphabetic';
+    ctx.textAlign = 'start';
+    ctx.textBaseline = 'alphabetic';
   };
 
-  /* 渲染分派：mine 场景 */
   var _origRenderInterior = G.renderInterior;
   G.renderInterior = function () {
     if (G.sceneType === 'mine') { G.renderMine(); return; }
     return _origRenderInterior.call(G);
   };
 
-  /* 小地图：mine 场景 */
   var _origRenderMinimap = G.renderMinimap;
   G.renderMinimap = function () {
     if (G.sceneType === 'mine') {
@@ -20503,7 +20703,6 @@ ctx.textBaseline = 'alphabetic';
 
     _origRenderMinimap.call(G);
 
-    /* 世界场景：矿洞入口标记 */
     if (G.sceneType === 'world' && G.mine.surfaceA && G.mine.surfaceB) {
       var W2 = G.minimapCanvas.width, H2 = G.minimapCanvas.height;
       var pulse2 = 0.5 + Math.sin(performance.now() * 0.006) * 0.5;
@@ -20529,10 +20728,8 @@ ctx.textBaseline = 'alphabetic';
   };
 
   /* ═══════════════════════════════════════════
-     12. ★ ActionRegistry 注册矿洞动作
+     12. ActionRegistry
      ═══════════════════════════════════════════ */
-
-  /* ---- 世界：进入矿洞 ---- */
   G.ActionRegistry.register(80, 'mine_enter', function (sceneType) {
     if (sceneType !== 'world') return null;
     if (G.player.dead) return null;
@@ -20556,14 +20753,13 @@ ctx.textBaseline = 'alphabetic';
     return null;
   });
 
-  /* ---- 矿洞场景：由 G.mineActionTick 生成 ---- */
   G.mineActionTick = function () {
     if (G.player.dead) return null;
 
-    /* 下车 */
+    /* 矿车交互优先级最高 */
     var cart = G.mine.cart;
-    if (cart && cart.riding) {
-      if (!cart.moving) {
+    if (cart) {
+      if (cart.riding) {
         return {
           kind: 'mine_cart',
           label: '下车',
@@ -20573,10 +20769,22 @@ ctx.textBaseline = 'alphabetic';
           onPress: function () { G.toggleMineCart(); },
         };
       }
-      return null;
+      var cdx = cart.x - G.player.x;
+      var cdy = cart.y - G.player.y;
+      var cd2 = cdx * cdx + cdy * cdy;
+      if (cd2 < 2.0 * 2.0) {
+        var label = cart.autoReturning ? '上车 (返回中)' : '上车';
+        return {
+          kind: 'mine_cart',
+          label: label,
+          btnKind: 'enter',
+          mode: 'legacy',
+          target: null,
+          onPress: function () { G.toggleMineCart(); },
+        };
+      }
     }
 
-    /* 出口 */
     var axp = G.mine.entranceA.x + 0.5, ayp = G.mine.entranceA.y + 0.5;
     var bxp = G.mine.entranceB.x + 0.5, byp = G.mine.entranceB.y + 0.5;
     var da = Math.hypot(G.player.x - axp, G.player.y - ayp);
@@ -20592,7 +20800,6 @@ ctx.textBaseline = 'alphabetic';
       };
     }
 
-    /* BOSS */
     var b = G.mine.boss;
     if (!b.defeated && b.def) {
       var bd2 = Math.hypot(G.player.x - b.x, G.player.y - b.y);
@@ -20618,22 +20825,6 @@ ctx.textBaseline = 'alphabetic';
       }
     }
 
-    /* 矿车 */
-    if (cart) {
-      var cdx = cart.x - G.player.x, cdy = cart.y - G.player.y;
-      if (cdx * cdx + cdy * cdy < 2.0 * 2.0) {
-        return {
-          kind: 'mine_cart',
-          label: '上车',
-          btnKind: 'enter',
-          mode: 'legacy',
-          target: null,
-          onPress: function () { G.toggleMineCart(); },
-        };
-      }
-    }
-
-    /* 采集 / 攻击 */
     var cell = G.getCursorCell();
     var obj2 = G.mine.objectsByCell.get(objKey(cell.x, cell.y));
     if (!obj2 || G.ORE_HITS[obj2.type] === undefined) {
@@ -20667,7 +20858,6 @@ ctx.textBaseline = 'alphabetic';
         label += ' ' + obj2.hits + '/' + G.ORE_HITS[t];
       }
 
-      var mtRef = mt;
       return {
         kind: 'mine_gather',
         label: label,
@@ -20733,11 +20923,12 @@ ctx.textBaseline = 'alphabetic';
         y: G.mine.boss.y,
       },
       cart: G.mine.cart ? {
-        x: G.mine.cart.x, y: G.mine.cart.y,
-        pathIdx: G.mine.cart.pathIdx,
-        riding: G.mine.cart.riding,
-        moving: G.mine.cart.moving,
+        progress: G.mine.cart.progress,
+        direction: G.mine.cart.direction,
+        autoReturning: !!G.mine.cart.autoReturning,
       } : null,
+      cartMinProgress: G.mine.cartMinProgress,
+      cartMaxProgress: G.mine.cartMaxProgress,
       creatures: G.mine.creatures.map(function (c) {
         return [
           c.type,
@@ -20804,12 +20995,27 @@ ctx.textBaseline = 'alphabetic';
       }
     }
 
+    /* 恢复矿车（用当前生成的端点范围来 clamp） */
     if (m.cart && G.mine.cart) {
-      G.mine.cart.x = m.cart.x;
-      G.mine.cart.y = m.cart.y;
-      G.mine.cart.pathIdx = m.cart.pathIdx || 0;
-      G.mine.cart.riding = !!m.cart.riding;
-      G.mine.cart.moving = !!m.cart.moving;
+      var cart = G.mine.cart;
+      var minP = G.mine.cartMinProgress;
+      var maxP = G.mine.cartMaxProgress;
+      var p = 0;
+      if (typeof m.cart.progress === 'number' && isFinite(m.cart.progress)) {
+        p = m.cart.progress;
+      } else if (typeof m.cart.pathIdx === 'number') {
+        p = m.cart.pathIdx;
+      } else {
+        p = Math.floor((minP + maxP) / 2);
+      }
+      if (p < minP) p = minP;
+      if (p > maxP) p = maxP;
+      cart.progress = p;
+      cart.direction = (m.cart.direction === -1) ? -1 : 1;
+      cart.autoReturning = !!m.cart.autoReturning;
+      cart.riding = false;
+      cart.moving = false;
+      computeCartPos(cart);
     }
 
     if (Array.isArray(m.creatures)) {
@@ -20870,12 +21076,18 @@ ctx.textBaseline = 'alphabetic';
     if (G.mine.cart) {
       G.mine.cart.riding = false;
       G.mine.cart.moving = false;
+      var minP = G.mine.cartMinProgress;
+      var maxP = G.mine.cartMaxProgress;
+      var atA = G.mine.cart.progress <= minP + 0.001;
+      var atB = G.mine.cart.progress >= maxP - 0.001;
+      if (!atA && !atB) G.mine.cart.autoReturning = true;
     }
   });
 
-  console.log('[23-mine] 加载完成 · 元胞机矿洞 · 10 种宝石 · 洞穴装饰');
+  console.log('[23-mine] 加载完成 · 元胞机矿洞 · 双向矿车（端点留 ' + CART_END_OFFSET + ' 格）');
 });
 </script>
+
 <!-- ══════════════════════════════════════════════════════ -->
 <!-- 扩展 24：暗夜族群 v2 —— 特殊攻击型夜行敌怪 -->
 <!-- ══════════════════════════════════════════════════════ -->
@@ -22317,6 +22529,1056 @@ Core.loadExt('24-night-horde', function (ext) {
   console.log('[24-night-horde] 加载完成');
 });
 </script>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- 扩展 25：NPC 对话系统 v1.2 —— 意图 · 场景 · 台词池 · 槽位
+<!--   依赖：09-interact（DialogProvider）· 13-content（NPC 注册）
+<!--   调试：G.Dialogue.show("smith") / .stats("smith") / .reset()
+<!-- ══════════════════════════════════════════════════════ -->
+<script>
+Core.loadExt('25-dialog', function (ext) {
+  'use strict';
+  var G = Core.game, R = G.Register;
+  if (!G || !R) return;
+
+  if (!G.DialogProvider || typeof G.DialogProvider.register !== 'function') {
+    console.warn('[25-dialog] DialogProvider 未就绪');
+    return;
+  }
+
+  /* ══════════════════════════════════════════════════
+     一、状态读取
+     ══════════════════════════════════════════════════ */
+  var VALID_WEATHER = ['clear','cloudy','rain','thunder','snow','fog'];
+  function weatherKey() {
+    var t = (G.weather && G.weather.type) || 'clear';
+    return VALID_WEATHER.indexOf(t) >= 0 ? t : 'clear';
+  }
+  function timeKey() {
+    var t = G.worldTime || 0;
+    if (t < 0.20) return 'dawn';
+    if (t < 0.50) return 'day';
+    if (t < 0.75) return 'evening';
+    return 'night';
+  }
+  function isNight()   { var t = G.worldTime || 0; return t < 0.2 || t > 0.75; }
+  function isRaining() { var w = weatherKey(); return w === 'rain' || w === 'thunder'; }
+  function isSnowing() { return weatherKey() === 'snow'; }
+  function isFoggy()   { return weatherKey() === 'fog'; }
+  function isClear()   { var w = weatherKey(); return w === 'clear' || w === 'cloudy'; }
+  function lowHP()     { return !!(G.player && G.player.hp < G.player.maxHp * 0.4); }
+  function hungry()    { return !!(G.player && G.player.hunger < 30); }
+  function hasMoney()  { return (G.gold || 0) > 20; }
+
+  /* ══════════════════════════════════════════════════
+     二、存档
+     ══════════════════════════════════════════════════ */
+  function store() {
+    if (!G.saveExt) G.saveExt = {};
+    if (!G.saveExt.dialogStats || typeof G.saveExt.dialogStats !== 'object') {
+      G.saveExt.dialogStats = {};
+    }
+    return G.saveExt.dialogStats;
+  }
+  function statOf(kind) {
+    var s = store();
+    if (!s[kind] || typeof s[kind] !== 'object') {
+      s[kind] = { meets: 0, lastMeetAt: 0, recent: [], flags: {} };
+    }
+    var r = s[kind];
+    if (!Array.isArray(r.recent)) r.recent = [];
+    if (!r.flags || typeof r.flags !== 'object') r.flags = {};
+    if (typeof r.meets !== 'number') r.meets = 0;
+    if (typeof r.lastMeetAt !== 'number') r.lastMeetAt = 0;
+    return r;
+  }
+  /* 每次打开都算一次见面（去掉了时间间隔） */
+  function addMeet(kind) {
+    var s = statOf(kind);
+    s.meets = (s.meets || 0) + 1;
+    s.lastMeetAt = Date.now();
+    return s.meets;
+  }
+  function getMeets(kind) { return statOf(kind).meets || 0; }
+  function isFlag(kind, id) { return !!statOf(kind).flags[id]; }
+  function setFlag(kind, id) { statOf(kind).flags[id] = 1; }
+  function isRecent(kind, line) { return statOf(kind).recent.indexOf(line) >= 0; }
+  function pushRecent(kind, line) {
+    var s = statOf(kind);
+    s.recent.push(line);
+    if (s.recent.length > 15) s.recent.shift();
+  }
+
+  /* ══════════════════════════════════════════════════
+     三、槽位
+     ══════════════════════════════════════════════════ */
+  var COMMON_SLOTS = {
+    '称呼':   ['你', '朋友', '老乡', '年轻人', '客官', '小兄弟', '这位'],
+    '语气':   ['哎', '哟', '嗯', '嘿', '哦', '', '', '', ''],
+    '今天':   ['今天', '今早', '这几天', '这两天', '今儿'],
+    '动作':   ['（看了你一眼）', '（放下手里的活）', '（点点头）',
+               '（抬起眼睛）', '（顿了一下）', '', '', '', '', ''],
+    '回应':   ['', '', '', '嗯。', '好吧。', '行。'],
+  };
+  var WEATHER_SLOTS = {
+    clear:   ['天气不错', '太阳有点大', '阳光正好', '晴得很', '风挺舒服'],
+    cloudy:  ['天有点阴', '云压得低', '不太晴啊', '阴着'],
+    rain:    ['下着雨', '雨不小', '湿冷湿冷的', '雨还在下'],
+    thunder: ['雷打得响', '电闪雷鸣', '这雨夹着雷', '天公发火了'],
+    snow:    ['飘着雪', '雪下得大', '冷得慌', '雪还没停'],
+    fog:     ['雾大得很', '看不清路', '雾气重', '潮得厉害'],
+  };
+  var TIME_SLOTS = {
+    dawn:    ['一大早', '天刚亮', '起得真早', '这个点'],
+    day:     ['日头正盛', '大中午', '大白天的', '这时候'],
+    evening: ['天要黑了', '日头偏西', '傍晚了', '不早了'],
+    night:   ['天黑了', '这个点了', '夜里风凉', '深更半夜'],
+  };
+
+  function pickFromList(list) {
+    if (!Array.isArray(list) || !list.length) return null;
+    return list[(Math.random() * list.length) | 0];
+  }
+  function merchantItemList(def) {
+    if (!def || !def.merchant) return null;
+    var arr = def.merchant.sells;
+    if (!Array.isArray(arr) || !arr.length) return null;
+    return arr.filter(function (t) { return typeof t === 'string' && t; });
+  }
+  function resolveSlot(name, ctx) {
+    var npc = ctx.npc, def = ctx.def;
+    if (def && def.slots && def.slots[name]) return pickFromList(def.slots[name]);
+    if (name === '天气句') return pickFromList(WEATHER_SLOTS[weatherKey()]);
+    if (name === '时间句') return pickFromList(TIME_SLOTS[timeKey()]);
+    if (COMMON_SLOTS[name]) return pickFromList(COMMON_SLOTS[name]);
+    if (def && def.merchant) {
+      if (name === '货品') {
+        var item = ctx.heroItem;
+        if (!item) return '东西';
+        var it = R.items.get(item);
+        return it ? (it.name || item) : item;
+      }
+      if (name === '价格') {
+        var item2 = ctx.heroItem;
+        if (!item2) return '个好价';
+        var it2 = R.items.get(item2);
+        var base = it2 ? (it2.sell || 10) : 10;
+        if (base < 1) base = 1;
+        var price = Math.ceil(base * 3 * (def.merchant.priceMult || 1));
+        var style = Math.random();
+        if (style < 0.4) return '只要 ' + price + ' 金币';
+        if (style < 0.7) return price + ' 金币';
+        return '就 ' + price + ' 金币';
+      }
+    }
+    return null;
+  }
+  function fillSlots(str, ctx) {
+    if (!str || typeof str !== 'string') return str || '';
+    if (str.indexOf('{') < 0) return str;
+    var out = str.replace(/\{([^{}]+)\}/g, function (_, name) {
+      var v = resolveSlot(name, ctx);
+      return v != null ? v : '';
+    });
+    out = out.replace(/^[\s，,。.!？?：:；;、]+/, '');
+    out = out.replace(/[，,]{2,}/g, '，');
+    out = out.replace(/[。.]{2,}/g, '。');
+    out = out.replace(/[，,]([。.!？?；;])/g, '$1');
+    return out;
+  }
+
+  /* ══════════════════════════════════════════════════
+     四、对话数据
+     ══════════════════════════════════════════════════ */
+  var DIALOGS = {};
+
+  /* 兜底 NPC —— 没有专属对话的 NPC 走这里 */
+  DIALOGS.__default__ = {
+    intents: [
+      { id: 'greet', weight: 30, scenes: [
+        { if: isRaining, lines: [
+          '{天气句}。',
+          '{动作}你好。',
+          '这天气，倒是清净。',
+        ]},
+        { if: isNight, lines: [
+          '{时间句}。',
+          '{动作}还没睡？',
+          '夜里小心点。',
+        ]},
+        { lines: [
+          '{语气}，{称呼}。',
+          '{动作}你好。',
+          '有事吗？',
+          '路过？',
+        ]},
+      ]},
+      { id: 'chat', weight: 40, scenes: [
+        { lines: [
+          '这里没什么好说的。',
+          '{动作}风挺好的。',
+          '你从哪来？',
+          '岛上就这样，安静。',
+          '日子过得去。',
+        ]},
+      ]},
+      { id: 'farewell', weight: 10, scenes: [
+        { lines: [
+          '慢走。',
+          '{动作}再见。',
+          '有空再来。',
+        ]},
+      ]},
+    ],
+  };
+
+  /* ───────────── 长老 ───────────── */
+  DIALOGS.elder = {
+    intents: [
+      { id: 'greet', weight: 30, scenes: [
+        { if: function (n) { return getMeets(n.kind) <= 1; }, lines: [
+          '你终于醒了。',
+          '别急着问。先坐会儿。',
+          '{动作}你是岛上唯一的来客。',
+          '你来了。我等你很久了。',
+        ]},
+        { if: isRaining, lines: [
+          '下雨了。进来避避。',
+          '{动作}这雨下得巧。',
+          '外面湿透了，进来说话。',
+          '{语气}，淋着雨来的？',
+        ]},
+        { if: isNight, lines: [
+          '{时间句}还没睡？',
+          '夜里不安生，早点回去。',
+          '{动作}这么晚，有事？',
+          '天黑别乱走。',
+        ]},
+        { if: isSnowing, lines: [
+          '雪大了。进来暖暖。',
+          '{动作}这雪不常下。',
+          '冷得慌。',
+        ]},
+        { lines: [
+          '{语气}，是你啊。',
+          '又见面了，{称呼}。',
+          '{动作}今天过得怎么样？',
+          '过来坐坐。',
+          '{回应}',
+        ]},
+      ]},
+      { id: 'chat', weight: 20, scenes: [
+        { lines: [
+          '岛上没什么新鲜事。',
+          '{动作}我年轻时也在海边住过。',
+          '这座岛，你不觉得它太安静了吗？',
+          '我看你走路的样子，不像本地人。',
+          '{动作}风一吹，就能听见海的声音。',
+          '你是来做什么的？这个问题我一直在想。',
+          '有些事，不问比问更好。',
+          '这座岛记不住人，但人会记住岛。',
+        ]},
+      ]},
+      { id: 'wisdom', weight: 15, scenes: [
+        { lines: [
+          '很久以前，这里不是这样的。',
+          '老人们说，地底下埋着会发光的东西。',
+          '每一个来岛上的人，最后都会做同一个梦。',
+          '{动作}这岛上每一棵树都比我老。',
+          '记忆是最沉的东西。',
+          '该来的总会来，该走的留不住。',
+          '你在找的东西，可能也在找你。',
+        ]},
+      ]},
+      { id: 'warn', weight: 25, when: lowHP, scenes: [
+        { lines: [
+          '{动作}你脸色不对。',
+          '受伤了吧。找个地方歇歇。',
+          '别硬撑。命比什么都值钱。',
+          '来，坐下。先喝口水。',
+        ]},
+      ]},
+      { id: 'hungry', weight: 25, when: hungry, scenes: [
+        { lines: [
+          '你看起来饿了。',
+          '{动作}先去弄点吃的吧。',
+          '肚子的事不能拖。',
+          '不吃东西，走不远。',
+        ]},
+      ]},
+      { id: 'farewell', weight: 8, scenes: [
+        { lines: [
+          '去吧。',
+          '{称呼}，小心点。',
+          '慢走。有空再来。',
+          '{动作}照顾好自己。',
+        ]},
+      ]},
+    ],
+  };
+
+  /* ───────────── 铁匠 ───────────── */
+  DIALOGS.smith = {
+    slots: {
+      '锻品': ['铁剑', '护甲', '匕首', '钉锤', '短斧', '铁镐'],
+      '炉温': ['炉子正旺', '火候不够', '得再吹吹', '红得发亮'],
+      '手艺': ['老手艺', '看家本事', '几十年了', '磨出来的'],
+    },
+    intents: [
+      { id: 'greet', weight: 30, scenes: [
+        { if: function (n) { return getMeets(n.kind) <= 1; }, lines: [
+          '哟。新面孔。',
+          '稀客啊。第一次来吧？',
+          '{动作}看着像个能吃苦的。',
+          '进来看看，都是好手艺。',
+        ]},
+        { if: isRaining, lines: [
+          '这雨下得，炉子都不好生火了。',
+          '{语气}，冒着雨来的？快进来。',
+          '{动作}湿透了。炉子边坐会儿。',
+          '下雨天打铁，火星子都不听话。',
+        ]},
+        { if: isNight, lines: [
+          '这个点还没睡？行吧。',
+          '夜里打铁，吵不到别人。',
+          '{动作}这么晚来，有事？',
+        ]},
+        { lines: [
+          '又见面了。今天想打点什么？',
+          '{动作}来了？',
+          '看你这身，又出去跑了吧。',
+          '{语气}，是你。',
+        ]},
+      ]},
+      { id: 'sell', weight: 45, when: hasMoney, scenes: [
+        { if: function (npc) { return getMeets(npc.kind) >= 5; }, lines: [
+          '{客套}{动作}。这{货品}，{卖点}，{价格}。{催单}',
+          '老朋友了。{货品}你看看，{卖点}，{价格}。',
+          '{动作}{货品}，{卖点}，{价格}。别人我都不给看。',
+          '{客套}，这{货品}我留着给你呢，{卖点}，{价格}。',
+        ]},
+        { lines: [
+          '这{货品}，{卖点}，{价格}。{催单}',
+          '{动作}{货品}，{卖点}，{价格}。要的话直说。',
+          '{货品}，{卖点}。{价格}。{催单}',
+          '{语气}，新到的{货品}，{卖点}。{价格}。',
+          '瞧一瞧看一看！{货品}特价，{价格}。{催单}',
+          '哎别走，这{货品}{卖点}，{价格}拿走。',
+        ]},
+      ]},
+      { id: 'chat', weight: 20, scenes: [
+        { lines: [
+          '打铁这行，赚不了大钱。',
+          '前几年岛上还有个同行，后来不干了。',
+          '{动作}我这炉子，用了十几年了。',
+          '你要是弄到好矿石，记得给我看看。',
+          '剑能不能断，不在刃，在铁。',
+          '手艺人不容易啊。',
+          '{动作}铁是死的，人是活的。',
+          '一把好剑，能陪你一辈子。',
+        ]},
+      ]},
+      { id: 'warn', weight: 25, when: lowHP, scenes: [
+        { lines: [
+          '{动作}你受伤了。',
+          '先别管别的，去养伤。',
+          '我这有药，要不要？',
+        ]},
+      ]},
+      { id: 'farewell', weight: 8, scenes: [
+        { lines: [
+          '行，走吧。',
+          '下次再来。',
+          '{动作}路上小心。',
+          '别忘了带矿石来。',
+        ]},
+      ]},
+    ],
+  };
+
+  /* ───────────── 猎手 ───────────── */
+  DIALOGS.hunter = {
+    slots: {
+      '猎物': ['野兔', '山猪', '鹿群', '林间的动静', '狼'],
+      '林间': ['林子深处', '树影里', '山那头', '林子里'],
+    },
+    intents: [
+      { id: 'greet', weight: 30, scenes: [
+        { if: function (n) { return getMeets(n.kind) <= 1; }, lines: [
+          '嗨，新来的？',
+          '{动作}看你像能跟上我的。',
+          '少见的面孔。',
+        ]},
+        { if: isRaining, lines: [
+          '{天气句}。猎物都躲起来了。',
+          '{动作}今天不适合出猎。',
+          '雨里不好追踪。',
+        ]},
+        { if: isNight, lines: [
+          '{时间句}？胆子不小。',
+          '夜里的{林间}，别乱走。',
+          '{动作}这个点出来，找刺激？',
+        ]},
+        { lines: [
+          '嗨，又见面了。',
+          '{动作}今天风不错，适合出猎。',
+          '来了？',
+          '看你气色不错。',
+        ]},
+      ]},
+      { id: 'chat', weight: 25, scenes: [
+        { lines: [
+          '我见过最大的{猎物}，比人还高。',
+          '{林间}藏着的东西，不是谁都能看见。',
+          '{动作}追踪一个东西，要耐得住。',
+          '别小看{猎物}。它们比人聪明。',
+          '弓箭才是猎人的命。',
+          '{动作}打猎的时候，最静的地方最危险。',
+          '一头{猎物}能养活一家人。',
+        ]},
+      ]},
+      { id: 'tip', weight: 20, scenes: [
+        { if: function () { return !G.countInBag('bow'); }, lines: [
+          '{动作}你没有弓。',
+          '想要远程的活，先弄把弓。',
+          '弄到弓之前，别去惹大的{猎物}。',
+        ]},
+        { if: function () { return G.countInBag('arrow') < 5; }, lines: [
+          '箭不够了。',
+          '{动作}箭比箭手重要。',
+          '去弄点箭，再出去。',
+        ]},
+        { lines: [
+          '你的装备还行。',
+          '{动作}记得带足箭。',
+          '出猎前，先看风向。',
+        ]},
+      ]},
+      { id: 'farewell', weight: 8, scenes: [
+        { lines: [
+          '走吧。',
+          '{动作}路上当心。',
+          '改天一起去{林间}。',
+        ]},
+      ]},
+    ],
+  };
+
+  /* ───────────── 农夫 ───────────── */
+  DIALOGS.farmer = {
+    intents: [
+      { id: 'greet', weight: 30, scenes: [
+        { if: function (n) { return getMeets(n.kind) <= 1; }, lines: [
+          '哎，新面孔。',
+          '你是来种地的吗？',
+          '{动作}看你手上有土。',
+        ]},
+        { if: isRaining, lines: [
+          '{天气句}。庄稼喜欢。',
+          '{动作}这下不用浇水了。',
+          '雨来得好。',
+        ]},
+        { lines: [
+          '{动作}哎，今年收成不好。',
+          '又来了？',
+          '今天想种点什么？',
+        ]},
+      ]},
+      { id: 'chat', weight: 25, scenes: [
+        { lines: [
+          '心急的种子不会发芽。',
+          '{动作}天时地利人和，一样都不能少。',
+          '土地是老实人。你对它好，它就对你好。',
+          '{动作}今年的风，比往年硬。',
+          '种地苦，但心里踏实。',
+          '土地不会骗人。',
+        ]},
+      ]},
+      { id: 'crop', weight: 25, scenes: [
+        { if: function () { return !G.countInBag('seeds'); }, lines: [
+          '你没有种子吧。',
+          '先弄点种子。地里会长出来的。',
+          '去边上找找，有野生种子。',
+        ]},
+        { lines: [
+          '先锄地，再撒种，最后浇水。',
+          '{动作}记住：{称呼}，慢就是快。',
+          '一天看三次地，不如晚上听一次雨。',
+          '种子撒下去，就别老去挖出来看。',
+          '种下的东西，会记得你的。',
+        ]},
+      ]},
+      { id: 'farewell', weight: 8, scenes: [
+        { lines: [
+          '去忙吧。',
+          '{动作}别累着。',
+          '有空再来。',
+        ]},
+      ]},
+    ],
+  };
+
+  /* ───────────── 小孩 ───────────── */
+  DIALOGS.child = {
+    intents: [
+      { id: 'greet', weight: 40, scenes: [
+        { if: function (n) { return getMeets(n.kind) <= 1; }, lines: [
+          '你……是新来的吗？',
+          '{动作}你的鞋上有沙子。',
+          '你会留下来吗？',
+        ]},
+        { lines: [
+          '{动作}又是你啊！',
+          '你要去哪？我也去！',
+          '今天有什么好玩的吗？',
+          '{动作}你来啦！',
+        ]},
+      ]},
+      { id: 'chat', weight: 35, scenes: [
+        { if: isNight, lines: [
+          '妈妈说天黑不能出门……',
+          '{动作}可是我不想睡。',
+          '你怕黑吗？',
+        ]},
+        { lines: [
+          '我认识这里所有的树哦。',
+          '{动作}可以带你去看。',
+          '大人总说这里不是能久留的地方。',
+          '可是我不想走。',
+          '{动作}你见过会发光的蘑菇吗？',
+          '我藏了好多宝贝。',
+        ]},
+      ]},
+      { id: 'farewell', weight: 8, scenes: [
+        { lines: [
+          '下次还来吗？',
+          '{动作}说好了哦！',
+          '拜拜！',
+        ]},
+      ]},
+    ],
+  };
+
+  /* ───────────── 行商 ───────────── */
+  DIALOGS.trader = {
+    intents: [
+      { id: 'greet', weight: 30, scenes: [
+        { if: function (n) { return getMeets(n.kind) <= 1; }, lines: [
+          '哦？面生的面孔。',
+          '我从很远的地方来。',
+          '{动作}你这岛，我头回来。',
+        ]},
+        { if: isRaining, lines: [
+          '{天气句}。赶路的人最怕这个。',
+          '货都湿了，亏本啊。',
+          '{动作}借个屋檐。',
+        ]},
+        { lines: [
+          '又是你啊。',
+          '{动作}今天要买点什么？',
+          '又见面了。',
+        ]},
+      ]},
+      { id: 'news', weight: 25, scenes: [
+        { if: isNight, lines: [
+          '夜深了。城里的灯火也熄了。',
+          '今晚别出门。',
+          '{动作}夜里赶路，十有八九出事。',
+        ]},
+        { if: isRaining, lines: [
+          '这场雨，来得急。',
+          '{动作}庄稼会喜欢。',
+          '我看这雨，一时半会停不了。',
+        ]},
+        { if: isSnowing, lines: [
+          '冷得慌。北边雪更大。',
+          '我带的货都冻硬了。',
+          '{动作}你这岛上倒还好。',
+        ]},
+        { lines: [
+          '{天气句}。是个好日子。',
+          '最近路上不太平。',
+          '南边有座城，我去过一次，再不想去。',
+          '{动作}这行当，全靠消息灵通。',
+        ]},
+      ]},
+      { id: 'chat', weight: 20, scenes: [
+        { lines: [
+          '走得越远，越明白一件事。',
+          '{动作}家不是地方，是人。',
+          '我走过很多岛，每个都像这里，又都不像。',
+          '再问下去，我就要收路费了。',
+        ]},
+      ]},
+      { id: 'farewell', weight: 8, scenes: [
+        { lines: [
+          '那我走了。',
+          '{动作}下次见。',
+          '有机会再聊。',
+        ]},
+      ]},
+    ],
+  };
+
+  /* ───────────── 商人通用模板 ───────────── */
+  function makeMerchantDialog(greeting, chats) {
+    return {
+      slots: {
+        '卖点': ['结实', '耐用', '便宜', '好用', '少见', '划算', '上等', '老货'],
+        '催单': ['要不要？', '最后一件了。', '明天涨价。', '别错过了。',
+                 '有兴趣吗？', '要就拿走。', '过了这村没这店。'],
+        '客套': ['老客了', '看你眼熟', '给你留了点', '都是熟客价',
+                 '别人我都不给看', ''],
+      },
+      intents: [
+        { id: 'greet', weight: 25, scenes: [
+          { if: function (n) { return getMeets(n.kind) <= 1; }, lines: [
+            greeting,
+            '{动作}' + greeting,
+          ]},
+          { if: isRaining, lines: [
+            '这雨下的，也没什么客人。',
+            '{动作}进来避避雨吧。',
+          ]},
+          { if: isNight, lines: [
+            '这个点还开门，就为等你。',
+            '{动作}晚市刚开。',
+          ]},
+          { lines: [
+            '{动作}又是你。',
+            '哟，来了？',
+            '看点什么？',
+          ]},
+        ]},
+        { id: 'sell', weight: 50, when: hasMoney, scenes: [
+          { if: function (npc) { return getMeets(npc.kind) >= 5; }, lines: [
+            '{客套}{动作}。这{货品}，{卖点}，{价格}。{催单}',
+            '老朋友了。{货品}你看看，{卖点}，{价格}。',
+            '{动作}{货品}，{卖点}，{价格}。别人我都不给看。',
+          ]},
+          { lines: [
+            '这{货品}，{卖点}，{价格}。{催单}',
+            '{动作}{货品}，{卖点}，{价格}。要的话直说。',
+            '{货品}，{卖点}。{价格}。{催单}',
+            '{语气}，新到的{货品}，{卖点}。{价格}。',
+            '瞧一瞧看一看！{货品}，{卖点}，{价格}。{催单}',
+          ]},
+        ]},
+        { id: 'chat', weight: 15, scenes: [
+          { lines: chats },
+        ]},
+        { id: 'farewell', weight: 8, scenes: [
+          { lines: [
+            '下次再来。',
+            '{动作}慢走。',
+            '欢迎再来。',
+          ]},
+        ]},
+      ],
+    };
+  }
+
+  DIALOGS.merchant_owner = makeMerchantDialog(
+    '欢迎光临。小店虽小，货还算齐。',
+    [
+      '做生意，诚信最重要。',
+      '{动作}我这店开了十几年了。',
+      '岛上人不多，但都是老客。',
+      '进货不容易啊，外面路不好走。',
+    ]
+  );
+  DIALOGS.merchant_blacksmith = makeMerchantDialog(
+    '刀剑、盔甲。打铁的活，我这儿最全。',
+    [
+      '好铁出好剑。这话没毛病。',
+      '{动作}我年轻的时候也打过铁。',
+      '现在人都不愿意干这行了。',
+      '你那把武器，哪天钝了拿来，我给你磨。',
+    ]
+  );
+  DIALOGS.merchant_farmer = makeMerchantDialog(
+    '来点新鲜蔬果？刚从地里摘的。',
+    [
+      '{动作}今年收成还行。',
+      '种地靠天吃饭，一点不假。',
+      '想吃好的，就得早起。',
+      '我这些菜，都是自己种的。',
+    ]
+  );
+  DIALOGS.merchant_hunter = makeMerchantDialog(
+    '皮毛、弓箭。都是我亲手猎的。',
+    [
+      '{动作}林子深处的东西，我都见过。',
+      '打猎是门手艺，不是运气。',
+      '你要是有好皮子，也收。',
+      '这几年野兽少了，也不知道为什么。',
+    ]
+  );
+  DIALOGS.merchant_wanderer = makeMerchantDialog(
+    '哟，稀客！今天带了点稀罕玩意。',
+    [
+      '{动作}我这货，别的岛买不到。',
+      '走得远，才知道什么叫见多识广。',
+      '今天心情好，给你算便宜点。',
+      '你这岛，我下次不一定还来。',
+    ]
+  );
+
+  /* ══════════════════════════════════════════════════
+     五、选择引擎
+     ══════════════════════════════════════════════════ */
+  function safeBool(fn, npc, def) {
+    if (typeof fn !== 'function') return !!fn;
+    try { return !!fn(npc, def); } catch (_) { return false; }
+  }
+  function pickIntent(dialog, npc, def, excludeId) {
+    var intents = (dialog && dialog.intents) || [];
+    var pool = [], total = 0;
+    for (var i = 0; i < intents.length; i++) {
+      var it = intents[i];
+      if (!it) continue;
+      if (excludeId && it.id === excludeId) continue;
+      if (it.when && !safeBool(it.when, npc, def)) continue;
+      var w = (typeof it.weight === 'number' && it.weight > 0) ? it.weight : 1;
+      pool.push({ it: it, w: w });
+      total += w;
+    }
+    if (!pool.length && excludeId) return pickIntent(dialog, npc, def, null);
+    if (!pool.length) return null;
+    var r = Math.random() * total;
+    for (var j = 0; j < pool.length; j++) {
+      r -= pool[j].w;
+      if (r <= 0) return pool[j].it;
+    }
+    return pool[pool.length - 1].it;
+  }
+  function pickScene(intent, npc, def) {
+    var scenes = (intent && intent.scenes) || [];
+    for (var i = 0; i < scenes.length; i++) {
+      var s = scenes[i];
+      if (!s || !s.lines || !s.lines.length) continue;
+      if (s.if && !safeBool(s.if, npc, def)) continue;
+      return s;
+    }
+    for (var j = 0; j < scenes.length; j++) {
+      if (scenes[j] && !scenes[j].if && scenes[j].lines && scenes[j].lines.length) {
+        return scenes[j];
+      }
+    }
+    return null;
+  }
+  function pickLine(scene, kind) {
+    var lines = (scene && scene.lines) || [];
+    if (!lines.length) return null;
+    var fresh = [];
+    for (var i = 0; i < lines.length; i++) {
+      if (typeof lines[i] === 'string' && !isRecent(kind, lines[i])) {
+        fresh.push(lines[i]);
+      }
+    }
+    var pool = fresh.length ? fresh : lines.filter(function (l) { return typeof l === 'string'; });
+    if (!pool.length) return null;
+    return pool[(Math.random() * pool.length) | 0];
+  }
+
+  /* ══════════════════════════════════════════════════
+     六、打字机
+     ══════════════════════════════════════════════════ */
+  var _tw = { timer: null, el: null, full: '', idx: 0 };
+  function stopTw() {
+    if (_tw.timer) { clearInterval(_tw.timer); _tw.timer = null; }
+    _tw.el = null; _tw.full = ''; _tw.idx = 0;
+  }
+  function typewrite(el, text, speed) {
+    stopTw();
+    if (!el) return;
+    text = String(text == null ? '' : text);
+    if (!text) { el.textContent = ''; return; }
+    _tw.el = el; _tw.full = text; _tw.idx = 0;
+    el.textContent = '';
+    speed = speed || 22;
+    var myEl = el, myText = text;
+    _tw.timer = setInterval(function () {
+      if (_tw.el !== myEl) {
+        clearInterval(_tw.timer); _tw.timer = null; return;
+      }
+      _tw.idx++;
+      if (_tw.idx >= myText.length) {
+        clearInterval(_tw.timer); _tw.timer = null;
+        _tw.el = null;
+        myEl.textContent = myText;
+        return;
+      }
+      myEl.textContent = myText.slice(0, _tw.idx);
+    }, speed);
+  }
+  function finishTw() {
+    if (!_tw.timer) return false;
+    clearInterval(_tw.timer); _tw.timer = null;
+    if (_tw.el) _tw.el.textContent = _tw.full;
+    _tw.el = null;
+    return true;
+  }
+
+  /* ══════════════════════════════════════════════════
+     七、渲染（核心）
+     ══════════════════════════════════════════════════ */
+  function renderDialogue(npc, els) {
+    if (!npc || !npc.kind) return false;
+    if (!els || !els.name || !els.text || !els.options) return false;
+
+    var def = R.npcs.get(npc.kind) || null;
+    var dialog = DIALOGS[npc.kind] || null;
+
+    /* 没数据 → 用兜底 */
+    if (!dialog) {
+      console.warn('[25-dialog] 找不到 ' + npc.kind + ' 的对话，使用兜底');
+      dialog = DIALOGS.__default__;
+    }
+
+    var excludeId = G._dialogExcludeIntent || null;
+    G._dialogExcludeIntent = null;
+
+    var intent = pickIntent(dialog, npc, def, excludeId);
+    if (!intent) intent = { id: '_empty', scenes: [{ lines: ['……'] }] };
+
+    var scene = pickScene(intent, npc, def);
+    if (!scene) scene = { lines: ['……'] };
+
+    var tpl = pickLine(scene, npc.kind) || '……';
+
+    var ctx = { npc: npc, def: def, heroItem: null };
+    if (def && def.merchant) {
+      var items = merchantItemList(def);
+      if (items && items.length) ctx.heroItem = items[(Math.random() * items.length) | 0];
+    }
+
+    var text = fillSlots(tpl, ctx);
+    pushRecent(npc.kind, tpl);
+    G._dialogCurrentIntent = intent.id;
+
+    /* 名字 */
+    var nameText = npc.name || (def && def.name) || npc.kind;
+    els.name.textContent = nameText;
+
+    /* 台词 */
+    typewrite(els.text, text, 22);
+
+    /* 清空选项 */
+    els.options.innerHTML = '';
+
+    /* ── 商人交易按钮（第一优先，位置最上） ── */
+    if (def && def.merchant && typeof G.openShopPanel === 'function') {
+      var btnShop = document.createElement('button');
+      btnShop.className = 'dlg-opt';
+      btnShop.textContent = '【交易】';
+      btnShop.style.background = 'rgba(240,208,96,0.15)';
+      btnShop.style.borderColor = 'rgba(240,208,96,0.75)';
+      btnShop.style.color = '#f0d060';
+      btnShop.style.fontWeight = 'bold';
+      btnShop.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        try { if (G.Sound && G.Sound.click) G.Sound.click(); } catch (_) {}
+        setTimeout(function () {
+          if (typeof G.openShopPanel === 'function') G.openShopPanel(npc);
+        }, 60);
+      });
+      els.options.appendChild(btnShop);
+    }
+
+    /* ── 换个话题 ── */
+    var btnTopic = document.createElement('button');
+    btnTopic.className = 'dlg-opt';
+    btnTopic.textContent = '（聊聊别的）';
+    btnTopic.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      try { if (G.Sound && G.Sound.click) G.Sound.click(); } catch (_) {}
+      finishTw();
+      G._dialogExcludeIntent = intent.id;
+      if (typeof G.renderDialog === 'function') G.renderDialog();
+    });
+    els.options.appendChild(btnTopic);
+
+    /* ── 离开 ── */
+    var btnExit = document.createElement('button');
+    btnExit.className = 'dlg-opt';
+    btnExit.textContent = '（离开）';
+    btnExit.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      try { if (G.Sound && G.Sound.click) G.Sound.click(); } catch (_) {}
+      if (typeof G.closeDialog === 'function') G.closeDialog();
+    });
+    els.options.appendChild(btnExit);
+
+    return true;
+  }
+
+  /* ══════════════════════════════════════════════════
+     八、注册到 DialogProvider
+     ══════════════════════════════════════════════════ */
+  G.DialogProvider.register('npc-dialog', function (npc, panel, els) {
+    try {
+      return renderDialogue(npc, els);
+    } catch (err) {
+      console.warn('[25-dialog] 渲染异常:', err);
+      /* 即使异常，也返回 true 并且给个兜底，不让上层走默认 "……" */
+      try {
+        if (els && els.text) els.text.textContent = '（' + (npc.name || npc.kind) + ' 沉默着）';
+        if (els && els.options) {
+          els.options.innerHTML = '';
+          var b = document.createElement('button');
+          b.className = 'dlg-opt';
+          b.textContent = '（离开）';
+          b.addEventListener('click', function () { G.closeDialog(); });
+          els.options.appendChild(b);
+        }
+      } catch (_) {}
+      return true;
+    }
+  });
+
+  /* ══════════════════════════════════════════════════
+     九、包装 openDialog：每次打开都记见面
+     ══════════════════════════════════════════════════ */
+  var _origOpenDialog = G.openDialog;
+  if (typeof _origOpenDialog === 'function') {
+    G.openDialog = function (npc) {
+      try {
+        if (npc && npc.kind && DIALOGS[npc.kind]) {
+          addMeet(npc.kind);
+          G._dialogCurrentIntent = null;
+          G._dialogExcludeIntent = null;
+        }
+      } catch (_) {}
+      return _origOpenDialog.call(G, npc);
+    };
+  }
+
+  /* ══════════════════════════════════════════════════
+     十、点击文本区跳过打字机
+     ══════════════════════════════════════════════════ */
+  var dlgPanel = document.getElementById('dialog-panel');
+  if (dlgPanel) {
+    dlgPanel.addEventListener('pointerdown', function (e) {
+      if (!_tw.timer) return;
+      if (e.target && e.target.closest && e.target.closest('.dlg-opt')) return;
+      finishTw();
+    }, true);
+  }
+
+  /* ══════════════════════════════════════════════════
+     十一、生命周期
+     ══════════════════════════════════════════════════ */
+  var _cleanup = function () { try { stopTw(); } catch (_) {} };
+  if (R && typeof R.event === 'function') {
+    R.event('playerDeath',   _cleanup);
+    R.event('enterBuilding', _cleanup);
+    R.event('enterHome',     _cleanup);
+    R.event('exitBuilding',  _cleanup);
+    R.event('exitHome',      _cleanup);
+    R.event('worldGenerate', _cleanup);
+  }
+
+  var _origCloseDialog = G.closeDialog;
+  if (typeof _origCloseDialog === 'function') {
+    G.closeDialog = function () {
+      stopTw();
+      return _origCloseDialog.call(G);
+    };
+  }
+
+  /* ══════════════════════════════════════════════════
+     十二、公开 API + 自检
+     ══════════════════════════════════════════════════ */
+  G.Dialogue = {
+    version: '1.2',
+    DIALOGS: DIALOGS,
+    CONDITIONS: {
+      isNight: isNight, isRaining: isRaining, isSnowing: isSnowing,
+      isFoggy: isFoggy, isClear: isClear, lowHP: lowHP,
+      hungry: hungry, hasMoney: hasMoney,
+    },
+    register: function (kind, dialog) {
+      if (!kind || !dialog || !Array.isArray(dialog.intents)) return false;
+      DIALOGS[kind] = dialog;
+      return true;
+    },
+    addIntent: function (kind, intent) {
+      if (!intent || !intent.id) return false;
+      if (!DIALOGS[kind]) DIALOGS[kind] = { intents: [] };
+      if (!Array.isArray(DIALOGS[kind].intents)) DIALOGS[kind].intents = [];
+      DIALOGS[kind].intents.push(intent);
+      return true;
+    },
+    show: function (kindOrNpc) {
+      var npc = null;
+      if (typeof kindOrNpc === 'string') {
+        for (var i = 0; i < G.npcs.length; i++) {
+          if (G.npcs[i].kind === kindOrNpc) { npc = G.npcs[i]; break; }
+        }
+        if (!npc && R.npcs.get(kindOrNpc)) {
+          var d = R.npcs.get(kindOrNpc);
+          npc = { kind: kindOrNpc, name: d.name || kindOrNpc,
+                  x: G.player.x, y: G.player.y };
+        }
+      } else if (kindOrNpc && kindOrNpc.kind) {
+        npc = kindOrNpc;
+      }
+      if (!npc) return false;
+      G.openDialog(npc);
+      return true;
+    },
+    stats: function (kind) {
+      var s = statOf(kind);
+      return {
+        meets: s.meets, lastMeetAt: s.lastMeetAt,
+        recentCount: s.recent.length,
+        flags: Object.keys(s.flags),
+      };
+    },
+    reset: function (kind) {
+      if (!kind) { G.saveExt.dialogStats = {}; return; }
+      var s = store();
+      delete s[kind];
+    },
+    setFlag: setFlag,
+    isFlag: isFlag,
+
+    /* ★ 自检：列出所有有 / 没有对话的 NPC */
+    check: function () {
+      var all = API.getAllNpcs();
+      var have = [], miss = [];
+      for (var k in all) {
+        if (DIALOGS[k]) have.push(k);
+        else miss.push(k);
+      }
+      console.log('[25-dialog] 有对话数据的 NPC (' + have.length + ')：', have);
+      console.log('[25-dialog] 缺对话数据的 NPC (' + miss.length + ')：', miss);
+      console.log('[25-dialog] DIALOGS 总键数：', Object.keys(DIALOGS).length);
+      return { have: have, miss: miss };
+    }
+  };
+
+  /* 启动时自检一次 */
+  setTimeout(function () {
+    try {
+      var all = API.getAllNpcs();
+      var missing = [];
+      for (var k in all) { if (!DIALOGS[k]) missing.push(k); }
+      if (missing.length > 0) {
+        console.log('[25-dialog] 以下 NPC 暂无对话数据，将使用兜底：' + missing.join(', '));
+      }
+    } catch (_) {}
+  }, 200);
+
+  console.log('[25-dialog] v1.2 已加载 · ' +
+              Object.keys(DIALOGS).length + ' 个对话表（含兜底）');
+});
+</script>
+
 
 <!-- ══════════════════════════════════════════════════════ -->
 <!-- 扩展 26：丧尸城市 v5 -->
@@ -60484,8 +61746,8 @@ Core.loadExt('y-notice', function (ext) {
     <a class="n-link" href="https://b23.tv/rP1G5cc"
        target="_blank" rel="noopener noreferrer">https://b23.tv/rP1G5cc</a>
   </div>
-  <div>· 在线游玩：
-    <a class="n-link" href="https://lihuamiaoxian.github.io/HTML-Island/"
+  <div>· 仓库地址：
+    <a class="n-link" href="https://github.com/LiHuaMiaoXian/HTML-Island"
        target="_blank" rel="noopener noreferrer">https://lihuamiaoxian.github.io/HTML-Island/</a>
   </div>
 </div>
